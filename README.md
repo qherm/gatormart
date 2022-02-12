@@ -15,7 +15,7 @@
 
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
-| member1      |               |                 |
+| Melissa Ho   |mho10@mailsfsu.edu            |   melissah717              |
 | member2      |               |                 |
 | member3      |               |                 |
 | member4      |               |                 |
