@@ -17,8 +17,8 @@
 |    :---:     |     :---:     |     :---:       |
 | Melissa Ho   |mho10@mail.sfsu.edu            |   melissah717              |
 | Minggu Ma    |mma4@mail.sfsu.edu               |Macgoogle                 |
-| Shane Christopher Waxler      |               |                 |
-| member4      |               |                 |
+| Shane Christopher Waxler      |swaxler@mail.sfsu.edu               |ShaneWaxler1                 |
+| Robert Johnathan Garcia      |rgarcia35@mail.sfsu.edu               |RGarcia35                 |
 | member5      |               |                 |
 | member6      |               |                 |
 
