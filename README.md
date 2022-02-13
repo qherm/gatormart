@@ -16,8 +16,8 @@
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
 | Melissa Ho   |mho10@mail.sfsu.edu            |   melissah717              |
-| member2      |               |                 |
-| member3      |               |                 |
+| Minggu Ma    |mma4@mail.sfsu.edu               |Macgoogle                 |
+| Shane Christopher Waxler      |               |                 |
 | member4      |               |                 |
 | member5      |               |                 |
 | member6      |               |                 |
