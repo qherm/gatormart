@@ -4,15 +4,15 @@
     <title>About Us</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/uikit.min.css" />
-
+  
+    <link rel="stylesheet" href="../css/style.css" />
     <script src="js/uikit.min.js"></script>
     <script src="js/uikit-icons.min.js"></script>
     <!-- UIkit CSS -->
-    <link
+    <!--link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css"
-    />
+    /-->
 
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit.min.js"></script>
@@ -20,7 +20,8 @@
   </head>
   <body>
     <!-- Nav Bar -->
-    <nav class="uk-navbar-container" uk-navbar>
+    <!-- nav class="uk-navbar-container" uk-navbar -->
+    <nav class="uk-navbar-container uk-margin-large-bottom" uk-navbar>
       <div class="uk-navbar-left">
         <a class="uk-navbar-item uk-logo" href="#">The Website</a>
         <ul class="uk-navbar-nav">
@@ -61,8 +62,20 @@
         </div>
       </div>
     </nav>
+    
+    <div class="uk-margin-large-bottom" style="text-align:center">
+
+      <h3>Software Engineering class SFSU</h3>
+      <h3>Spring, 2022</h3>
+      <h3>Section 03</h3>
+      <h3>Team 02</h3>
+    
+    </div>
+
+    <div class="uk-grid" data-uk-grid-margin>
+    <div class="uk-width-1-1 uk-row-first">
     <!-- Card Components -->
-    <div class="uk-child-width-1-4@m" uk-grid>
+    <div class="uk-child-width-1-4@m uk-margin-large-right uk-margin-large-left uk-margin-large-bottom" uk-grid>
       <div>
           <div class="uk-card uk-card-default">
             <div class="uk-card-media-top">
@@ -149,5 +162,7 @@
         </div>
       </div>
     </div>
+  </div>
+  </div>
   </body>
 </html>
