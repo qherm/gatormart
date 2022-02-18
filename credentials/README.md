@@ -8,6 +8,7 @@
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
 1. Server URL or IP
+    <br>
     Public IPv4 address
     35.153.50.217 
 
