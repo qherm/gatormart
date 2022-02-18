@@ -8,18 +8,19 @@
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
 1. Server URL or IP
-    <br>
-    Public IPv4 address
-    35.153.50.217 
+    
+    <br>Public IPv4 address
+    
+    <br>35.153.50.217 
 
-    Public IPv4 DNS
-    ec2-35-153-50-217.compute-1.amazonaws.com
+    <br>Public IPv4 DNS
+    <br>ec2-35-153-50-217.compute-1.amazonaws.com
     
 2. SSH username
-    ubuntu
+    <br>ubuntu
 
 3. SSH password or key.
-    Key has been uploaded to the credientials folder.
+    <br>Key has been uploaded to the credientials folder.
     
 4. Database URL or IP and port used.
     <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class.
@@ -28,13 +29,13 @@
 7. Database name (basically the name that contains all your tables)
 
 8. Instructions on how to use the above information.
-Download csc648.pem SSH key and put it in the .ssh folder in your user directory.
-Once put in there, start your terminal and cd to .ssh
-Once there, use this command to connect to the server
-ssh -i "csc648.pem" ubuntu@ec2-35-153-50-217.compute-1.amazonaws.com
-At this point, you should be able to log into the server, from there cd into the
-csc648-03-sp22-team02/application/ folder
-There you can use node runServer.js to start the server and allow the user to browse the webpages.
+<br>Download csc648.pem SSH key and put it in the .ssh folder in your user directory.
+<br>Once put in there, start your terminal and cd to .ssh
+<br>Once there, use this command to connect to the server
+<br>ssh -i "csc648.pem" ubuntu@ec2-35-153-50-217.compute-1.amazonaws.com
+<br>At this point, you should be able to log into the server, from there cd into the
+<br>csc648-03-sp22-team02/application/ folder
+<br>There you can use node runServer.js to start the server and allow the user to browse the webpages.
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
