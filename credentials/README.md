@@ -8,11 +8,8 @@
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
 1. Server URL or IP
-    
     <br>Public IPv4 address
-    
     <br>35.153.50.217 
-
     <br>Public IPv4 DNS
     <br>ec2-35-153-50-217.compute-1.amazonaws.com
     
