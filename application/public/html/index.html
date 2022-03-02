@@ -16,11 +16,12 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit-icons.min.js"></script>
   </head>
   <body>
-
+    <header>
+    <!-- Nav Bar Starts-->
     <nav class="uk-navbar-container" uk-navbar>
       <div class="uk-navbar-left">
-        <a class="uk-navbar-item uk-logo" href="#">The Website</a>
-        <ul class="uk-navbar-nav">
+        <a class="uk-navbar-item uk-logo" href="index.html">The Website</a>
+        <ul class="uk-navbar-nav uk-visible@s">
           <li>
             <a href="index.html">
               <span
@@ -30,7 +31,7 @@
               Home
             </a>
           </li>
-          <li>
+          <li class="uk-active">
             <a href="aboutUs.html">
               <span
                 class="uk-icon uk-margin-small-right"
@@ -46,17 +47,30 @@
       </div>
 
       <div class="uk-navbar-right">
-        <div class="uk-navbar-item">
+        <div class="uk-navbar-item uk-visible@s">
 
-            <form class="uk-search uk-search-navbar">
+            <form class="uk-search uk-search-navbar uk-hidden-medium">
                 <span uk-search-icon></span>
                 <input class="uk-search-input" type="search" placeholder="Search">
             </form>
-            <button class="uk-button uk-button-default">Search</button>
-          </form>
+              <button class="uk-button uk-button-default">Search</button>
+            </form>
+          
         </div>
       </div>
+      <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
     </nav>
+
+        <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
+      <div class="uk-offcanvas-bar">
+          <ul class="uk-nav">
+              <li><a class="uk-text-large" href="index.html">Home</a></li>
+              <li><a class="uk-text-large" href="aboutUs.html">About Us</a></li>
+          </ul>
+      </div>
+    </div>
+    <!-- Nav Bar Ends-->
+    </header>
 
   </body>
 </html>
