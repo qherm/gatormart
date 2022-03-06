@@ -1,63 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Home</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-    <!-- UIkit CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css"
-    />
 
-    <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit-icons.min.js"></script>
-  </head>
-  <body>
+<head>
+  <title>Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <nav class="uk-navbar-container" uk-navbar>
-      <div class="uk-navbar-left">
-        <a class="uk-navbar-item uk-logo" href="#">The Website</a>
-        <ul class="uk-navbar-nav">
-          <li>
-            <a href="index.html">
-              <span
-                class="uk-icon uk-margin-small-right"
-                uk-icon="icon: star"
-              ></span>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="aboutUs.html">
-              <span
-                class="uk-icon uk-margin-small-right"
-                uk-icon="icon: star"
-              ></span>
-              Our Team
-            </a>
-          </li>
-        </ul>
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css" />
 
-        <div class="uk-navbar-item">
-          <div>Some <a href="#">Link</a></div>
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit-icons.min.js"></script>
+</head>
+
+<body>
+
+  <nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+      <a class="uk-navbar-item uk-logo" href="#">GatorMart</a>
+      <ul class="uk-navbar-nav">
+        <li>
+          <a href="index.html">
+            <span class="uk-icon uk-margin-small-right" uk-icon="icon: star"></span>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="aboutUs.html">
+            <span class="uk-icon uk-margin-small-right" uk-icon="icon: star"></span>
+            Our Team
+          </a>
+        </li>
+      </ul>
+
+      <div class="uk-navbar-item">
+        <div class="uk-inline"></div>
+        <span class="uk-icon uk-margin-small-right" uk-icon="icon: star"></span>
+        <button type="button">Categories</button>
+        <div uk-dropdown>
+          <ul class="uk-nav uk-dropdown-nav">
+            <a href="#">Textbooks</a> <br>
+            <a href="#">Electronics</a> <br>
+            <a href="#">Misc. School Supplies</a> <br>
+            <a href="#">Services</a><br>
+            <a href="#">Help Needed</a> <br>
+            <a href="#">Other</a>
+          </ul>
         </div>
       </div>
+    </div>
 
-      <div class="uk-navbar-right">
-        <div class="uk-navbar-item">
+    <div class="uk-navbar-right">
+      <div class="uk-navbar-item">
 
-            <form class="uk-search uk-search-navbar">
-                <span uk-search-icon></span>
-                <input class="uk-search-input" type="search" placeholder="Search">
-            </form>
-            <button class="uk-button uk-button-default">Search</button>
-          </form>
-        </div>
+        <form class="uk-search uk-search-navbar">
+          <span uk-search-icon></span>
+          <input class="uk-search-input" type="search" placeholder="Search">
+        </form>
+        <button class="uk-button uk-button-default">Search</button>
+        </form>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-  </body>
+</body>
+
 </html>
