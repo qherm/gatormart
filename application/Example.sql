@@ -9,7 +9,7 @@ Name varchar(255),
 Category varchar(16),
 UserID int,
 Comment varchar(255),
-Price int
+Price double
 );
 
 INSERT INTO posting (ID, Name, Category, UserID, Comment, Price)
