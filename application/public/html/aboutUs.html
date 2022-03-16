@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About Us</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+    <link rel="stylesheet" href="../css/style.css" />
+    
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css"
+    >
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit-icons.min.js"></script>
+  </head>
+  <body>
+    <header>
+    <!-- Nav Bar Starts-->
+    <!-- nav class="uk-navbar-container" uk-navbar -->
+    <nav class="uk-navbar-container uk-margin-large-bottom" uk-navbar>
+      <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo" href="index.html">GatorMart</a>
+        <ul class="uk-navbar-nav uk-visible@s">
+          <li> 
+            <a href="VPTestHome.html">
+              <span
+                class="uk-icon uk-margin-small-right"
+                uk-icon="icon: home"
+              ></span>
+              Home
+            </a>
+          </li>
+          <li class="uk-active">
+            <a href="aboutUs.html">
+              <span
+                class="uk-icon uk-margin-small-right"
+              ></span>
+              About Us
+            </a>
+          </li>
+        </ul>
+
+        <div class="uk-navbar-item uk-visible@s">
+          <div class="uk-inline"></div>
+          <span class="uk-icon uk-margin-small-right"></span>
+          <button type = "button">Categories</button>
+          <div uk-dropdown = "mode:click">
+            <ul class="uk-nav uk-dropdown-nav">
+              <a href="#">Textbooks</a> <br>
+              <a href="#">Electronics</a> <br>
+              <a href="#">Misc. School Supplies</a> <br>
+              <a href="#">Services</a><br>
+              <a href="#">Classifieds</a> <br>
+              <a href="#">Help Needed</a>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="uk-navbar-right">
+        <div class="uk-navbar-item uk-visible@s">
+
+            <form class="uk-search uk-search-navbar uk-hidden-medium">
+                <span uk-search-icon></span>
+                <input class="uk-search-input" type="search" placeholder="Search">
+            </form>
+            <button class="uk-button uk-button-default uk-visible@s">Search</button>
+          </form>
+        </div>
+      </div>
+      <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
+    </nav>
+
+    <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
+      <div class="uk-offcanvas-bar">
+          <ul class="uk-nav">
+              <li><a class="uk-text-large" href="index.html">Home</a></li>
+              <li><a class="uk-text-large" href="aboutUs.html">About Us</a></li>
+          </ul>
+      </div>
+    </div>
+    <!-- Nav Bar Ends-->
+    </header>
+    
+    <div class="uk-margin-large-bottom" style="text-align:center">
+
+      <h3>Software Engineering - CSC648/848</h3>
+      <h3>Spring, 2022</h3>
+      <h3>Section 03</h3>
+      <h3>Team 02</h3>
+    
+    </div>
+    <div class="uk-grid" data-uk-grid-margin>
+    <div class="uk-width-1-1 uk-row-first">
+    <!-- Card Components -->
+    <div class="uk-child-width-1-4@m uk-margin-large-right uk-margin-large-left uk-margin-large-bottom" uk-grid>
+      <div>
+          <div class="uk-card uk-card-default">
+            <div class="uk-card-media-top">
+              <a href="aboutPages/aboutShane.html">
+              <img src="../images/ShaneWaxler.png" alt="Shane Waxler" style="width:100%"></a>
+            </div>
+            <div class="uk-card-body">
+              <h3 class="uk-card-title">Shane Waxler</h3>
+              <p>Team Lead</p>
+              <a href="aboutPages/aboutShane.html">Read More</a>
+            </div>
+          </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default">
+          <div class="uk-card-media-top">
+            <a href="./aboutPages/aboutMinggu.html">
+            <img src="../images/MingguMa.png" alt="" style="width:100%"></a>
+          </div>
+          <div class="uk-card-body">
+            <h3 class="uk-card-title">Minggu Ma</h3>
+            <p>GitHub Lead</p>
+            <a href="./aboutPages/aboutMinggu.html">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default">
+            <div class="uk-card-media-top">
+              <a href="./aboutPages/aboutChuting.html">
+                <img src="../images/ChutingYan.jpg" alt="ChutingYan" style="width:100%"></a>
+            </div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">Chuting Yan</h3>
+                <p>Front-End Lead</p>
+                <a href="./aboutPages/aboutChuting.html">Read More</a>
+            </div>
+        </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default">
+          <div class="uk-card-media-top">
+            <a href="./aboutPages/aboutRobert.html">
+            <img src="../images/RobertGarcia.jpg" alt="" style="width:100%"></a>
+          </div>
+          <div class="uk-card-body">
+            <h3 class="uk-card-title">Robert Garcia</h3>
+            <p>Back-End Lead</p>
+            <a href="./aboutPages/aboutRobert.html">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default">
+          <div class="uk-card-media-top">
+            <a href="./aboutPages/aboutMelissa.html">
+            <img src="../images/MelissaHo.jpg" alt="MelissaHo" style="width:100%"></a>
+          </div>
+          <div class="uk-card-body">
+            <h3 class="uk-card-title">Melissa Ho</h3>
+            <p>Front-End</p>
+            <a href="./aboutPages/aboutMelissa.html">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default">
+          <div class="uk-card-media-top">
+            <a href="./aboutPages/aboutJoe.html">
+            <img src="../images/JoeGuan.png" alt="Joe" style="width:100%"></a>
+          </div>
+          <div class="uk-card-body">
+            <h3 class="uk-card-title">Joe Guan</h3>
+            <p>Back-End</p>
+            <a href="./aboutPages/aboutJoe.html">Read More</a>
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <div class="uk-card uk-card-default">
+          <div class="uk-card-media-top">
+            <a href="./aboutPages/aboutXiaoqing.html">
+            <img src="../images/XiaoqingYao(Max).jpg" alt="" style="width:100%"></a>
+          </div>
+          <div class="uk-card-body">
+            <h3 class="uk-card-title">Xiaoqing Yao</h3>
+            <p>Front-End</p>
+            <a href="./aboutPages/aboutXiaoqing.html">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </body>
+</html>

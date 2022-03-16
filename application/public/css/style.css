@@ -1,0 +1,96 @@
+/* @import "css/uikit.min.css";
+@import "https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css"; */
+
+h2 {
+  margin-top: 2em;
+  margin-left: 2.1em;
+}
+
+/* h3 {
+  line-height: 30px;
+  margin-top: 0.37em;
+  margin-bottom: 0.37em;
+} */
+
+img {
+  border-radius: 10px;
+}
+
+body {
+  padding: 50px;
+}
+
+* {
+  box-sizing: border-box;
+  text-size-adjust: center;
+}
+
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* use flex */
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+/* show 4 pics per line */
+#container div {
+  width: 25%;
+}
+#container div img {
+  width: 100%;
+}
+
+#main-content {
+  grid-area: content;
+  padding-top: 0.35em;
+  padding-bottom: 0.35em;
+  display: grid;
+  gap: 0.2rem 0.2rem;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-rows: 1fr;
+}
+
+/* card design */
+.card {
+  display: grid;
+  grid-template-rows: 186px 150px;
+  grid-template-columns: auto;
+  border: 0.0625rem solid #cccccc;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 2px #dfdede;
+}
+.card-image {
+  grid-area: 1 / 1 / 2 / 2;
+}
+div[class="card"] > img {
+  height: 100%;
+  width: 100%;
+}
+
+.card-title {
+  color: white;
+  font-family: "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 0.1rem;
+  margin-top: 0;
+  padding-top: 0.1rem;
+}
+.card-body {
+  grid-area: 2/1/3/2;
+  padding: 0.75rem;
+  background-color: #232f3e;
+  border-radius: 0 0 0.2rem 0.2rem;
+}
+div[class="card-body"] > a[class="card-button"] {
+  text-decoration: none;
+}
+.card-text {
+  color: white;
+  font-family: "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
