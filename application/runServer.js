@@ -5,7 +5,8 @@ let path = require('path');
 
 app.engine('html', require('ejs').renderFile);
 
-app.get('/VPTestHome.html', search, (req, res) => {
+app.post('/VPTestHome.html/:search/:category', search, (req, res) => {
+
     var searchResult = req.searchResult;
     console.log("\nNumber of results: " + searchResult.length)
     for (var i = 0; i < searchResult.length; i++){
@@ -15,12 +16,19 @@ app.get('/VPTestHome.html', search, (req, res) => {
         console.log("Description: " + searchResult[i]['Comment'] + "\n");
     }
 
-    res.render('html/VPTestHome.html', {
+    res.json({
         results: searchResult.length,
         searchTerm: req.searchTerm,
         searchResult: searchResult,
         category: req.category
     });
+
+    // res.render('html/VPTestHome.html', {
+    //     results: searchResult.length,
+    //     searchTerm: req.searchTerm,
+    //     searchResult: searchResult,
+    //     category: req.category
+    // });
 })
 
 app.use(express.static('public/html'));
@@ -47,10 +55,12 @@ database.connect((err) => {
 });
 
 function search(req, res, next) {
-    var searchTerm = req.query.search;
-    var category = req.query.category;
+    
+    var searchTerm = req.params.search;
+    var category = req.params.category;
     let query = 'SELECT * FROM Posting'
-
+    console.log(searchTerm + " " + category);
+    
     if (searchTerm != '' && category != ''){
         query = `SELECT * FROM Posting WHERE Category = '` + category + `' AND ( Name LIKE '%` + searchTerm + `%' OR Comment LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%')`;
     }
@@ -60,7 +70,10 @@ function search(req, res, next) {
     else if (searchTerm == '' && category != ''){
         query = `SELECT * FROM Posting WHERE Category = '` + category + `'`;
     }
-
+    else if (searchTerm == '' && category == ''){
+        console.log("I'm HERE");
+        query = `SELECT * FROM Posting`;
+    }
     database.query(query, (err, result) => {
         if (err){
             req.searchResult = "";

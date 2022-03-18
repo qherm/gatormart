@@ -96,7 +96,7 @@
         <option value="Notes">Notes</option>
         <option value="Furniture">Furniture</option>
     </select>
-    <button type= "button" class="" onclick = "test()">Search</button>
+    <button type= "button" class="" onclick = "test(document.getElementById('search').value, document.getElementById('category').value)">Search</button>
   </form>
   
   
@@ -105,13 +105,32 @@
   </div>
 
   <script>
-  function test(){
-      console.log(searchResult)
+  function test(search, category){
+    if(search == ""){
+      search = "EMPTYSEARCHTEMP"
+    }
+    if(category == ""){
+      category = "EMPTYCATEGORYTEMP"
+    }
+    fetch(`/VPTestHome.html/${search}/${category}`, {method: "post"})
+                .then(async (response) => {
+                  return await response.json()
+                })
+                .then(async (result) => 
+                {
+                  const searchResult = result.searchResult
+                  console.log(searchResult)
+                  // for (var l = 0; l < result.searchResult.length; l++){
+                  //   console.log(result[l])
+                  // }
+                })
+      
+                //console.log(searchResult)
       //document.getElementById('result').innerHTML += searchResult[0]['Name']
     }
-  (document).ready(test)
 
-    
+
+  
   </script>
  
 </body>
