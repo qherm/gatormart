@@ -7,8 +7,12 @@ app.engine('html', require('ejs').renderFile);
 
 app.get('/VPTestHome.html', search, (req, res) => {
     var searchResult = req.searchResult;
+    console.log("\nNumber of results: " + searchResult.length)
     for (var i = 0; i < searchResult.length; i++){
-        console.log(searchResult[i]['Name']);
+        console.log("Name: " + searchResult[i]['Name'] + "   Price: $" + searchResult[i]['Price']);
+        console.log("Posted by UserID: " + searchResult[i]['UserID']);
+        console.log("Category: " + searchResult[i]['Category']);
+        console.log("Description: " + searchResult[i]['Comment'] + "\n");
     }
     res.render('html/VPTestHome.html', {
         
