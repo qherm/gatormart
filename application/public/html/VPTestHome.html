@@ -96,16 +96,20 @@
         <option value="Notes">Notes</option>
         <option value="Furniture">Furniture</option>
     </select>
-    <button class="" onchange ="this.form.submit()">Search</button>
+    <button class="" onclick = "test()">Search</button>
   </form>
   
   
-  <div id= ”result”>
+  <div id= 'result'>
 
   </div>
 
   <script>
+        function test(){
+          document.getElementById('result').innerHTML += '<p> TEST </p>'       
+        }
 
+    
   </script>
  
 </body>

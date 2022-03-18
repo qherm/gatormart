@@ -14,8 +14,8 @@ app.get('/VPTestHome.html', search, (req, res) => {
         console.log("Category: " + searchResult[i]['Category']);
         console.log("Description: " + searchResult[i]['Comment'] + "\n");
     }
+
     res.render('html/VPTestHome.html', {
-        
         results: searchResult.length,
         searchTerm: req.searchTerm,
         searchResult: searchResult,
@@ -44,12 +44,6 @@ const database = mysql.createConnection({
 database.connect((err) => {
     if (err) throw err;
     console.log('Connected!')
-});
-
-
-database.query('SELECT * FROM Posting', (error, results, fields) =>{
-    if (error) throw error;
-    //console.log(results);
 });
 
 function search(req, res, next) {
