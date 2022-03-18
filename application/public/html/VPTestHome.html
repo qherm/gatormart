@@ -96,7 +96,7 @@
         <option value="Notes">Notes</option>
         <option value="Furniture">Furniture</option>
     </select>
-    <button class="" onclick = "test()">Search</button>
+    <button type= "button" class="" onclick = "test()">Search</button>
   </form>
   
   
@@ -105,9 +105,11 @@
   </div>
 
   <script>
-        function test(){
-          document.getElementById('result').innerHTML += '<p> TEST </p>'       
-        }
+  function test(){
+      console.log(searchResult)
+      //document.getElementById('result').innerHTML += searchResult[0]['Name']
+    }
+  (document).ready(test)
 
     
   </script>
