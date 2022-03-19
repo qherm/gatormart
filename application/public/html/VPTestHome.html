@@ -75,7 +75,6 @@
         </ul>
     </div>
   </div>
-
   <!-- Nav Bar Ends-->
   </header>
 
@@ -100,12 +99,12 @@
   </form>
   
   
-  <div id= 'result'>
-
+  <div id="main-content">
+    
   </div>
 
   <script>
-  function test(search, category){
+  function test(search, category) {
     if(search == ""){
       search = "EMPTYSEARCHTEMP"
     }
@@ -119,14 +118,19 @@
                 .then(async (result) => 
                 {
                   const searchResult = result.searchResult
-                  console.log(searchResult)
-                  // for (var l = 0; l < result.searchResult.length; l++){
-                  //   console.log(result[l])
-                  // }
+                  for(let i = 0; i < searchResult.length; i++){
+                    document.getElementById("main-content").innerHTML += `
+                    <div class="card">
+                      <img class="card-image" src="${searchResult[i].ImageLocation}" alt="${searchResult[i].Name}">
+                      <div class="card-body">
+                          <p class="card-title">${searchResult[i].Name}</p>
+                          <p class="card-text">${searchResult[i].Comment}</p>
+                          <a href="" class="anchor-buttons">Post Details</a>
+                      </div>
+                    </div>
+                    `
+                  }
                 })
-      
-                //console.log(searchResult)
-      //document.getElementById('result').innerHTML += searchResult[0]['Name']
     }
 
 

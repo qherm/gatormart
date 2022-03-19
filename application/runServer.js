@@ -6,7 +6,6 @@ let path = require('path');
 app.engine('html', require('ejs').renderFile);
 
 app.post('/VPTestHome.html/:search/:category', search, (req, res) => {
-
     var searchResult = req.searchResult;
     console.log("\nNumber of results: " + searchResult.length)
     for (var i = 0; i < searchResult.length; i++){
