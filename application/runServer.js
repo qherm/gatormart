@@ -61,16 +61,16 @@ function search(req, res, next) {
     let query = 'SELECT * FROM Posting'
     console.log(searchTerm + " " + category);
     
-    if (searchTerm != '' && category != ''){
+    if (searchTerm != 'EMPTYSEARCHTEMP' && category != 'EMPTYCATEGORYTEMP'){
         query = `SELECT * FROM Posting WHERE Category = '` + category + `' AND ( Name LIKE '%` + searchTerm + `%' OR Comment LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%')`;
     }
-    else if (searchTerm != '' && category == ''){
+    else if (searchTerm != 'EMPTYSEARCHTEMP' && category == 'EMPTYCATEGORYTEMP'){
         query = `SELECT * FROM Posting WHERE Name LIKE '%` + searchTerm + `%' OR Comment LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%'`;
     }
-    else if (searchTerm == '' && category != ''){
+    else if (searchTerm == 'EMPTYSEARCHTEMP' && category != 'EMPTYCATEGORYTEMP'){
         query = `SELECT * FROM Posting WHERE Category = '` + category + `'`;
     }
-    else if (searchTerm == '' && category == ''){
+    else if (searchTerm == 'EMPTYSEARCHTEMP' && category == 'EMPTYCATEGORYTEMP'){
         console.log("I'm HERE");
         query = `SELECT * FROM Posting`;
     }
