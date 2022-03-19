@@ -5,6 +5,10 @@ let path = require('path');
 
 app.engine('html', require('ejs').renderFile);
 
+
+
+
+
 app.post('/VPTestHome.html/:search/:category', search, (req, res) => {
     var searchResult = req.searchResult;
     console.log("\nNumber of results: " + searchResult.length)
@@ -38,19 +42,26 @@ app.use(express.static('public/css'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public'));
+
 app.listen(3000, () => console.log('Server running on port 3000'));
 
 
 const database = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'password',
+    password: '',
     database: 'Example'
 });
 
 database.connect((err) => {
     if (err) throw err;
     console.log('Connected!')
+
+});
+
+database.query('SELECT * FROM Posting', (error, results, fields) => {
+    if (error) throw error;
+    console.log(results);
 });
 
 function search(req, res, next) {
@@ -88,8 +99,3 @@ function search(req, res, next) {
     });
 
 }
-
-
-
-
-
