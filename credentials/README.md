@@ -21,13 +21,13 @@
     
 4. Database URL or IP and port used.
     <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class.
-    localhost
+    <br>localhost
 5. Database username
-    root
+    <br>root
 7. Database password
-    ''
+    <br>''
 9. Database name (basically the name that contains all your tables)
-    Example (will change later)
+    <br>Example (will change later)
     
 8. Instructions on how to use the above information.
 <br>Download csc648.pem SSH key and put it in the .ssh folder in your user directory.
