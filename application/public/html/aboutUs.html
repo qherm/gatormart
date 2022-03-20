@@ -18,49 +18,73 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit-icons.min.js"></script>
   </head>
   <body>
-    <!-- Nav Bar -->
+    <header>
+    <!-- Nav Bar Starts-->
     <!-- nav class="uk-navbar-container" uk-navbar -->
     <nav class="uk-navbar-container uk-margin-large-bottom" uk-navbar>
       <div class="uk-navbar-left">
-        <a class="uk-navbar-item uk-logo" href="#">The Website</a>
-        <ul class="uk-navbar-nav">
-          <li>
-            <a href="index.html">
+        <a class="uk-navbar-item uk-logo" href="index.html">GatorMart</a>
+        <ul class="uk-navbar-nav uk-visible@s">
+          <li> 
+            <a href="VPTestHome.html">
               <span
                 class="uk-icon uk-margin-small-right"
-                uk-icon="icon: star"
+                uk-icon="icon: home"
               ></span>
               Home
             </a>
           </li>
-          <li>
+          <li class="uk-active">
             <a href="aboutUs.html">
               <span
                 class="uk-icon uk-margin-small-right"
-                uk-icon="icon: star"
               ></span>
-              Our Team
+              About Us
             </a>
           </li>
         </ul>
 
-        <div class="uk-navbar-item">
-          <div>Some <a href="#">Link</a></div>
+        <div class="uk-navbar-item uk-visible@s">
+          <div class="uk-inline"></div>
+          <span class="uk-icon uk-margin-small-right"></span>
+          <button type = "button">Categories</button>
+          <div uk-dropdown = "mode:click">
+            <ul class="uk-nav uk-dropdown-nav">
+              <a href="#">Textbooks</a> <br>
+              <a href="#">Electronics</a> <br>
+              <a href="#">Misc. School Supplies</a> <br>
+              <a href="#">Services</a><br>
+              <a href="#">Classifieds</a> <br>
+              <a href="#">Help Needed</a>
+            </ul>
+          </div>
         </div>
       </div>
 
       <div class="uk-navbar-right">
-        <div class="uk-navbar-item">
+        <div class="uk-navbar-item uk-visible@s">
 
-            <form class="uk-search uk-search-navbar">
+            <form class="uk-search uk-search-navbar uk-hidden-medium">
                 <span uk-search-icon></span>
                 <input class="uk-search-input" type="search" placeholder="Search">
             </form>
-            <button class="uk-button uk-button-default">Search</button>
+            <button class="uk-button uk-button-default uk-visible@s">Search</button>
           </form>
         </div>
       </div>
+      <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
     </nav>
+
+    <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
+      <div class="uk-offcanvas-bar">
+          <ul class="uk-nav">
+              <li><a class="uk-text-large" href="index.html">Home</a></li>
+              <li><a class="uk-text-large" href="aboutUs.html">About Us</a></li>
+          </ul>
+      </div>
+    </div>
+    <!-- Nav Bar Ends-->
+    </header>
     
     <div class="uk-margin-large-bottom" style="text-align:center">
 
@@ -77,7 +101,8 @@
       <div>
           <div class="uk-card uk-card-default">
             <div class="uk-card-media-top">
-              <img src="../images/ShaneWaxler.png" alt="Shane Waxler" style="width:100%">
+              <a href="aboutPages/aboutShane.html">
+              <img src="../images/ShaneWaxler.png" alt="Shane Waxler" style="width:100%"></a>
             </div>
             <div class="uk-card-body">
               <h3 class="uk-card-title">Shane Waxler</h3>
@@ -89,7 +114,8 @@
       <div>
         <div class="uk-card uk-card-default">
           <div class="uk-card-media-top">
-            <img src="../images/MingguMa.png" alt="" style="width:100%">
+            <a href="./aboutPages/aboutMinggu.html">
+            <img src="../images/MingguMa.png" alt="" style="width:100%"></a>
           </div>
           <div class="uk-card-body">
             <h3 class="uk-card-title">Minggu Ma</h3>
@@ -101,7 +127,8 @@
       <div>
         <div class="uk-card uk-card-default">
             <div class="uk-card-media-top">
-                <img src="../images/ChutingYan.jpg" alt="ChutingYan" style="width:100%">
+              <a href="./aboutPages/aboutChuting.html">
+                <img src="../images/ChutingYan.jpg" alt="ChutingYan" style="width:100%"></a>
             </div>
             <div class="uk-card-body">
                 <h3 class="uk-card-title">Chuting Yan</h3>
@@ -113,7 +140,8 @@
       <div>
         <div class="uk-card uk-card-default">
           <div class="uk-card-media-top">
-            <img src="../images/RobertGarcia.jpg" alt="" style="width:100%">
+            <a href="./aboutPages/aboutRobert.html">
+            <img src="../images/RobertGarcia.jpg" alt="" style="width:100%"></a>
           </div>
           <div class="uk-card-body">
             <h3 class="uk-card-title">Robert Garcia</h3>
@@ -125,7 +153,8 @@
       <div>
         <div class="uk-card uk-card-default">
           <div class="uk-card-media-top">
-            <img src="../images/MelissaHo.jpg" alt="MelissaHo" style="width:100%">
+            <a href="./aboutPages/aboutMelissa.html">
+            <img src="../images/MelissaHo.jpg" alt="MelissaHo" style="width:100%"></a>
           </div>
           <div class="uk-card-body">
             <h3 class="uk-card-title">Melissa Ho</h3>
@@ -137,7 +166,8 @@
       <div>
         <div class="uk-card uk-card-default">
           <div class="uk-card-media-top">
-            <img src="../images/JoeGuan.png" alt="Joe" style="width:100%">
+            <a href="./aboutPages/aboutJoe.html">
+            <img src="../images/JoeGuan.png" alt="Joe" style="width:100%"></a>
           </div>
           <div class="uk-card-body">
             <h3 class="uk-card-title">Joe Guan</h3>
@@ -150,7 +180,8 @@
       <div>
         <div class="uk-card uk-card-default">
           <div class="uk-card-media-top">
-            <img src="../images/XiaoqingYao(Max).jpg" alt="" style="width:100%">
+            <a href="./aboutPages/aboutXiaoqing.html">
+            <img src="../images/XiaoqingYao(Max).jpg" alt="" style="width:100%"></a>
           </div>
           <div class="uk-card-body">
             <h3 class="uk-card-title">Xiaoqing Yao</h3>

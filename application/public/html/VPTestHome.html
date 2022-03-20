@@ -2,13 +2,14 @@
 <html>
 
 <head>
-  <title>Home</title>
+  <title>VP test home page</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- UIkit CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css" />
   <link rel="stylesheet" href="../css/style.css" />
+
   <!-- UIkit JS -->
   <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit-icons.min.js"></script>
@@ -24,7 +25,7 @@
         <li>
           <a href="VPTestHome.html">
             <span class="uk-icon uk-margin-small-right" uk-icon="icon: home"></span>
-            Home
+            Test Home
           </a>
         </li>
         <li class="uk-active">
@@ -74,9 +75,68 @@
         </ul>
     </div>
   </div>
-
   <!-- Nav Bar Ends-->
   </header>
+
+  <div class="uk-margin-large-bottom uk-margin-large-top" style="text-align:center">
+
+    <h3>Software Engineering - CSC648/848</h3>
+    <h3>Spring, 2022</h3>
+    <h3>Section 03</h3>
+    <h3>Team 02</h3>
+  
+  </div>
+
+  <form>
+    <input id = "search" type = "text" name = "search" placeholder="Search..."  autocomplete="off">
+    <select name = "category" id = "category">
+        <option value="" >All Categories</option>
+        <option value="Textbook">Textbooks</option>
+        <option value="Notes">Notes</option>
+        <option value="Furniture">Furniture</option>
+    </select>
+    <button type= "button" class="" onclick = "test(document.getElementById('search').value, document.getElementById('category').value)">Search</button>
+  </form>
+  
+  
+  <div id="main-content">
+
+  </div>
+
+  <script>
+  function test(search, category) {
+    if(search == ""){
+      search = "EMPTYSEARCHTEMP"
+    }
+    if(category == ""){
+      category = "EMPTYCATEGORYTEMP"
+    }
+    fetch(`/VPTestHome.html/${search}/${category}`, {method: "post"})
+                .then(async (response) => {
+                  return await response.json()
+                })
+                .then(async (result) => 
+                {
+                  const searchResult = result.searchResult;
+                  document.getElementById("main-content").innerHTML = "";
+                  for(let i = 0; i < searchResult.length; i++){
+                    document.getElementById("main-content").innerHTML += 
+                    `<div class="card">
+                      <img class="card-image" src="${searchResult[i].ImageLocation}" alt="${searchResult[i].Name}">
+                      <div class="card-body">
+                          <p class="card-title">${searchResult[i].Name}</p>
+                          <p class="card-text">${searchResult[i].Comment}</p>
+                          <a href="" class="anchor-buttons">Post Details</a>
+                      </div>
+                    </div>`
+                  }
+                })
+    }
+
+
+  
+  </script>
+ 
 </body>
 
 </html>

@@ -17,49 +17,62 @@
 </head>
 
 <body>
-  <!-- Nav Bar -->
+  <header>
+  <!-- Nav Bar Starts-->
   <nav class="uk-navbar-container" uk-navbar>
     <div class="uk-navbar-left">
-      <a class="uk-navbar-item uk-logo" href="#">The Website</a>
-      <ul class="uk-navbar-nav">
+      <a class="uk-navbar-item uk-logo" href="../index.html">GatorMart</a>
+      <ul class="uk-navbar-nav uk-visible@s">
         <li>
           <a href="../index.html">
-            <span class="uk-icon uk-margin-small-right" uk-icon="icon: star"></span>
+            <span class="uk-icon uk-margin-small-right" uk-icon="icon: home"></span>
             Home
           </a>
         </li>
-        <li>
+        <li class="uk-active">
           <a href="../aboutUs.html">
-            <span class="uk-icon uk-margin-small-right" uk-icon="icon: star"></span>
-            Our Team
+            <span class="uk-icon uk-margin-small-right"></span>
+            About Us
           </a>
         </li>
       </ul>
 
-      <div class="uk-navbar-item">
+      <!-- <div class="uk-navbar-item">
         <div>Some <a href="#">Link</a></div>
-      </div>
+      </div> -->
     </div>
 
     <div class="uk-navbar-right">
-      <div class="uk-navbar-item">
+      <div class="uk-navbar-item uk-visible@s">
 
-        <form class="uk-search uk-search-navbar">
+        <form class="uk-search uk-search-navbar uk-hidden-medium">
           <span uk-search-icon></span>
           <input class="uk-search-input" type="search" placeholder="Search">
         </form>
-        <button class="uk-button uk-button-default">Search</button>
+        <button class="uk-button uk-button-default uk-visible@s">Search</button>
         </form>
       </div>
     </div>
+    <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
   </nav>
+
+  <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
+    <div class="uk-offcanvas-bar">
+        <ul class="uk-nav">
+          <li><a class="uk-text-large" href="../index.html">Home</a></li>
+          <li><a class="uk-text-large" href="../aboutUs.html">About Us</a></li>
+        </ul>
+    </div>
+  </div>
+  <!-- Nav Bar Ends-->
+  </header>
   <div>
     <div class="uk-child-width-1-4@m" uk-grid>
       <div class="uk-panel">
         <img class="uk-align-center uk-align-right@m uk-margin-remove-adjacent uk-margin-large-left uk-margin-large-top"
           src="../../images/MelissaHo.jpg" alt="" style="height: 380px;">
       </div>
-      <div class="uk-child-width-1-2@m.uk-grid.uk-grid-stack">
+      <div class="uk-child-width-1-2@m.uk-grid.uk-grid-stack .uk-text-center@s">
         <h2>Front-End<br><small>Melissa Ho</small></h2>
         <p class="uk-align-center uk-align-left@m uk-margin-large-left uk-margin-large-right">
           Hello World! I'm Melissa. I am a senior Computer Science student at San Francisco State University.
