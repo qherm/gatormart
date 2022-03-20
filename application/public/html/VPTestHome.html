@@ -36,31 +36,21 @@
         </li>
       </ul>
 
-      <div class="uk-navbar-item uk-visible@s">
-        <div class="uk-inline"></div>
-        <span class="uk-icon uk-margin-small-right"></span>
-        <button type="button">Categories</button>
-        <div uk-dropdown = "mode:click">
-          <ul class="uk-nav uk-dropdown-nav">
-            <a href="#">Textbooks</a> <br>
-            <a href="#">Electronics</a> <br>
-            <a href="#">Misc. School Supplies</a> <br>
-            <a href="#">Services</a><br>
-            <a href="#">Help Needed</a> <br>
-            <a href="#">Other</a>
-          </ul>
-        </div>
-      </div>
-    </div>
 
     <div class="uk-navbar-right">
       <div class="uk-navbar-item uk-visible@s">
 
         <form class="uk-search uk-search-navbar uk-hidden-medium">
           <span uk-search-icon></span>
-          <input class="uk-search-input" type="search" placeholder="Search">
+          <input class="uk-search-input" id = "search" type = "text" name = "search" placeholder="Search..."  autocomplete="off">
         </form>
-        <button class="uk-button uk-button-default">Search</button>
+        <select name = "category" id = "category">
+          <option value="" >All Categories</option>
+          <option value="Textbook">Textbooks</option>
+          <option value="Notes">Notes</option>
+          <option value="Furniture">Furniture</option>
+      </select>
+        <button class="uk-button uk-button-default" type = "button" onclick = "test(document.getElementById('search').value, document.getElementById('category').value)">Search</button>
         </form>
       </div>
     </div>
@@ -86,7 +76,7 @@
     <h3>Team 02</h3>
   
   </div>
-
+<!-- commenting out for now so he doesn't get confused
   <form>
     <input id = "search" type = "text" name = "search" placeholder="Search..."  autocomplete="off">
     <select name = "category" id = "category">
@@ -97,7 +87,7 @@
     </select>
     <button type= "button" class="" onclick = "test(document.getElementById('search').value, document.getElementById('category').value)">Search</button>
   </form>
-  
+-->
   
   <div id="main-content">
 

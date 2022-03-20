@@ -7,17 +7,15 @@ app.engine('html', require('ejs').renderFile);
 
 
 
-
-
 app.post('/VPTestHome.html/:search/:category', search, (req, res) => {
     var searchResult = req.searchResult;
-    console.log("\nNumber of results: " + searchResult.length)
-    for (var i = 0; i < searchResult.length; i++){
-        console.log("Name: " + searchResult[i]['Name'] + "   Price: $" + searchResult[i]['Price']);
-        console.log("Posted by UserID: " + searchResult[i]['UserID']);
-        console.log("Category: " + searchResult[i]['Category']);
-        console.log("Description: " + searchResult[i]['Comment'] + "\n");
-    }
+    //console.log("\nNumber of results: " + searchResult.length)
+    //for (var i = 0; i < searchResult.length; i++){
+    //    console.log("Name: " + searchResult[i]['Name'] + "   Price: $" + searchResult[i]['Price']);
+    //    console.log("Posted by UserID: " + searchResult[i]['UserID']);
+    //    console.log("Category: " + searchResult[i]['Category']);
+    //    console.log("Description: " + searchResult[i]['Comment'] + "\n");
+    //}
 
     res.json({
         results: searchResult.length,
@@ -49,7 +47,7 @@ app.listen(3000, () => console.log('Server running on port 3000'));
 const database = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'password',
     database: 'Example'
 });
 
@@ -61,7 +59,6 @@ database.connect((err) => {
 
 database.query('SELECT * FROM Posting', (error, results, fields) => {
     if (error) throw error;
-    console.log(results);
 });
 
 function search(req, res, next) {
@@ -69,7 +66,7 @@ function search(req, res, next) {
     var searchTerm = req.params.search;
     var category = req.params.category;
     let query = 'SELECT * FROM Posting'
-    console.log(searchTerm + " " + category);
+    //console.log(searchTerm + " " + category);
     
     if (searchTerm != 'EMPTYSEARCHTEMP' && category != 'EMPTYCATEGORYTEMP'){
         query = `SELECT * FROM Posting WHERE Category = '` + category + `' AND ( Name LIKE '%` + searchTerm + `%' OR Comment LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%')`;
@@ -81,7 +78,7 @@ function search(req, res, next) {
         query = `SELECT * FROM Posting WHERE Category = '` + category + `'`;
     }
     else if (searchTerm == 'EMPTYSEARCHTEMP' && category == 'EMPTYCATEGORYTEMP'){
-        console.log("I'm HERE");
+        //console.log("I'm HERE");
         query = `SELECT * FROM Posting`;
     }
     database.query(query, (err, result) => {
