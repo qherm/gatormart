@@ -9,22 +9,26 @@
 
 1. Server URL or IP
     <br>Public IPv4 address
-    <br>35.153.50.217 
+    <br>54.237.46.1
     <br>Public IPv4 DNS
-    <br>ec2-35-153-50-217.compute-1.amazonaws.com
+    <br>ec2-54-237-46-1.compute-1.amazonaws.com
     
 2. SSH username
     <br>ubuntu
 
 3. SSH password or key.
-    <br>Key has been uploaded to the credientials folder.
+    <br>Key has been uploaded to the credentials folder.
     
 4. Database URL or IP and port used.
     <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class.
+    localhost
 5. Database username
-6. Database password
-7. Database name (basically the name that contains all your tables)
-
+    root
+7. Database password
+    ''
+9. Database name (basically the name that contains all your tables)
+    Example (will change later)
+    
 8. Instructions on how to use the above information.
 <br>Download csc648.pem SSH key and put it in the .ssh folder in your user directory.
 <br>Once put in there, start your terminal and cd to .ssh
