@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- UIkit CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css" />
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="../css/style.css" />
 
@@ -19,54 +19,23 @@
   </head>
 
   <body>
-    <header>
-      <!-- Nav Bar Starts-->
-      <nav class="uk-navbar-container" uk-navbar>
-        <div class="uk-navbar-left">
-          <a class="uk-navbar-item uk-logo" href="index.html">GatorMart</a>
-          <ul class="uk-navbar-nav uk-visible@s">
-            <li>
-              <a href="VPTestHome.html">
-                <span
-                  class="uk-icon uk-margin-small-right"
-                  uk-icon="icon: home"
-                ></span>
-                Test Home
-              </a>
-            </li>
-            <li class="uk-active">
-              <a href="aboutUs.html">
-                <span class="uk-icon uk-margin-small-right"></span>
-                About Us
-              </a>
-            </li>
-          </ul>
-
-          <div class="uk-navbar-item uk-visible@s">
-            <div class="uk-inline"></div>
-            <span class="uk-icon uk-margin-small-right"></span>
-            <button class="uk-button uk-button-default" type="button">
-              <span uk-icon="triangle-down">All</span>
-            </button>
-            <div uk-dropdown="mode:click">
-              <ul class="uk-nav uk-dropdown-nav">
-                <a href="#">Textbooks</a>
-                <br />
-                <a href="#">Notes</a>
-                <br />
-                <a href="#">Furniture</a>
-                <!-- <br />
-                <a href="#">Services</a
-                ><br />
-                <a href="#">Help Needed</a>
-                <br />
-                <a href="#">Other</a> -->
-              </ul>
-            </div>
+    <div class="main-container">
+      <header>
+        <!-- Nav Bar Starts-->
+        <nav class="uk-navbar-container" uk-navbar>
+          <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo" href="VPTestHome.html">GatorMart</a>
+            <ul class="uk-navbar-nav uk-visible@s">
+              <li class="uk-active">
+                <a href="aboutUs.html">
+                  <span class="uk-icon uk-margin-small-right"></span>
+                  About Us
+                </a>
+              </li>
+            </ul>
           </div>
-        </div>
 
-        <!-- <div class="uk-navbar-center">
+          <!-- <div class="uk-navbar-center">
       <div class="uk-navbar-item uk-visible@s">
 
         <form class="uk-search uk-search-navbar uk-hidden-medium">
@@ -77,40 +46,98 @@
         </form>
       </div>
     </div> -->
-        <div class="uk-margin uk-visible@s">
-          <form class="uk-search uk-search-navbar input-wrapper">
-            <a href="" class="uk-search-icon-flip" uk-search-icon></a>
-            <input class="uk-search-input" type="search" placeholder="Search" />
-          </form>
-        </div>
-        <a
-          href="#"
-          class="uk-navbar-toggle uk-hidden@s"
-          uk-navbar-toggle-icon
-          uk-toggle="target: #sidenav"
-        ></a>
-      </nav>
 
-      <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
-        <div class="uk-offcanvas-bar">
-          <ul class="uk-nav">
-            <li><a class="uk-text-large" href="index.html">Home</a></li>
-            <li><a class="uk-text-large" href="aboutUs.html">About Us</a></li>
-          </ul>
+          <div class="uk-margin uk-visible@s search-bar">
+            <form class="uk-search uk-search-navbar input-wrapper">
+              <div class="select-dropdown">
+                <select name="category" id="category">
+                  <option value="">All</option>
+                  <option value="Textbook">Textbooks</option>
+                  <option value="Notes">Notes</option>
+                  <option value="Furniture">Furniture</option>
+                </select>
+              </div>
+              <!-- <a href="" class="uk-search-icon-flip search-button" uk-search-icon></a> -->
+              <input class="uk-search-input" id="search" type="text" name="search" placeholder="Search..." autocomplete="off" />
+              <button
+                class="uk-button uk-button-default"
+                type="button"
+                onclick="test(document.getElementById('search').value, document.getElementById('category').value)"
+              >
+                <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+          <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
+        </nav>
+
+        <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
+          <div class="uk-offcanvas-bar">
+            <ul class="uk-nav">
+              <li><a class="uk-text-large" href="index.html">Home</a></li>
+              <li><a class="uk-text-large" href="aboutUs.html">About Us</a></li>
+            </ul>
+          </div>
         </div>
+        <!-- Nav Bar Ends-->
+        <!-- Header Ends-->
+      </header>
+      <div class="page-wrap"></div>
+
+      <!-- Footer Starts-->
+      <div class="footer">
+        <footer class="footer-distributed" id="footer">
+          <div class="footer-left">
+            <img src="" />
+            <h3>Gator<span>Mart</span></h3>
+
+            <p class="footer-links">
+              <a href="#">Home</a>
+              |
+              <a href="#">About</a>
+              |
+              <a href="#">Contact</a>
+            </p>
+
+            <p class="footer-company-name">© 2022 GatorMart Pvt. Ltd.</p>
+          </div>
+
+          <div class="footer-center">
+            <div>
+              <i class="fa fa-lightbulb-o"></i>
+              <p>
+                <span>Software Engineering - CSC648/848</span>
+                <span>Spring, 2022, Section 03, Team 02</span>
+              </p>
+            </div>
+
+            <!-- <div>
+                <i class="fa fa-phone"></i>
+                <p></p>
+            </div> -->
+            <div>
+              <i class="fa fa-envelope"></i>
+              <p>
+                <a href=""><span>support@gatormart.com</span></a>
+              </p>
+            </div>
+          </div>
+          <div class="footer-right">
+            <p class="footer-company-about">
+              <span>About GatorMart</span>
+              GatorMart is an online hub exclusively for SFSU community. GatorMart provides service to current students, faculty, and staff.
+            </p>
+            <div class="footer-icons">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+              <a href="#"><i class="fa fa-linkedin"></i></a>
+              <a href="#"><i class="fa fa-youtube"></i></a>
+            </div>
+          </div>
+        </footer>
       </div>
-
-      <!-- Nav Bar Ends-->
-    </header>
-
-    <div
-      class="uk-margin-large-bottom uk-margin-large-top"
-      style="text-align: center"
-    >
-      <h3>Software Engineering - CSC648/848</h3>
-      <h3>Spring, 2022</h3>
-      <h3>Section 03</h3>
-      <h3>Team 02</h3>
+      <!-- Footer Ends-->
     </div>
   </body>
 </html>
