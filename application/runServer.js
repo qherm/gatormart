@@ -47,7 +47,7 @@ app.listen(3000, () => console.log('Server running on port 3000'));
 const database = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'password',
+    password: '',
     database: 'Example'
 });
 
@@ -57,9 +57,7 @@ database.connect((err) => {
 
 });
 
-database.query('SELECT * FROM Posting', (error, results, fields) => {
-    if (error) throw error;
-});
+
 
 function search(req, res, next) {
     
