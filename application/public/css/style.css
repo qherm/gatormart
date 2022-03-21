@@ -94,3 +94,10 @@ div[class="card-body"] > a[class="card-button"] {
   color: white;
   font-family: "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 800px;
+}
