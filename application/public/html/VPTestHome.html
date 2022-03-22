@@ -83,44 +83,7 @@
         <!-- Header Ends-->
       </header>
       <div class="page-wrap"></div>
-      
-      <div id="main-content">
 
-      </div>
-    
-      <script>
-      function test(search, category) {
-        if(search == ""){
-          search = "EMPTYSEARCHTEMP"
-        }
-        if(category == ""){
-          category = "EMPTYCATEGORYTEMP"
-        }
-        fetch(`/VPTestHome.html/${search}/${category}`, {method: "post"})
-                    .then(async (response) => {
-                      return await response.json()
-                    })
-                    .then(async (result) => 
-                    {
-                      const searchResult = result.searchResult;
-                      document.getElementById("main-content").innerHTML = "";
-                      for(let i = 0; i < searchResult.length; i++){
-                        document.getElementById("main-content").innerHTML += 
-                        `<div class="card">
-                          <img class="card-image" src="${searchResult[i].ImageLocation}" alt="${searchResult[i].Name}">
-                          <div class="card-body">
-                              <p class="card-title">${searchResult[i].Name}</p>
-                              <p class="card-text">${searchResult[i].Comment}</p>
-                              <a href="" class="anchor-buttons">Post Details</a>
-                          </div>
-                        </div>`
-                      }
-                    })
-        }
-    
-    
-      
-      </script>
       <!-- Footer Starts-->
       <div class="footer">
         <footer class="footer-distributed" id="footer">

@@ -1,7 +1,9 @@
 /* @import "css/uikit.min.css";
 @import "https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css"; */
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,700");
-
+h2 {
+  text-align: center;
+}
 img {
   border-radius: 10px;
 }
@@ -319,7 +321,7 @@ div[class="card-body"] > a[class="card-button"] {
   position: relative;
   background-color: #e6e6e6;
   border-radius: 4px;
-  width: 80px;
+  width: auto;
   margin-right: 12px;
   margin-left: 25px;
 }
