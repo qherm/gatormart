@@ -5,7 +5,25 @@ let path = require('path');
 
 app.engine('html', require('ejs').renderFile);
 
+app.post('/index.html/:search/:category', search, (req, res) => {
+    var searchResult = req.searchResult;
+    res.json({
+        results: searchResult.length,
+        searchTerm: req.searchTerm,
+        searchResult: searchResult,
+        category: req.category
+    });
+})
 
+app.post('/aboutUs.html/:search/:category', search, (req, res) => {
+    var searchResult = req.searchResult;
+    res.json({
+        results: searchResult.length,
+        searchTerm: req.searchTerm,
+        searchResult: searchResult,
+        category: req.category
+    });
+})
 
 app.post('/VPTestHome.html/:search/:category', search, (req, res) => {
     var searchResult = req.searchResult;
@@ -23,13 +41,6 @@ app.post('/VPTestHome.html/:search/:category', search, (req, res) => {
         searchResult: searchResult,
         category: req.category
     });
-
-    // res.render('html/VPTestHome.html', {
-    //     results: searchResult.length,
-    //     searchTerm: req.searchTerm,
-    //     searchResult: searchResult,
-    //     category: req.category
-    // });
 })
 
 app.use(express.static('public/html'));
