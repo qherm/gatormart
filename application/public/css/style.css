@@ -1,6 +1,21 @@
 /* @import "css/uikit.min.css";
 @import "https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css"; */
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,700");
+
+#icon{
+  max-height: 3em;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+h1{
+  font-weight: 300;
+  font-size: 52px;
+  color: #43484D;
+  letter-spacing: -3px;
+  padding-top: 40%
+}
+
 h2 {
   text-align: center;
 }
@@ -356,4 +371,189 @@ div[class="card-body"] > a[class="card-button"] {
 
 .search-bar button {
   background-color: #febd69;
+}
+
+/* Basic Styling */
+
+main.container{
+  background: white;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+ 
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+}
+
+.left-column {
+  width: 65%;
+  position: relative;
+  padding-right: 20px;
+}
+ 
+.right-column {
+  width: 35%;
+  margin-top: 60px;
+  padding-left: 20px;
+}
+.product-img{
+  height: 75%;
+  padding: 20px;
+}
+
+.left-column img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+ 
+
+/* Product Description */
+.product-description {
+  border-bottom: 1px solid #000000;
+  margin-bottom: 20px;
+}
+.product-description span {
+  font-size: 12px;
+  color: #358ED7;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.product-description h1 {
+  font-weight: 300;
+  font-size: 52px;
+  color: #000000;
+  letter-spacing: -2px;
+}
+
+.product-description h4 {
+  font-size: 20px;
+  letter-spacing: -1px;
+}
+
+.product-description h5 {
+  font-size: 20px;
+  letter-spacing: -1px;
+}
+.product-description p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #000000;
+  line-height: 24px;
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+}
+ 
+.product-price span {
+  font-size: 30px;
+  font-weight: 300;
+  color: #43474D;
+  margin-right: 20px;
+}
+ 
+.cart-btn {
+  display: inline-block;
+  background-color: #240733;
+  border-radius: 9px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 12px 30px;
+  transition: all .5s;
+}
+
+/* Registration page*/
+
+.user-registration{
+  grid-area:content;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:"title registration-form";
+  font-weight: 300;
+  font-size: 52px;
+  color: #43484D;
+  letter-spacing: -2px;
+}
+
+.registration-form{
+  grid-area: registration-form;
+  font-size: 16px;
+  font-weight: 300;
+  color: #86939E;
+  line-height: 24px;
+}
+
+.form{
+  font-size: 30px;
+  font-weight: 300;
+  color: #86939E;
+  line-height: 24px;
+  letter-spacing:-1px;
+}
+
+fieldset{
+  border: none;
+}
+
+input{
+  display: inline-block
+}
+
+.check{
+  font-size: 16px;
+  color: #86939E;
+}
+
+.register-left-column{
+  width: 40%;
+  position: relative;
+  padding-right: 20px;
+}
+ 
+.register-right-column {
+  width: 60%;
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+#register-button{
+    background-color: #240733;
+    border-radius: 9px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 12px 30px;
+    transition: all .5s;
+}
+
+.register-h1
+{
+  font-size: 28px;
+  color: #43484D;
+  letter-spacing: -2px;
+  padding-bottom: 5px;
+  padding-top: 10px;
+}
+
+#text-box{
+  width: 300px;
+  height: 25px;
+  border-radius: 6px;
+  border-width: 1px;
+}
+
+fieldset.form{
+  padding-top: 15%
 }
