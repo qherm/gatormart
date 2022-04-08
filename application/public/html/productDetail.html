@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VP result page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit-icons.min.js"></script>
+</head>
+
+</html>
+
+<body>
+    <header>
+        <!-- Nav Bar Starts-->
+        <nav class="uk-navbar-container" uk-navbar>
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" href="index.html">GatorMart</a>
+                <ul class="uk-navbar-nav uk-visible@s">
+                    <li>
+                        <a href="VPTestHome.html">
+                            <span class="uk-icon uk-margin-small-right" uk-icon="icon: home"></span>
+                            Test Home
+                        </a>
+                    </li>
+                    <li class="uk-active">
+                        <a href="aboutUs.html">
+                            <span class="uk-icon uk-margin-small-right"></span>
+                            About Us
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="uk-navbar-item uk-visible@s">
+                    <div class="uk-inline"></div>
+                    <span class="uk-icon uk-margin-small-right"></span>
+                    <button type="button">Categories</button>
+                    <div uk-dropdown="mode:click">
+                        <ul class="uk-nav uk-dropdown-nav">
+                            <a href="#">Textbooks</a> <br>
+                            <a href="#">Electronics</a> <br>
+                            <a href="#">Misc. School Supplies</a> <br>
+                            <a href="#">Services</a><br>
+                            <a href="#">Help Needed</a> <br>
+                            <a href="#">Other</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-navbar-right">
+                <div class="uk-navbar-item uk-visible@s">
+
+                    <form class="uk-search uk-search-navbar uk-hidden-medium">
+                        <span uk-search-icon></span>
+                        <input class="uk-search-input" type="search" placeholder="Search">
+                    </form>
+                    <button class="uk-button uk-button-default">Search</button>
+                    </form>
+                </div>
+            </div>
+            <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
+        </nav>
+
+        <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar">
+                <ul class="uk-nav">
+                    <li><a class="uk-text-large" href="index.html">Home</a></li>
+                    <li><a class="uk-text-large" href="aboutUs.html">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Nav Bar Ends-->
+    </header>
+    <!-- Header Ends-->
+
+    <!-- <body>
+        <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+            <div class="uk-grid-column-larg">
+                <div class="uk-grid-column-large">Calculus: Early Transcendentals 8th Edition
+                    </div>
+                    <div id="product-info">
+                        <p id="posted-user">
+                            <span class="form-label">Posted by: John Doe</span>
+                            <span id="post-author"></span>
+                        </p>
+                        <p id="posted-time">
+                            <span class="form-label">Posted at: 1/1/2021</span>
+                            <span id="post-date"></span></p>
+                    </div>
+                    <div class="uk-grid-column-small">Calculus: Early Transcendentals. 8th Edition. Like-new. $50</div>
+                    <img id="product-image" src="../images/textbook_1.jpg">
+                <button id="message-button">Message seller</button>
+            </div>
+        </div>
+    </body> -->
+
+    <!-- <div class="uk-child-width-1-2" uk-grid>
+        <div>
+            <div class="uk-card uk-card-body uk-text-center uk-card-header">
+                <div id="product-image">
+                </div><img class="product-image" src="../images/textbook_1.jpg">
+            </div>
+        </div>
+        <div class="uk-child-width-1-1 uk-text-left" uk-grid id="product-info">
+            <div class="uk-card-body">
+                <span class="uk-badge uk-badge-default">Textbooks</span> 
+                <span class="uk-badge">Used</span>
+                <div id="post-title">Calculus: Early Transcendentals
+                    (8th edition)</div>
+                <div id="post-info">Posted by: <a href="#">Melly</a> on 1/1/2001
+                </div>
+                <div class="uk-card uk-card-body uk-text-large">
+                    I bought this book in 2009. I barely used it, and I'm selling it for $50.
+                    I will accept cash, venmo, or zelle.
+                    Can meet on Mondays, Tuesdays, and Thursdays. I am open to negotiations on price.
+                </div>
+            </div>
+            <div>
+                <div class="uk-card uk-card-body uk-card-footer">
+                    <button class="uk-button uk-box-shadow-hover-medium uk-width-1-2 uk-button-danger uk-button-large" a href="#" id="message-button">Message
+                        Seller</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+<main class="container">
+ 
+  <!-- Left Column / Product Image -->
+  <div class="product-img">
+    <img src="../images/textbook_1.jpg" alt="">
+  </div>
+ 
+ 
+  <!-- Right Column -->
+  <div class="right-column">
+ 
+    <!-- Product Description -->
+    <div class="product-description">
+      <span>Textbooks</span>
+      <h1> Calculus: Early Transcendentals, 8th Edition</h1>
+      <h4> Posted by: <a href="#">Melly</a> on 1/1/2001</h4>
+        <h5> Location: Cesar Chavez Center</h5>
+      <p>Required textbook for lower division calculus classes. The condition is like new, no markings or highlights, light cover wear.
+        Prefer cash or venmo.
+        Can meet on Mondays, Tuesdays, and Wednesdays at Ceasar Chavez Center. 
+      </p>
+    </div>
+
+ 
+    <!-- Product Pricing -->
+    <div class="product-price">
+      <span>$50</span>
+      <a href="#" class="cart-btn">Message Seller</a>
+    </div>
+  </div>
+</main>
