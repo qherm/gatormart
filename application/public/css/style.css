@@ -2,6 +2,12 @@
 @import "https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css"; */
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,700");
 
+#nav-bar{
+  right:0;
+  left:0;
+  background: rgb(210, 210, 210)
+}
+
 #icon{
   max-height: 3em;
   padding-right: 1em;
@@ -13,18 +19,18 @@ h1{
   font-size: 52px;
   color: #43484D;
   letter-spacing: -3px;
-  padding-top: 40%
+  padding-top: 30%
 }
 
 h2 {
   text-align: center;
 }
 img {
-  border-radius: 10px;
+  border-radius: 20px;
+  height: 80%
 }
 
 body {
-  padding: 50px;
   height: 100%;
 }
 
@@ -147,6 +153,9 @@ div[class="card-body"] > a[class="card-button"] {
 .footer,
 .page-wrap:after {
   height: 15rem;
+  margin-top: -50px;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 @media (max-height: 800px) {
@@ -154,7 +163,7 @@ div[class="card-body"] > a[class="card-button"] {
     position: static;
   }
   header {
-    padding-top: 40px;
+    padding-top: 20px;
   }
 }
 
@@ -162,10 +171,16 @@ div[class="card-body"] > a[class="card-button"] {
   background-color: #f5f5f5;
   box-sizing: border-box;
   width: 100%;
+  max-height: 250px;
   text-align: left;
   font: bold 16px sans-serif;
   padding: 50px 50px 60px 50px;
   margin-top: 80px;
+  bottom: 0;
+  position: fixed;
+  left: 0;
+  right:0;
+  bottom: 0;
 }
 
 .footer-distributed .footer-left,
@@ -377,13 +392,20 @@ div[class="card-body"] > a[class="card-button"] {
 main.container{
   background: white;
 }
-html, body {
+
+body {
+  display:flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+ 
+html{
   height: 100%;
   width: 100%;
   margin: 0;
   font-family: 'Roboto', sans-serif;
 }
- 
+
 .container {
   max-width: 1300px;
   margin: 0 auto;
@@ -402,8 +424,8 @@ html, body {
   margin-top: 60px;
   padding-left: 20px;
 }
-.product-img{
-  height: 75%;
+#product-img-container{
+  height: 100%;
   padding: 20px;
 }
 
@@ -433,6 +455,7 @@ html, body {
   font-size: 52px;
   color: #000000;
   letter-spacing: -2px;
+  top: 0
 }
 
 .product-description h4 {
@@ -492,6 +515,7 @@ html, body {
   font-weight: 300;
   color: #86939E;
   line-height: 24px;
+  padding-bottom: 0
 }
 
 .form{
@@ -516,13 +540,14 @@ input{
 }
 
 .register-left-column{
-  width: 40%;
+  width: 50%;
   position: relative;
   padding-right: 20px;
+  left: 0
 }
  
 .register-right-column {
-  width: 60%;
+  width: 70%;
   margin-top: 10px;
   padding-left: 20px;
 }
@@ -535,14 +560,15 @@ input{
     text-decoration: none;
     padding: 12px 30px;
     transition: all .5s;
+    width: 150px;
 }
 
 .register-h1
 {
-  font-size: 28px;
+  font-size: 24px;
   color: #43484D;
   letter-spacing: -2px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   padding-top: 10px;
 }
 
@@ -550,9 +576,25 @@ input{
   width: 300px;
   height: 25px;
   border-radius: 6px;
-  border-width: 1px;
+  border-width: 0.5px;
 }
 
 fieldset.form{
   padding-top: 15%
+}
+
+.registration-bottom{
+  text-align: center;
+}
+
+/* login */
+
+#form-links{
+  font-size: 15px;
+  padding-top: 30px;
+}
+
+.form-label{
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

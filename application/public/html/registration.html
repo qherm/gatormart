@@ -90,10 +90,16 @@
       </div>
           <div class="registration-form register-right-column" method="POST" enctype="application/x-www-form-urlencoded">
               <fieldset class="form">
+                <div class="register-h1">Full Name:</div>
+                <input id="text-box" type="text" placeholder="First Last" required name="name">
                   <div class="register-h1">SFSU email:</div>
                   <input id="text-box" type="text" placeholder="email" required name="email">
                   <div class="check">Must be an official SFSU email.</div>
                   <br/>
+                  <div class="register-h1">Username:</div>
+                  <input id="text-box" type="text" placeholder="First Last" required name="name"><br/>
+                  <div class="check">This is the display name that will be used on GatorMart.</span>
+                  </div>
                   <div class="register-h1">Password:</div>
                   <input id="text-box" type="password" placeholder="password" required name="password">
                   <br />
@@ -111,8 +117,9 @@
                   <button type="submit" id="register-button">Submit</button>
               </fieldset>
             </div>
-      </div>
+      </div>           
     </main>
+    <div class="registration-bottom">Already have an account? <a href="../html/login.html">Log In Here</a></div>
   </body>
   
   </html>
