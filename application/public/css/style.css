@@ -718,11 +718,9 @@ button {
 }
 button.certain {
   background: #231161;
-  margin-left: 20px;
 }
 button.light {
   background: grey;
-  margin-right: 20px;
 }
 button:hover.certain {
   background: #34207a;
