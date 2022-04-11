@@ -22,50 +22,65 @@
 <body>
   <div class="main-container">
     <header>
-      <!-- Nav Bar Starts-->
-      <nav class="uk-navbar-container" uk-navbar>
-        <div class="uk-navbar-left">
-          <a class="uk-navbar-item uk-logo" href="VPTestHome.html">GatorMart</a>
-          <ul class="uk-navbar-nav uk-visible@s">
-            <li class="uk-active">
-              <a href="aboutUs.html">
-                <span class="uk-icon uk-margin-small-right"></span>
-                About Us
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="uk-margin uk-visible@s search-bar">
-          <form class="uk-search uk-search-navbar input-wrapper">
-            <div class="select-dropdown">
-              <select name="category" id="category">
-                <option value="">All</option>
-                <option value="Textbook">Textbooks</option>
-                <option value="Notes">Notes</option>
-                <option value="Furniture">Furniture</option>
-              </select>
+             <!-- Nav Bar Starts-->
+             <nav class="uk-navbar-container" uk-navbar>
+              <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" href="VPTestHome.html">GatorMart</a>
+                <ul class="uk-navbar-nav uk-visible@s">
+                  <li class="uk-active">
+                    <a href="aboutUs.html">
+                      <span class="uk-icon uk-margin-small-right"></span>
+                      About Us
+                    </a>
+                  </li>
+                </ul>
+              </div>
+    
+              <!-- <div class="uk-navbar-center">
+          <div class="uk-navbar-item uk-visible@s">
+    
+            <form class="uk-search uk-search-navbar uk-hidden-medium">
+              <span uk-search-icon></span>
+              <input class="uk-search-input" type="search" placeholder="Search">
+            </form>
+            <button class="uk-button uk-button-default">Search</button>
+            </form>
+          </div>
+        </div> -->
+    
+              <div class="uk-margin uk-visible@s search-bar">
+                <form class="uk-search uk-search-navbar input-wrapper">
+                  <div class="select-dropdown">
+                    <select name="category" id="category">
+                      <option value="">All</option>
+                      <option value="Textbook">Textbooks</option>
+                      <option value="Notes">Notes</option>
+                      <option value="Furniture">Furniture</option>
+                    </select>
+                  </div>
+                  <!-- <a href="" class="uk-search-icon-flip search-button" uk-search-icon></a> -->
+                  <input class="uk-search-input" id="search" type="text" name="search" placeholder="Search..." autocomplete="off" />
+                  <button
+                    class="uk-button uk-button-default"
+                    type="button"
+                    onclick="test(document.getElementById('search').value, document.getElementById('category').value)"
+                  >
+                    <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+                  </button>
+                </form>
+              </div>
+              <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
+            </nav>
+    
+            <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
+              <div class="uk-offcanvas-bar">
+                <ul class="uk-nav">
+                  <li><a class="uk-text-large" href="index.html">Home</a></li>
+                  <li><a class="uk-text-large" href="aboutUs.html">About Us</a></li>
+                </ul>
+              </div>
             </div>
-            <!-- <a href="" class="uk-search-icon-flip search-button" uk-search-icon></a> -->
-            <input class="uk-search-input" id="search" type="text" name="search" placeholder="Search..."
-              autocomplete="off" />
-            <button class="uk-button uk-button-default" type="button"
-              onclick="test(document.getElementById('search').value, document.getElementById('category').value)">
-              <i class="fa fa-search fa-lg" aria-hidden="true"></i>
-            </button>
-          </form>
-        </div>
-        <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
-      </nav>
-
-      <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
-        <div class="uk-offcanvas-bar">
-          <ul class="uk-nav">
-            <li><a class="uk-text-large" href="index.html">Home</a></li>
-            <li><a class="uk-text-large" href="aboutUs.html">About Us</a></li>
-          </ul>
-        </div>
-      </div>
-      <!-- Nav Bar Ends-->
+            <!-- Nav Bar Ends-->
     </header>
     <!-- Header Ends-->
 
@@ -80,11 +95,11 @@
           <fieldset class="form">
             <div class="register-h1">
               SFSU email:
-            <div class="form-label"><input id="text-box" type="text" placeholder="SFSU email" required name="email">
+            <br/><input id="text-box" type="text" placeholder="SFSU email" required name="email">
             <br/><br/>Password:
-            <br/><input id="text-box" type="password" placeholder="Password" required name="password"></div>
+            <br/><input id="text-box" type="password" placeholder="Password" required name="password">
             <br />
-          </div>
+            </div>
             <button type="submit" id="register-button">Submit</button><br/>
             <a href="#" id="form-links">Forgot Password</a>
             <br/>

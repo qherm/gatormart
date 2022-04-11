@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Registration</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css" />
-    <link rel="stylesheet" href="../css/style.css" />
-    
-    
+<head>
+  <title>Registration</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit-icons.min.js"></script>
-  </head>
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+
+
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit-icons.min.js"></script>
+</head>
+
 </html>
 
 <body>
-    <header>
+  <header>
     <!-- Nav Bar Starts-->
     <nav class="uk-navbar-container" uk-navbar>
       <div class="uk-navbar-left">
@@ -37,12 +39,12 @@
             </a>
           </li>
         </ul>
-  
+
         <div class="uk-navbar-item uk-visible@s">
           <div class="uk-inline"></div>
           <span class="uk-icon uk-margin-small-right"></span>
           <button type="button">Categories</button>
-          <div uk-dropdown = "mode:click">
+          <div uk-dropdown="mode:click">
             <ul class="uk-nav uk-dropdown-nav">
               <a href="#">Textbooks</a> <br>
               <a href="#">Electronics</a> <br>
@@ -54,10 +56,10 @@
           </div>
         </div>
       </div>
-  
+
       <div class="uk-navbar-right">
         <div class="uk-navbar-item uk-visible@s">
-  
+
           <form class="uk-search uk-search-navbar uk-hidden-medium">
             <span uk-search-icon></span>
             <input class="uk-search-input" type="search" placeholder="Search">
@@ -68,58 +70,111 @@
       </div>
       <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
     </nav>
-  
+
     <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
       <div class="uk-offcanvas-bar">
-          <ul class="uk-nav">
-              <li><a class="uk-text-large" href="index.html">Home</a></li>
-              <li><a class="uk-text-large" href="aboutUs.html">About Us</a></li>
-          </ul>
+        <ul class="uk-nav">
+          <li><a class="uk-text-large" href="index.html">Home</a></li>
+          <li><a class="uk-text-large" href="aboutUs.html">About Us</a></li>
+        </ul>
       </div>
     </div>
-  
+
     <!-- Nav Bar Ends-->
-    </header>
-    <!-- Header Ends-->
-    <body>
-      <main class="container">
-      <div class="user-registration register-left-column">
-          <header>
-              <h1>Register for GatorMart</h1>
-          </header>
+  </header>
+  <!-- Header Ends-->
+
+  <body>
+    <main class="container">
+      <div class="user-registration-left-column">
+        <header>
+          <h1>Register for GatorMart</h1>
+        </header>
       </div>
-          <div class="registration-form register-right-column" method="POST" enctype="application/x-www-form-urlencoded">
-              <fieldset class="form">
-                <div class="register-h1">Full Name:</div>
-                <input id="text-box" type="text" placeholder="First Last" required name="name">
-                  <div class="register-h1">SFSU email:</div>
-                  <input id="text-box" type="text" placeholder="email" required name="email">
-                  <div class="check">Must be an official SFSU email.</div>
-                  <br/>
-                  <div class="register-h1">Username:</div>
-                  <input id="text-box" type="text" placeholder="First Last" required name="name"><br/>
-                  <div class="check">This is the display name that will be used on GatorMart.</span>
+      <div class="registration-form register-right-column" method="POST" enctype="application/x-www-form-urlencoded">
+        <fieldset class="form">
+          <div class="register-h1">Full Name<span>*</span></div>
+          <input id="text-box" type="text" placeholder="First Last" required name="name">
+          <div class="register-h1">SFSU email<span>*</span></div>
+          <input id="text-box" type="text" placeholder="email" required name="email">
+          <div class="check">Must be an official SFSU email.</div>
+          <br />
+          <div class="register-h1">Username<span>*</span></div>
+          <input id="text-box" type="text" placeholder="First Last" required name="name"><br />
+          <div class="check">This is the display name that will be used on GatorMart.</span>
+          </div>
+          <div class="register-h1">Password<span>*</span></div>
+          <input id="text-box" type="password" placeholder="password" required name="password">
+          <br />
+          <div class="check">Password must be <span id="pass-req1" class="req">8 or more characters.</span>
+          </div>
+          <div class="check">Password must contain <span id="pass-req2" class="req">at least 1 upper case
+              letter and 1 number and 1 of the following special characters ( / * - + ! @ # $ ^ & * ).</span>
+          </div>
+          <br />
+          <div class="register-h1">Confirm Password<span>*</span></div>
+          <input id="text-box" type="password" placeholder="Confirm your password" required name="cpassword">
+          <br />
+          <div class="check">Passwords must <span id="confirm-pass-req" class="req">match.</span></div>
+          <br />
+          <button type="submit" id="register-button">Submit</button>
+          <div class="registration-bottom">Already have an account? <a href="../html/login.html">Log In Here</a></div>
+        </fieldset>
+      </div>
+            <!-- Footer Starts-->
+            <div class="footer">
+              <footer class="footer-distributed" id="footer">
+                  <div class="footer-left">
+                      <img src="" />
+                      <h3>Gator<span>Mart</span></h3>
+
+                      <p class="footer-links">
+                          <a href="#">Home</a>
+                          |
+                          <a href="#">About</a>
+                          |
+                          <a href="#">Contact</a>
+                      </p>
+
+                      <p class="footer-company-name">© 2022 GatorMart Pvt. Ltd.</p>
                   </div>
-                  <div class="register-h1">Password:</div>
-                  <input id="text-box" type="password" placeholder="password" required name="password">
-                  <br />
-                  <div class="check">Password must be <span id="pass-req1" class="req">8 or more characters.</span>
+
+                  <div class="footer-center">
+                      <div>
+                          <i class="fa fa-lightbulb-o"></i>
+                          <p>
+                              <span>Software Engineering - CSC648/848</span>
+                              <span>Spring, 2022, Section 03, Team 02</span>
+                          </p>
+                      </div>
+
+                      <div>
+                          <i class="fa fa-envelope"></i>
+                          <p>
+                              <a href=""><span>support@gatormart.com</span></a>
+                          </p>
+                      </div>
                   </div>
-                  <div class="check">Password must contain <span id="pass-req2" class="req">at least 1 upper case
-                          letter and 1 number and 1 of the following special characters ( / * - + ! @ # $ ^ & * ).</span>
+                  <div class="footer-right">
+                      <p class="footer-company-about">
+                          <span>About GatorMart</span>
+                          GatorMart is an online hub exclusively for SFSU community. GatorMart provides service to
+                          current students,
+                          faculty, and staff.
+                      </p>
+                      <div class="footer-icons">
+                          <a href="#"><i class="fa fa-facebook"></i></a>
+                          <a href="#"><i class="fa fa-twitter"></i></a>
+                          <a href="#"><i class="fa fa-instagram"></i></a>
+                          <a href="#"><i class="fa fa-linkedin"></i></a>
+                          <a href="#"><i class="fa fa-youtube"></i></a>
+                      </div>
                   </div>
-                  <br />
-                  <div class="register-h1">Confirm Password:</div>
-                  <input id="text-box" type="password" placeholder="Confirm your password" required name="cpassword">
-                  <br />
-                  <div class="check">Passwords must <span id="confirm-pass-req" class="req">match.</span></div>
-                  <br />
-                  <button type="submit" id="register-button">Submit</button>
-              </fieldset>
-            </div>
-      </div>           
+              </footer>
+          </div>
+          <!-- Footer Ends-->
+      </div>
     </main>
-    <div class="registration-bottom">Already have an account? <a href="../html/login.html">Log In Here</a></div>
   </body>
-  
+
   </html>
