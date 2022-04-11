@@ -1,0 +1,105 @@
+/* Registration page*/
+
+.registration-container {
+    background: white;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 4rem;
+    display: flex;
+    padding-bottom: 0.5rem;
+  }
+html,
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+  }
+.user-registration-left-column {
+    width: 50%;
+}
+
+.user-registration-right-column {
+    width: 50%
+}
+.registration-label {
+    padding-top: 280px;
+    font-size: 40px;
+    font-family: "Roboto", sans-serif; 
+    letter-spacing: -1px;
+    text-align:center;
+}
+
+.user-registration {
+    grid-area: content;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "title registration-form";
+    font-weight: 300;
+    font-size: 52px;
+    color: #43484d;
+    letter-spacing: -2px;
+}
+
+.registration-form {
+    grid-area: registration-form;
+    font-size: 16px;
+    font-weight: 300;
+    color: #86939e;
+    line-height: 24px;
+    padding-bottom: 0
+}
+
+.form {
+    font-size: 30px;
+    font-weight: 300;
+    color: #86939e;
+    line-height: 38px;
+    letter-spacing: -1px;
+}
+
+
+input {
+    display: inline-block;
+}
+
+.register-h1 span {
+    color: red;
+}
+
+.check {
+    font-size: 16px;
+    color: #86939e;
+}
+
+
+#register-button {
+    background-color: #240733;
+    border-radius: 9px;
+    font-size: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    /* padding: 12px 30px; */
+    transition: all 0.5s;
+}
+
+.register-h1 {
+    width: 50%;
+    font-size: 20px;
+    color: #43484d;
+    letter-spacing: -2px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+#text-box {
+    width: 300px;
+    height: 25px;
+    border-radius: 6px;
+    border-width: 0.5px;
+    font-size: 12px;
+}
+
+.registration-bottom{
+    font-size: 18px;
+    padding-top: 10px;
+}
