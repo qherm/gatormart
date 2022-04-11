@@ -1,0 +1,76 @@
+.profile-head {
+  transform: translateY(5rem);
+}
+
+.cover {
+  background-image: url(https://images.unsplash.com/photo-1502679726485-931beda67f88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY0MTk0MjYxNg&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+body {
+  background: #eaeded;
+}
+/* body {
+  background: #654ea3;
+  background: linear-gradient(to right, #e96443, #904e95);
+  min-height: 100vh;
+  overflow-x: hidden;
+} */
+
+/* Message Section*/
+
+.dots {
+  height: 4px;
+  width: 4px;
+  margin-bottom: 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+.reply {
+  margin-left: 12px;
+}
+
+.reply small {
+  color: #b7b4b4;
+}
+
+.reply small:hover {
+  color: green;
+  cursor: pointer;
+}
+.icons i {
+  margin-left: 8px;
+}
+.check-icon {
+  font-size: 17px;
+  color: #c3bfbf;
+  top: 1px;
+  position: relative;
+  margin-left: 3px;
+}
+.card {
+  border: none;
+  box-shadow: 5px 6px 6px 2px #e9ecef;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+.navbar-dark .nav-item .nav-link {
+  color: #fff;
+}
+
+.navbar-dark .nav-item .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  border-radius: 0.25rem;
+  color: #fff;
+}
+
+.fa-li {
+  position: relative;
+  left: 0;
+}
+
+#navBarSearchForm input[type="text"] {
+  width: 1000px !important;
+}
