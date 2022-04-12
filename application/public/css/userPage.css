@@ -70,17 +70,3 @@ body {
   position: relative;
   left: 0;
 } */
-
-/* Navbar  */
-
-#navBarSearchForm {
-  margin-right: 35px;
-  margin-left: 0px;
-}
-#navBarSearchForm input[type="text"] {
-  width: 1200px !important;
-}
-
-#navBarSearchForm button[type="submit"] {
-  margin-left: -10px !important;
-}

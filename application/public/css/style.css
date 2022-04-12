@@ -97,8 +97,10 @@ body {
 
 #main-content {
   grid-area: content;
-  padding-top: 0.35em;
+  padding-top: 3em;
   padding-bottom: 0.35em;
+  padding-left: 1em;
+  padding-right: 1em;
   display: grid;
   gap: 0.2rem 0.2rem;
   grid-template-rows: 1fr 1fr;
