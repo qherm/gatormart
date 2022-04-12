@@ -570,3 +570,16 @@ button:hover.light {
 #navBarSearchForm input[type="text"] {
   width: 630px !important;
 }
+
+/* overriding bootstrap color scheme
+for search button on nav bar */
+.btn-outline-success{
+  background-color: #240733;
+  border-radius: 9px;
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  /* padding: 12px 30px; */
+  transition: all 0.5s;
+  border-color:#240733
+}
