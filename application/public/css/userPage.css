@@ -55,7 +55,7 @@ body {
   border-radius: 4px;
   margin-top: 10px;
 }
-.navbar-dark .nav-item .nav-link {
+/* .navbar-dark .nav-item .nav-link {
   color: #fff;
 }
 
@@ -64,13 +64,23 @@ body {
   transition: all 0.3s ease;
   border-radius: 0.25rem;
   color: #fff;
-}
+} */
 
-.fa-li {
+/* .fa-li {
   position: relative;
   left: 0;
+} */
+
+/* Navbar  */
+
+#navBarSearchForm {
+  margin-right: 35px;
+  margin-left: 0px;
+}
+#navBarSearchForm input[type="text"] {
+  width: 1200px !important;
 }
 
-#navBarSearchForm input[type="text"] {
-  width: 1000px !important;
+#navBarSearchForm button[type="submit"] {
+  margin-left: -10px !important;
 }
