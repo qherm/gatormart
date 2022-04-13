@@ -112,7 +112,7 @@ app.listen(3000, () => console.log('Server running on port 3000'));
 const database = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'password',
+    password: '',
     database: 'GatorMartDB'
 });
 
@@ -125,11 +125,9 @@ database.connect((err) => {
 
 
 function search(req, res, next) {
-    
     var searchTerm = req.params.search;
     var category = req.params.category;
     let query = 'SELECT * FROM Post'
-    //console.log(searchTerm + " " + category);
     
     if (searchTerm != 'EMPTYSEARCHTEMP' && category != 'EMPTYCATEGORYTEMP'){
         query = `SELECT * FROM Post WHERE Category = '` + category + `' AND ( Title LIKE '%` + searchTerm + `%' OR Post_Description LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%')`;
@@ -141,7 +139,6 @@ function search(req, res, next) {
         query = `SELECT * FROM Post WHERE Category = '` + category + `'`;
     }
     else if (searchTerm == 'EMPTYSEARCHTEMP' && category == 'EMPTYCATEGORYTEMP'){
-        //console.log("I'm HERE");
         query = `SELECT * FROM Post`;
     }
     database.query(query, (err, result) => {

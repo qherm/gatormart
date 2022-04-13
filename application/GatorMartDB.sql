@@ -46,15 +46,6 @@ CREATE TABLE IF NOT EXISTS `GatorMartDB`.`Post` (
   `File_Link` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Post_ID`));
 
-CREATE TABLE Posting (
-ID int,
-Name varchar(255),
-Category varchar(16),
-UserID int,
-Comment varchar(255),
-Price double,
-ImageLocation varchar(255)
-);
 
 -- -----------------------------------------------------
 -- Table `GatorMatorDB`.`Review`
@@ -103,5 +94,5 @@ VALUES
 (10, 10, 'Couch', 'Furniture', 1, 'Freshly bought couch, doesnt fit in my dorm!', 30, 'product', 'providing', '../images/FurnitureCouch.jpg');
 
 -- ---------------------------------------------------------------------------------------------------------- --
-SELECT * FROM GatorMatorDB.User;
-SELECT * FROM GatorMatorDB.Post;
+SELECT * FROM GatorMartDB.User;
+SELECT * FROM GatorMartDB.Post;
