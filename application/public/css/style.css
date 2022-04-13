@@ -406,3 +406,7 @@ for search button on nav bar */
   transition: all 0.5s;
   border-color: #240733;
 }
+
+.product-button {
+  background-color: #34207a;
+}
