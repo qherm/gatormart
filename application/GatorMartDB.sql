@@ -103,5 +103,5 @@ VALUES
 (10, 10, 'Couch', 'Furniture', 1, 'Freshly bought couch, doesnt fit in my dorm!', 30, 'product', 'providing', '../images/FurnitureCouch.jpg');
 
 -- ---------------------------------------------------------------------------------------------------------- --
-SELECT * FROM GatorMatorDB.User;
-SELECT * FROM GatorMatorDB.Post;
+SELECT * FROM GatorMartDB.User;
+SELECT * FROM GatorMartDB.Post;
