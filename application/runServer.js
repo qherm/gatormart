@@ -13,9 +13,8 @@ app.get('/index.html/:search/:category', search, (req, res) => {
         searchResult: searchResult,
         category: req.category
     });
+
 })
-
-
 
 app.get('/aboutUs.html/:search/:category', search, (req, res) => {
     var searchResult = req.searchResult;
@@ -27,23 +26,15 @@ app.get('/aboutUs.html/:search/:category', search, (req, res) => {
     });
 })
 
-// app.post('/VPTestHome.html/:search/:category', search, (req, res) => {
-//     var searchResult = req.searchResult;
-//     //console.log("\nNumber of results: " + searchResult.length)
-//     //for (var i = 0; i < searchResult.length; i++){
-//     //    console.log("Name: " + searchResult[i]['Name'] + "   Price: $" + searchResult[i]['Price']);
-//     //    console.log("Posted by UserID: " + searchResult[i]['UserID']);
-//     //    console.log("Category: " + searchResult[i]['Category']);
-//     //    console.log("Description: " + searchResult[i]['Comment'] + "\n");
-//     //}
-
-//     res.json({
-//         results: searchResult.length,
-//         searchTerm: req.searchTerm,
-//         searchResult: searchResult,
-//         category: req.category
-//     });
-// })
+app.get('/VPResult.html/:search/:category', search, (req, res) => {
+    var searchResult = req.searchResult;
+    res.json({
+        results: searchResult.length,
+        searchTerm: req.searchTerm,
+        searchResult: searchResult,
+        category: req.category
+    });
+})
 
 app.get('/VPTestHome.html/:search/:category', search, (req, res) => {
     var searchResult = req.searchResult;
@@ -53,6 +44,7 @@ app.get('/VPTestHome.html/:search/:category', search, (req, res) => {
         searchResult: searchResult,
         category: req.category
     });
+
 })
 
 app.use(express.static('public/html'));

@@ -159,18 +159,11 @@
                 .then(async (result) => 
                 {
                   const searchResult = result.searchResult;
-                  document.getElementById("main-content").innerHTML = "";
-                  for(let i = 0; i < searchResult.length; i++){
-                    document.getElementById("main-content").innerHTML += 
-                    `<div class="card">
-                      <img class="card-image" src="${searchResult[i].File_Link}" alt="${searchResult[i].Title}">
-                      <div class="card-body">
-                          <p class="card-title">${searchResult[i].Title}</p>
-                          <p class="card-text">${searchResult[i].Post_Description}</p>
-                          <a href="" class="anchor-buttons">Post Details</a>
-                      </div>
-                    </div>`
-                  }
-                })
-    }
+                  sessionStorage.searchResult = JSON.stringify(searchResult)
+                  sessionStorage.searchTerm = search
+                  sessionStorage.categoryTerm = category
+
+                  document.location.href = '/VPResult.html'
+    })
+  }
   </script>

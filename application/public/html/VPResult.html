@@ -21,7 +21,7 @@
   </head>
 </html>
 
-<body>
+<body onload = "displayResults();">
   <div class="main-container">
     <header>
     <!-- Nav Bar Starts-->
@@ -87,41 +87,10 @@
     </header>
     <!-- Header Ends-->
     <div class="page-wrap">
-      <div id="main-content">
-          <div class="card">
-              <img class="card-image" src="" alt="Missing Image">
-              <div class="card-body">
-                  <p class="card-title">Card Title</p>
-                  <p class="card-text">Card description</p>
-                  <a href="" class="anchor-buttons">Post Details</a>
-              </div>
-          </div>
-          <div class="card">
-              <img class="card-image" src="" alt="Missing Image">
-              <div class="card-body">
-                  <p class="card-title">Card Title</p>
-                  <p class="card-text">Card description</p>
-                  <a href="" class="anchor-buttons">Post Details</a>
-              </div>
-          </div>
-          <div class="card">
-              <img class="card-image" src="" alt="Missing Image">
-              <div class="card-body">
-                  <p class="card-title">Card Title</p>
-                  <p class="card-text">Card description</p>
-                  <a href="" class="anchor-buttons">Post Details</a>
-              </div>
-          </div>
-          <div class="card">
-              <img class="card-image" src="" alt="Missing Image">
-              <div class="card-body">
-                  <p class="card-title">Card Title</p>
-                  <p class="card-text">Card description</p>
-                  <a href="" class="anchor-buttons">Post Details</a>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div id = "resultsGiven"></div>
+    <div id="main-content"></div>
+
+  
         <!-- Footer Starts-->
         <div class="footer">
           <footer class="footer-distributed" id="footer">
@@ -180,3 +149,63 @@
   </body>
   
   </html>
+
+
+<script>
+    function test(search, category) {
+      if(search == ""){
+        search = "EMPTYSEARCHTEMP"
+      }
+      if(category == ""){
+        category = "EMPTYCATEGORYTEMP"
+      }
+      fetch(`/VPResult.html/${search}/${category}`, {method: "get"})
+                  .then(async (response) => {
+                    return await response.json()
+                  })
+                  .then(async (result) => 
+                  {
+                  const searchResult = result.searchResult;
+                  sessionStorage.searchResult = JSON.stringify(searchResult)
+                  sessionStorage.searchTerm = search
+                  sessionStorage.categoryTerm = category
+
+                  document.location.href = '/VPResult.html'
+    })
+    }
+</script>
+
+<script>
+    function displayResults() {
+      var searchResults =  JSON.parse(sessionStorage.searchResult);
+      var search = sessionStorage.searchTerm;
+      var category = sessionStorage.categoryTerm;
+
+      let resultsString = "We found " + searchResults.length + " results";
+      if (search != "EMPTYSEARCHTEMP" && category != "EMPTYCATEGORYTEMP"){
+        resultsString += " for " + search + " in " + category;
+      }
+      else if (search == "EMPTYSEARCHTEMP" && category != "EMPTYCATEGORYTEMP"){
+        resultsString += " in " + category;
+      }
+      else if (search != "EMPTYSEARCHTEMP" && category == "EMPTYCATEGORYTEMP"){
+        resultsString += " for " + search + category;
+      }
+      else{
+        resultsString += " total";
+      }
+      document.getElementById("resultsGiven").innerHTML = resultsString;
+
+      for(let i = 0; i < searchResults.length; i++){
+        document.getElementById("main-content").innerHTML += 
+            `<div class="card">
+             <img class="card-image" src="${searchResults[i].File_Link}" alt="${searchResults[i].Title}">
+               <div class="card-body">
+                <p class="card-title">${searchResults[i].Title}</p>
+                <p class="card-text">${searchResults[i].Post_Description}</p>
+                <a href="" class="anchor-buttons">Post Details</a>
+               </div>
+             </div>`
+        }
+  }
+</script>
