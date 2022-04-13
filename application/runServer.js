@@ -5,16 +5,8 @@ let path = require('path');
 
 app.engine('html', require('ejs').renderFile);
 
-app.post('/VPTestHome.html/:search/:category', search, (req, res) => {
+app.get('/index.html/:search/:category', search, (req, res) => {
     var searchResult = req.searchResult;
-    console.log("\nNumber of results: " + searchResult.length)
-    for (var i = 0; i < searchResult.length; i++){
-        console.log("Name: " + searchResult[i]['Name'] + "   Price: $" + searchResult[i]['Price']);
-        console.log("Posted by UserID: " + searchResult[i]['UserID']);
-        console.log("Category: " + searchResult[i]['Category']);
-        console.log("Description: " + searchResult[i]['Comment'] + "\n");
-    }
-
     res.json({
         results: searchResult.length,
         searchTerm: req.searchTerm,
@@ -22,12 +14,87 @@ app.post('/VPTestHome.html/:search/:category', search, (req, res) => {
         category: req.category
     });
 
-    // res.render('html/VPTestHome.html', {
-    //     results: searchResult.length,
-    //     searchTerm: req.searchTerm,
-    //     searchResult: searchResult,
-    //     category: req.category
-    // });
+})
+
+app.get('/aboutUs.html/:search/:category', search, (req, res) => {
+    var searchResult = req.searchResult;
+    res.json({
+        results: searchResult.length,
+        searchTerm: req.searchTerm,
+        searchResult: searchResult,
+        category: req.category
+    });
+})
+
+app.get('/VPResult.html/:search/:category', search, (req, res) => {
+    var searchResult = req.searchResult;
+    res.json({
+        results: searchResult.length,
+        searchTerm: req.searchTerm,
+        searchResult: searchResult,
+        category: req.category
+    });
+})
+
+app.get('/login.html/:search/:category', search, (req, res) => {
+    var searchResult = req.searchResult;
+    res.json({
+        results: searchResult.length,
+        searchTerm: req.searchTerm,
+        searchResult: searchResult,
+        category: req.category
+    });
+})
+
+
+app.get('/postItem.html/:search/:category', search, (req, res) => {
+    var searchResult = req.searchResult;
+    res.json({
+        results: searchResult.length,
+        searchTerm: req.searchTerm,
+        searchResult: searchResult,
+        category: req.category
+    });
+})
+
+app.get('/productDetail.html/:search/:category', search, (req, res) => {
+    var searchResult = req.searchResult;
+    res.json({
+        results: searchResult.length,
+        searchTerm: req.searchTerm,
+        searchResult: searchResult,
+        category: req.category
+    });
+})
+
+app.get('/registration.html/:search/:category', search, (req, res) => {
+    var searchResult = req.searchResult;
+    res.json({
+        results: searchResult.length,
+        searchTerm: req.searchTerm,
+        searchResult: searchResult,
+        category: req.category
+    });
+})
+
+app.get('/userPage.html/:search/:category', search, (req, res) => {
+    var searchResult = req.searchResult;
+    res.json({
+        results: searchResult.length,
+        searchTerm: req.searchTerm,
+        searchResult: searchResult,
+        category: req.category
+    });
+})
+
+app.get('/VPTestHome.html/:search/:category', search, (req, res) => {
+    var searchResult = req.searchResult;
+    res.json({
+        results: searchResult.length,
+        searchTerm: req.searchTerm,
+        searchResult: searchResult,
+        category: req.category
+    });
 })
 
 app.use(express.static('public/html'));
@@ -44,34 +111,34 @@ app.listen(3000, () => console.log('Server running on port 3000'));
 const database = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'password',
-    database: 'Example'
+    password: '',
+    database: 'GatorMartDB'
 });
 
 database.connect((err) => {
     if (err) throw err;
     console.log('Connected!')
+
 });
 
+
+
 function search(req, res, next) {
-    
     var searchTerm = req.params.search;
     var category = req.params.category;
-    let query = 'SELECT * FROM Posting'
-    console.log(searchTerm + " " + category);
+    let query = 'SELECT * FROM Post'
     
     if (searchTerm != 'EMPTYSEARCHTEMP' && category != 'EMPTYCATEGORYTEMP'){
-        query = `SELECT * FROM Posting WHERE Category = '` + category + `' AND ( Name LIKE '%` + searchTerm + `%' OR Comment LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%')`;
+        query = `SELECT * FROM Post WHERE Category = '` + category + `' AND ( Title LIKE '%` + searchTerm + `%' OR Post_Description LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%')`;
     }
     else if (searchTerm != 'EMPTYSEARCHTEMP' && category == 'EMPTYCATEGORYTEMP'){
-        query = `SELECT * FROM Posting WHERE Name LIKE '%` + searchTerm + `%' OR Comment LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%'`;
+        query = `SELECT * FROM Post WHERE Title LIKE '%` + searchTerm + `%' OR Post_Description LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%'`;
     }
     else if (searchTerm == 'EMPTYSEARCHTEMP' && category != 'EMPTYCATEGORYTEMP'){
-        query = `SELECT * FROM Posting WHERE Category = '` + category + `'`;
+        query = `SELECT * FROM Post WHERE Category = '` + category + `'`;
     }
     else if (searchTerm == 'EMPTYSEARCHTEMP' && category == 'EMPTYCATEGORYTEMP'){
-        console.log("I'm HERE");
-        query = `SELECT * FROM Posting`;
+        query = `SELECT * FROM Post`;
     }
     database.query(query, (err, result) => {
         if (err){
@@ -88,8 +155,3 @@ function search(req, res, next) {
     });
 
 }
-
-
-
-
-
