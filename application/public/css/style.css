@@ -50,7 +50,7 @@ body {
   margin-left: 0px;
 }
 #navBarSearchForm input[type="text"] {
-  width: 50vw /* For 100% screen width */ !important;
+  width: 30vw /* For 100% screen width */ !important;
 }
 
 #navBarSearchForm button[type="submit"] {
