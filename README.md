@@ -21,6 +21,6 @@
 | Robert Garcia      |rgarcia35@mail.sfsu.edu               |RGarcia35                 |
 | Joe Guan      |jguan8@mail.sfsu.edu               |Joeguan1                 |
 | Xiaoqing Yao      |xyao1@mail.sfsu.edu               |yao961002                 |
-| Chuting Yan      |cyan3@mail.sfsu.edu               |cctina516                 |
+| Chuting Yan      |cyan3@mail.sfsu.edu               |cctina516                |
 
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+        <link rel="stylesheet" href="../css/userPage.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+
+
+    </head>
+
+    <body>
+        <div class="main-container">
+            <header>
+        <!-- Navbar -->
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="./VPTestHome.html">
+              <img src="../images/Gmart.png" width="30" height="30" alt="">
+            </a>
+            <a class="navbar-brand" href="./VPTestHome.html">GatorMart</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="./aboutUs.html">About Us <span class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0" id="navBarSearchForm">
+                <div class="select-dropdown">
+                  <select name="category" id="category">
+                    <option value="">All</option>
+                    <option value="Textbook">Textbooks</option>
+                    <option value="Notes">Notes</option>
+                    <option value="Furniture">Furniture</option>
+                  </select>
+                </div>
+                <input class="form-control mr-sm-2" id = "search" autocomplete = "off" type="text" placeholder="Search" aria-label="Search">
+  
+                <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit"
+                  onclick="test(document.getElementById('search').value, document.getElementById('category').value)">
+                  <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+                </button>
+              </form>
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="./postItem.html">Post/Sell <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="./login.html">Login <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="./userPage.html">My Page <span class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+  
+          <!-- Navbar -->
+
+            </header>
+
+            <div class="page-wrap">
+                <div class="row py-5 px-4">
+                    <div class="col-md-8 mx-auto">
+                        <!-- Profile widget -->
+                        <div class="bg-white shadow rounded overflow-hidden">
+                            <div class="px-4 pt-0 pb-4 cover">
+                                <div class="media align-items-end profile-head">
+                                    <div class="profile mr-3"><img
+                                            src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
+                                            alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                                        <!-- <a href="#" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a> -->
+                                    </div>
+                                    <div class="media-body mb-5 text-white">
+                                        <h4 class="mt-0 mb-0">Hello Mark</h4>
+                                        <p class="small mb-4"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-light p-4 d-flex justify-content-end text-center">
+                                <ul class="list-inline mb-0">
+                                    <li class="list-inline-item">
+                                        <!-- <h5 class="font-weight-bold mb-0 d-block">215</h5><small class="text-muted"> <i
+                                        class="fas fa-image mr-1"></i>Photos</small> -->
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="px-4 py-3">
+                                <h5 class="mb-0">About</h5>
+                                <div class="p-4 rounded shadow-sm bg-light">
+                                    <p class="font-italic mb-0">Full Name: Mark Williams</p>
+                                    <p class="font-italic mb-0">SFSU Email: sample@mail.sfsu.edu</p>
+                                    <p class="font-italic mb-0">Username: samplename</p>
+                                </div>
+                            </div>
+
+                            <div class="px-4 py-3">
+                                <h5 class="mb-0">Messages Received</h5>
+                                <div class="card p-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg"
+                                                width="30" class="user-img rounded-circle mr-2"> <span><small
+                                                    class="font-weight-bold text-primary">james_olesenn</small> <small
+                                                    class="font-weight-bold">Is Intro to Database still
+                                                    available?</small></span> </div> <small>2 days ago</small>
+                                    </div>
+
+                                    <div class="action d-flex justify-content-between mt-2 align-items-center">
+                                        <div class="reply px-4"> <small>Remove</small> <span class="dots"></span>
+                                            <small>Reply</small>
+                                        </div>
+                                        <div class="icons align-items-center">
+                                            <!-- <i class="fa fa-check-circle-o check-icon"></i> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card p-3 mt-2">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/C4egmYM.jpg"
+                                                width="30" class="user-img rounded-circle mr-2"> <span><small
+                                                    class="font-weight-bold text-primary">olan_sams</small> <small
+                                                    class="font-weight-bold">I'm interested in the Calculus I you post.
+                                                    Can
+                                                    I
+                                                    purchase it tomorrow? </small></span> </div> <small>3 days
+                                            ago</small>
+                                    </div>
+                                    <div class="action d-flex justify-content-between mt-2 align-items-center">
+                                        <div class="reply px-4"> <small>Remove</small> <span class="dots"></span>
+                                            <small>Reply</small>
+                                        </div>
+                                        <div class="icons align-items-center">
+                                            <!-- <i class="fa fa-check-circle-o check-icon text-primary"></i>  -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card p-3 mt-2">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/0LKZQYM.jpg"
+                                                width="30" class="user-img rounded-circle mr-2"> <span><small
+                                                    class="font-weight-bold text-primary">rashida_jones</small> <small
+                                                    class="font-weight-bold">Is Calculus I still available?
+                                                </small></span>
+                                        </div> <small>3 days
+                                            ago</small>
+                                    </div>
+                                    <div class="action d-flex justify-content-between mt-2 align-items-center">
+                                        <div class="reply px-4"> <small>Remove</small> <span class="dots"></span>
+                                            <small>Reply</small>
+                                        </div>
+                                        <div class="icons align-items-center">
+                                            <!-- <i class="fa fa-check-circle-o check-icon text-primary"></i>  -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="py-4 px-4">
+                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                    <h5 class="mb-0">Your Listings</h5>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-lg-6 mb-2 pr-lg-1">
+                                        <div class="card">
+                                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                                data-mdb-ripple-color="light"><a href="#">
+                                                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
+                                                        class="w-100 img-fluid rounded shadow-sm" /></a>
+
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="" class="text-reset">
+                                                    <h5 class="card-title mb-3">Calculus I</h5>
+                                                </a>
+
+                                                <h6 class="mb-3">$52.99</h6>
+                                                <a href="#" class="btn btn-outline-primary">Edit</a>
+                                                <a href="#" class="btn btn-outline-secondary">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb-2 pl-lg-1">
+                                        <div class="card">
+                                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                                data-mdb-ripple-color="light"><a href="#">
+                                                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
+                                                        class="w-100 img-fluid rounded shadow-sm" /></a>
+
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="" class="text-reset">
+                                                    <h5 class="card-title mb-3">Calculus II</h5>
+                                                </a>
+
+                                                <h6 class="mb-3">$61.99</h6>
+                                                <a href="#" class="btn btn-outline-primary">Edit</a>
+                                                <a href="#" class="btn btn-outline-secondary">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 pr-lg-1 mb-2">
+                                        <div class="card">
+                                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                                data-mdb-ripple-color="light"><a href="#">
+                                                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
+                                                        class="w-100 img-fluid rounded shadow-sm" /></a>
+
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="" class="text-reset">
+                                                    <h5 class="card-title mb-3">Intro to Database</h5>
+                                                </a>
+
+                                                <h6 class="mb-3">$23.99</h6>
+                                                <a href="#" class="btn btn-outline-primary">Edit</a>
+                                                <a href="#" class="btn btn-outline-secondary">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 pl-lg-1">
+                                        <div class="card">
+                                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                                data-mdb-ripple-color="light"><a href="#">
+                                                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
+                                                        class="w-100 img-fluid rounded shadow-sm" /></a>
+
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="" class="text-reset">
+                                                    <h5 class="card-title mb-3">Intro to Java</h5>
+                                                </a>
+
+                                                <h6 class="mb-3">$31.99</h6>
+                                                <a href="#" class="btn btn-outline-primary">Edit</a>
+                                                <a href="#" class="btn btn-outline-secondary">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Starts-->
+            <div class="footer">
+                <footer class="footer-distributed" id="footer">
+                    <div class="footer-left">
+                        <img src="" />
+                        <h3>Gator<span>Mart</span></h3>
+
+                        <p class="footer-links">
+                            <a href="#">Home</a>
+                            |
+                            <a href="#">About</a>
+                            |
+                            <a href="#">Contact</a>
+                        </p>
+
+                        <p class="footer-company-name">© 2022 GatorMart Pvt. Ltd.</p>
+                    </div>
+
+                    <div class="footer-center">
+                        <div>
+                            <i class="fa fa-lightbulb-o"></i>
+                            <p>
+                                <span>Software Engineering - CSC648/848</span>
+                                <span>Spring, 2022, Section 03, Team 02</span>
+                            </p>
+                        </div>
+
+                        <!-- <div>
+                            <i class="fa fa-phone"></i>
+                            <p></p>
+                        </div> -->
+                        <div>
+                            <i class="fa fa-envelope"></i>
+                            <p>
+                                <a href=""><span>support@gatormart.com</span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="footer-right">
+                        <p class="footer-company-about">
+                            <span>About GatorMart</span>
+                            GatorMart is an online hub exclusively for SFSU community. GatorMart provides service to
+                            current
+                            students,
+                            faculty, and staff.
+                        </p>
+                        <div class="footer-icons">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- Footer Ends-->
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+
+</html>
+
+
+<script>
+    function test(search, category) {
+      if(search == ""){
+        search = "EMPTYSEARCHTEMP"
+      }
+      if(category == ""){
+        category = "EMPTYCATEGORYTEMP"
+      }
+      fetch(`/userPage.html/${search}/${category}`, {method: "get"})
+                  .then(async (response) => {
+                    return await response.json()
+                  })
+                  .then(async (result) => 
+                  {
+                    const searchResult = result.searchResult;
+                    sessionStorage.searchResult = JSON.stringify(searchResult)
+                    sessionStorage.searchTerm = search
+                    sessionStorage.categoryTerm = category
+  
+                    document.location.href = '/VPResult.html'
+      })
+    }
+  </script>

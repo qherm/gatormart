@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>About Shane</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css" />
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="../../css/style.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit-icons.min.js"></script>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <header>
+        <!-- Nav Bar Starts-->
+        <nav class="uk-navbar-container" uk-navbar>
+          <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo" href="../VPTestHome.html">GatorMart</a>
+            <ul class="uk-navbar-nav uk-visible@s">
+              <li class="uk-active">
+                <a href="../aboutUs.html">
+                  <span class="uk-icon uk-margin-small-right"></span>
+                  About Us
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="uk-margin uk-visible@s search-bar">
+            <form class="uk-search uk-search-navbar input-wrapper">
+              <div class="select-dropdown">
+                <select name="category" id="category">
+                  <option value="">All</option>
+                  <option value="Textbook">Textbooks</option>
+                  <option value="Notes">Notes</option>
+                  <option value="Furniture">Furniture</option>
+                </select>
+              </div>
+              <input class="uk-search-input" id="search" type="text" name="search" placeholder="Search..."
+                autocomplete="off" />
+              <button class="uk-button uk-button-default" type="button"
+                onclick="test(document.getElementById('search').value, document.getElementById('category').value)">
+                <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+          <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
+        </nav>
+        <!-- Nav Bar Ends-->
+        <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
+          <div class="uk-offcanvas-bar">
+            <ul class="uk-nav">
+              <li><a class="uk-text-large" href="../index.html">Home</a></li>
+              <li><a class="uk-text-large" href="../aboutUs.html">About Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- Header Ends-->
+      </header>
+      <div class="page-wrap">
+        <div class="uk-child-width-1-4@m" uk-grid>
+          <div class="uk-panel">
+            <img
+              class="uk-align-center uk-align-right@m uk-margin-remove-adjacent uk-margin-large-left uk-margin-large-top"
+              src="../../images/ShaneWaxler.png" alt="" style="height: 380px;">
+          </div>
+          <div class="uk-child-width-1-2@m.uk-grid.uk-grid-stack .uk-text-center@s uk-margin-large-top">
+            <h2>Team Lead<br><small>Shane Waxler</small></h2>
+            <p class="uk-align-center uk-align-left@m uk-margin-large-left uk-margin-large-right uk-margin-medium-top">
+              Fourth year undergraduate studying Computer Science. Interests include machine learning, digital signal
+              processing,
+              and music. Has previously worked as an elementary school teacher; is currently working with the People and
+              Robots
+              Laboratory (PeRL) at San Francisco State University and as a teachers assistant for CSC665/865 with Pooyan
+              Fazli.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Starts-->
+      <div class="footer">
+        <footer class="footer-distributed" id="footer">
+          <div class="footer-left">
+            <img src="" />
+            <h3>Gator<span>Mart</span></h3>
+
+            <p class="footer-links">
+              <a href="#">Home</a>
+              |
+              <a href="#">About</a>
+              |
+              <a href="#">Contact</a>
+            </p>
+
+            <p class="footer-company-name">© 2022 GatorMart Pvt. Ltd.</p>
+          </div>
+
+          <div class="footer-center">
+            <div>
+              <i class="fa fa-lightbulb-o"></i>
+              <p>
+                <span>Software Engineering - CSC648/848</span>
+                <span>Spring, 2022, Section 03, Team 02</span>
+              </p>
+            </div>
+
+            <!-- <div>
+                  <i class="fa fa-phone"></i>
+                  <p></p>
+              </div> -->
+            <div>
+              <i class="fa fa-envelope"></i>
+              <p>
+                <a href=""><span>support@gatormart.com</span></a>
+              </p>
+            </div>
+          </div>
+          <div class="footer-right">
+            <p class="footer-company-about">
+              <span>About GatorMart</span>
+              GatorMart is an online hub exclusively for SFSU community. GatorMart provides service to current students,
+              faculty, and staff.
+            </p>
+            <div class="footer-icons">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+              <a href="#"><i class="fa fa-linkedin"></i></a>
+              <a href="#"><i class="fa fa-youtube"></i></a>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <!-- Footer Ends-->
+    </div>
+  </body>
+
+</html>
