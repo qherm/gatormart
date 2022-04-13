@@ -26,78 +26,80 @@
 
 </html>
 
-<body onload = "displayResults();">
+<body onload="displayResults();">
   <div class="main-container">
     <header>
-        <!-- Navbar -->
+      <!-- Navbar -->
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="./VPTestHome.html">
-            <img src="../images/Gmart.png" width="30" height="30" alt="">
-          </a>
-          <a class="navbar-brand" href="./VPTestHome.html">GatorMart</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="./VPTestHome.html">
+          <img src="../images/Gmart.png" width="30" height="30" alt="">
+        </a>
+        <a class="navbar-brand" href="./VPTestHome.html">GatorMart</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="./aboutUs.html">About Us <span class="sr-only">(current)</span></a>
-              </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0" id="navBarSearchForm">
-              <div class="select-dropdown">
-                <select name="category" id="category">
-                  <option value="">All</option>
-                  <option value="Textbook">Textbooks</option>
-                  <option value="Notes">Notes</option>
-                  <option value="Furniture">Furniture</option>
-                </select>
-              </div>
-              <input class="form-control mr-sm-2" id = "search" autocomplete = "off" type="text" placeholder="Search" aria-label="Search">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="./aboutUs.html">About Us <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0" id="navBarSearchForm">
+            <div class="select-dropdown">
+              <select name="category" id="category">
+                <option value="">All</option>
+                <option value="Textbook">Textbooks</option>
+                <option value="Notes">Notes</option>
+                <option value="Furniture">Furniture</option>
+              </select>
+            </div>
+            <input class="form-control mr-sm-2" id="search" autocomplete="off" type="text" placeholder="Search" aria-label="Search">
 
-              <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit"
-                onclick="test(document.getElementById('search').value, document.getElementById('category').value)">
-                <i class="fa fa-search fa-lg" aria-hidden="true"></i>
-              </button>
-            </form>
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="./postItem.html">Post/Sell <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="./login.html">Login <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="./userPage.html">My Page <span class="sr-only">(current)</span></a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+            <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit"
+              onclick="test(document.getElementById('search').value, document.getElementById('category').value)">
+              <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+            </button>
+          </form>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="./postItem.html">Post/Sell <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="./login.html">Login <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="./userPage.html">My Page <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-        <!-- Navbar -->
+      <!-- Navbar -->
 
     </header>
     <!-- Header Ends-->
     <div class="page-wrap">
       <section class="section my-4">
         <div class="container text-center">
-          <div id = "resultsGiven"></div>
-        </div>
-      
-        <section class="mt-5">
-          <div class="row">
-            <div id="main-content"></div>
+          <div class="title py-5">
+            <div id="resultsGiven"></div>
           </div>
-        </section>
-      </div>
-    </div>
-    <!-- </section> -->
 
 
-      <!-- <section class="section my-4">
+          <section class="mt-5">
+            <div class="row">
+              <div id="main-content"></div>
+            </div>
+          </section>
+          <!-- </div>
+        </div> -->
+          <!-- </section> -->
+
+
+          <!-- <section class="section my-4">
         <div class="container text-center">
           <div class="title py-5">
             <p class="text-left">1-6 0f 6 results for "Intro to Java" <button type="button"
@@ -105,40 +107,41 @@
           </div> -->
           <!-- Image cards  -->
           <!-- <section class="mt-5">
-            <div class="row">
-              <div class="col-md-3 mb-5">
-                <div class="card shadow" style="width: 18rem;">
-                  <a href="#">
-                    <img
-                      src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
-                      class="card-img-top" alt="..." /></a>
-                  <div class="card-body">
-                    <h5 class="card-title font-poppins">Item Name</h5>
-                    <h6 class="mb-3">$52.99</h6>
-                    <a href="#" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 mb-5">
-                <div class="card shadow" style="width: 18rem;">
-                  <a href="#">
-                    <img
-                      src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
-                      class="card-img-top" alt="..." /></a>
-                  <div class="card-body">
-                    <h5 class="card-title font-poppins">Item Name</h5>
-                    <h6 class="mb-3">$52.99</h6>
-                    <a href="#" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
-                  </div>
+          <div class="row">
+            <div class="col-md-3 mb-5">
+              <div class="card shadow" style="width: 18rem;">
+                <a href="#">
+                  <img
+                    src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
+                    class="card-img-top" alt="..." /></a>
+                <div class="card-body">
+                  <h5 class="card-title font-poppins">Item Name</h5>
+                  <h6 class="mb-3">$52.99</h6>
+                  <a href="#" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
                 </div>
               </div>
             </div>
-          </section>
-
+            <div class="col-md-3 mb-5">
+              <div class="card shadow" style="width: 18rem;">
+                <a href="#">
+                  <img
+                    src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
+                    class="card-img-top" alt="..." /></a>
+                <div class="card-body">
+                  <h5 class="card-title font-poppins">Item Name</h5>
+                  <h6 class="mb-3">$52.99</h6>
+                  <a href="#" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> -->
         </div>
-      </section> -->
+      </section>
+    </div>
 
-      
+
+
     <!-- </div> -->
     <!-- Footer Starts-->
     <div class="footer">
@@ -213,54 +216,53 @@
 
 <script>
   function test(search, category) {
-    if(search == ""){
+    if (search == "") {
       search = "EMPTYSEARCHTEMP"
     }
-    if(category == ""){
+    if (category == "") {
       category = "EMPTYCATEGORYTEMP"
     }
-    fetch(`/VPResult.html/${search}/${category}`, {method: "get"})
-                .then(async (response) => {
-                  return await response.json()
-                })
-                .then(async (result) => 
-                {
-                const searchResult = result.searchResult;
-                sessionStorage.searchResult = JSON.stringify(searchResult)
-                sessionStorage.searchTerm = search
-                sessionStorage.categoryTerm = category
+    fetch(`/VPResult.html/${search}/${category}`, { method: "get" })
+      .then(async (response) => {
+        return await response.json()
+      })
+      .then(async (result) => {
+        const searchResult = result.searchResult;
+        sessionStorage.searchResult = JSON.stringify(searchResult)
+        sessionStorage.searchTerm = search
+        sessionStorage.categoryTerm = category
 
-                document.location.href = '/VPResult.html'
-  })
+        document.location.href = '/VPResult.html'
+      })
   }
 </script>
 
 <script>
   function displayResults() {
-    var searchResults =  JSON.parse(sessionStorage.searchResult);
+    var searchResults = JSON.parse(sessionStorage.searchResult);
     var search = sessionStorage.searchTerm;
     var category = sessionStorage.categoryTerm;
 
     let resultsString = "1- " + searchResults.length + " of " + searchResults.length + " results ";
-    if (search != "EMPTYSEARCHTEMP" && category != "EMPTYCATEGORYTEMP"){
+    if (search != "EMPTYSEARCHTEMP" && category != "EMPTYCATEGORYTEMP") {
       resultsString += ` for "` + search + `" in "` + category + `"`;
     }
-    else if (search == "EMPTYSEARCHTEMP" && category != "EMPTYCATEGORYTEMP"){
+    else if (search == "EMPTYSEARCHTEMP" && category != "EMPTYCATEGORYTEMP") {
       resultsString += ` in "` + category + `"`;
     }
-    else if (search != "EMPTYSEARCHTEMP" && category == "EMPTYCATEGORYTEMP"){
+    else if (search != "EMPTYSEARCHTEMP" && category == "EMPTYCATEGORYTEMP") {
       resultsString += ` for "` + search + `"`;
     }
-    else{
+    else {
       resultsString += " total";
     }
     document.getElementById("resultsGiven").innerHTML += `<p class="text-left">${resultsString}<button type="button"
                 class="btn btn-outline-secondary btn-sm float-md-right">Sort by price</button></p>`
 
-    for(let i = 0; i < searchResults.length; i++){
-      document.getElementById("main-content").innerHTML += 
-          `<div class="col-md-1 mb-5">
-           <div class="card shadow" style="width: 20rem;">
+    for (let i = 0; i < searchResults.length; i++) {
+      document.getElementById("main-content").innerHTML +=
+        `<div class="col-md-3 mb-5">
+           <div class="card shadow" style="width: 18rem;">
            <a href="/productDetail.html">
            <img src = "${searchResults[i].File_Link}" alt="${searchResults[i].Title}" class="card-img-top" alt="..." /></a>
            <div class="card-body">
@@ -270,8 +272,6 @@
           </div>
           </div>
           </div>`
-      }
-}
+    }
+  }
 </script>
-
-
