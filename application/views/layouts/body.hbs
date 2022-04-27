@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>VP test home page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css" />
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="../css/style.css" />
+       <link rel="stylesheet" href="../css/postItem.css" />
+          <link rel="stylesheet" href="../css/productDetail.css" />
+             <link rel="stylesheet" href="../css/registration.css" />
+                <link rel="stylesheet" href="../css/login.css" />
+                   <link rel="stylesheet" href="../css/userPage.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit-icons.min.js"></script>
+  </head>
+
+  <body>
+    {{> header}}
+    {{{body}}}
+    {{> footer}}
+
+    {{!-- {{#if logged}} --}}
+    <script>
+        let ele = document.getElementById('logout-button');
+        if (ele) {
+            ele.onclick = (event) => {
+                fetch('/users/logout', {
+                    method: "POST"
+                })
+                    .then((data) => {
+                        location.replace('/');
+                    })
+            }
+        }
+    </script>
+    {{!-- {{/if}} --}}
+</body>
+
+</html>
