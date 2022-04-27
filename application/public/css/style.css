@@ -108,6 +108,13 @@ body {
   grid-auto-columns: 1fr 1fr 1fr 1fr;
   grid-auto-rows: 1fr;
 }
+/* Limit charaters for card title*/
+.card-title {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 /* result page item card design */
 .itemcard {
