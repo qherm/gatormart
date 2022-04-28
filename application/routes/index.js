@@ -17,6 +17,34 @@ router.get('/aboutUs', function (req, res, next) {
   res.render('aboutUs');
 });
 
+router.get('/aboutMelissa', function (req, res, next) {
+  res.render('aboutMelissa');
+});
+
+router.get('/aboutShane', function (req, res, next) {
+  res.render('aboutShane');
+});
+
+router.get('/aboutMinggu', function (req, res, next) {
+  res.render('aboutMinggu');
+});
+
+router.get('/aboutChuting', function (req, res, next) {
+  res.render('aboutChuting');
+});
+
+router.get('/aboutRobert', function (req, res, next) {
+  res.render('aboutRobert');
+});
+
+router.get('/aboutJoe', function (req, res, next) {
+  res.render('aboutJoe');
+});
+
+router.get('/aboutXiaoqing', function (req, res, next) {
+  res.render('aboutXiaoqing');
+});
+
 router.get('/login', (req, res, next) => {
   res.render("login");
 })
