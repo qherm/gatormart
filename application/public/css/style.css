@@ -22,7 +22,29 @@
 /* img {
   border-radius: 10px;
 } */
+.main-banner{
+  text-align:center
+}
 
+.main-heading{
+  padding-top: 5rem;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 48px;
+  padding-bottom: 5rem;
+  border-bottom: 1px double rgb(107, 107, 107);
+  margin-left: 6em;
+  margin-right: 6em;
+}
+
+.heading-sub{
+  padding-top: 2rem;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  color: rgb(62, 62, 62);
+  letter-spacing: 1.5px;
+}
 body {
   /* padding: 50px;
   height: 100%; */

@@ -1,0 +1,67 @@
+<body>
+    <div class="main-container">
+
+        <div class="page-wrap">
+            <div class="grid-container">
+                <div class="form-box">
+                    <!-- TODO: Fill out action when route is done-->
+                    <form class="form-postitems" method="POST" enctype="multipart/form-data" action="/">
+                        <div class="banner">
+                            <div class="h1-postitems">Post Item For Sale Or List Jobs</div>
+                        </div>
+                        <div class="item">
+                            <label for="name"> Item/Job Name<span>*</span></label>
+                            <input id="name" type="text" name="name" required />
+                        </div>
+                        <div class="item">
+                            <label for="name">Category<span>*</span></label>
+                            <select id="name" type="text" name="name" required />
+                            <option value="Books">Books</option>
+                            <option value="School Supplies">School Supplies</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="Miscellaneous">Miscellaneous</option>
+                            </select>
+                        </div>
+                        <div class="item">
+                            <label for="price">Price<span>*</span></label>
+                            <input id="number" type="text" name="price" required />
+                        </div>
+                        <div class="item">
+                            <label for="condition">Condition </label>
+                            <input id="condition" type="text" name="condition" />
+                        </div>
+                        <div class="item">
+                            <label for="location">Location<span>*</span></label>
+                            <input id="location" type="text" name="location" required />
+                        </div>
+                        <div class="item">
+                            <label for="picture">Upload Picture<span>*</span></label>
+                            <input id="picture" type="file" required />
+                        </div>
+                        <div class="item">
+                            <label for="instructions">Description<span>*</span></label>
+                            <textarea id="instructions" rows="3" required></textarea>
+                        </div>
+                        <p><small>0/100 characters</small></p>
+                        <div class="btn-block">
+                            <button type="button" class="light" href="/">Cancel</button>
+                            <button type="submit" class="certain" href="/">Submit</button>
+                            <p><small>May take up to 24 hours for approval</small></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
