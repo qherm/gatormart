@@ -34,7 +34,9 @@ textarea {
   height: inherit;
   padding: 20px;
 } */
-
+label {
+  width: 100%;
+}
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
@@ -93,6 +95,9 @@ textarea {
 }
 .form-box input[type="date"] {
   padding: 4px 5px;
+}
+.form-box input[name="price"] {
+  width: calc(50% - 10px);
 }
 textarea {
   width: calc(100% - 12px);
