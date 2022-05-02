@@ -5,7 +5,7 @@ let path = require('path');
 
 app.engine('html', require('ejs').renderFile);
 
-app.get('/index.html/:search/:category', search, (req, res) => {
+app.get('/*/:search/:category', search, (req, res) => {
     var searchResult = req.searchResult;
     res.json({
         results: searchResult.length,
@@ -16,86 +16,6 @@ app.get('/index.html/:search/:category', search, (req, res) => {
 
 })
 
-app.get('/aboutUs.html/:search/:category', search, (req, res) => {
-    var searchResult = req.searchResult;
-    res.json({
-        results: searchResult.length,
-        searchTerm: req.searchTerm,
-        searchResult: searchResult,
-        category: req.category
-    });
-})
-
-app.get('/VPResult.html/:search/:category', search, (req, res) => {
-    var searchResult = req.searchResult;
-    res.json({
-        results: searchResult.length,
-        searchTerm: req.searchTerm,
-        searchResult: searchResult,
-        category: req.category
-    });
-})
-
-app.get('/login.html/:search/:category', search, (req, res) => {
-    var searchResult = req.searchResult;
-    res.json({
-        results: searchResult.length,
-        searchTerm: req.searchTerm,
-        searchResult: searchResult,
-        category: req.category
-    });
-})
-
-
-app.get('/postItem.html/:search/:category', search, (req, res) => {
-    var searchResult = req.searchResult;
-    res.json({
-        results: searchResult.length,
-        searchTerm: req.searchTerm,
-        searchResult: searchResult,
-        category: req.category
-    });
-})
-
-app.get('/productDetail.html/:search/:category', search, (req, res) => {
-    var searchResult = req.searchResult;
-    res.json({
-        results: searchResult.length,
-        searchTerm: req.searchTerm,
-        searchResult: searchResult,
-        category: req.category
-    });
-})
-
-app.get('/registration.html/:search/:category', search, (req, res) => {
-    var searchResult = req.searchResult;
-    res.json({
-        results: searchResult.length,
-        searchTerm: req.searchTerm,
-        searchResult: searchResult,
-        category: req.category
-    });
-})
-
-app.get('/userPage.html/:search/:category', search, (req, res) => {
-    var searchResult = req.searchResult;
-    res.json({
-        results: searchResult.length,
-        searchTerm: req.searchTerm,
-        searchResult: searchResult,
-        category: req.category
-    });
-})
-
-app.get('/VPTestHome.html/:search/:category', search, (req, res) => {
-    var searchResult = req.searchResult;
-    res.json({
-        results: searchResult.length,
-        searchTerm: req.searchTerm,
-        searchResult: searchResult,
-        category: req.category
-    });
-})
 
 app.use(express.static('public/html'));
 app.use(express.static('public/html/aboutPages'));
@@ -111,7 +31,7 @@ app.listen(3000, () => console.log('Server running on port 3000'));
 const database = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: 'password',
     database: 'GatorMartDB'
 });
 

@@ -34,17 +34,18 @@ CREATE TABLE IF NOT EXISTS `GatorMartDB`.`User` (
 DROP TABLE IF EXISTS `GatorMartDB`.`Post` ;
 
 CREATE TABLE IF NOT EXISTS `GatorMartDB`.`Post` (
-  `Post_ID` INT NOT NULL AUTO_INCREMENT,
-  `User_ID` INT NOT NULL,
-  `Title` VARCHAR(225) NOT NULL,
-  `Category` VARCHAR(225) NOT NULL,
-  `Available` INT NOT NULL,
-  `Post_Description` VARCHAR(225) NOT NULL,
-  `Price` FLOAT NOT NULL,
-  `Type` VARCHAR(225) NOT NULL,
-  `Direction` VARCHAR(225) NOT NULL,
-  `File_Link` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`Post_ID`));
+  Post_ID INT NOT NULL AUTO_INCREMENT,
+  User_ID INT NOT NULL,
+  Title VARCHAR(225) NOT NULL,
+  Category_ID INT NOT NULL,
+  Available INT NOT NULL,
+  Post_Description VARCHAR(225) NOT NULL,
+  Price FLOAT NOT NULL,
+  Type VARCHAR(225) NOT NULL,
+  Direction VARCHAR(225) NOT NULL,
+  File_Link VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`Post_ID`)
+  FOREIGN KEY(Category_ID) REFERENCES category(id));
 
 
 -- -----------------------------------------------------
@@ -61,6 +62,15 @@ CREATE TABLE IF NOT EXISTS `GatorMartDB`.`Review` (
   `Rating` INT NOT NULL,
 PRIMARY KEY (`Review_ID`));
 
+
+
+
+DROP TABLE IF EXISTS category;
+
+CREATE TABLE IF NOT EXISTS category(
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(225) NOT NULL,
+PRIMARY KEY (id));
 
 -- ---------------------------------------------------------------------------------------------------------- --
 -- 								DATA INSERTS                                                                  --
@@ -92,6 +102,13 @@ VALUES
 (8, 8, 'Coffee Table', 'Furniture', 1, 'Slightly stained coffee table, no damage, need gone ASAP!', 7, 'product', 'providing', '../images/FurnitureTable.jpg'),
 (9, 9, 'Computer Chair', 'Furniture', 1, 'Old computer chair; crusty, but comfortable!', 15, 'product', 'providing', '../images/FurnitureChair.jpg'),
 (10, 10, 'Couch', 'Furniture', 1, 'Freshly bought couch, doesnt fit in my dorm!', 30, 'product', 'providing', '../images/FurnitureCouch.jpg');
+
+
+INSERT INTO Category(id, name)
+VALUES
+(1, 'Textbook'),
+(2, 'Notes'),
+(3, 'Furniture');
 
 -- ---------------------------------------------------------------------------------------------------------- --
 SELECT * FROM GatorMartDB.User;
