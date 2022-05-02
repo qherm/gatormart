@@ -14,6 +14,9 @@ DROP DATABASE IF EXISTS `GatorMartDB` ;
 CREATE DATABASE IF NOT EXISTS `GatorMartDB` DEFAULT CHARACTER SET utf8 ;
 USE `GatorMartDB` ;
 
+
+--ADD NAME AND USERNAME TO USER TABLE
+
 -- -----------------------------------------------------
 -- Table `GatorMatorDB`.`User`
 -- -----------------------------------------------------
