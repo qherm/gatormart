@@ -1,5 +1,6 @@
 const e = require('express');
-const express = require('express')
+const express = require('express');
+const { connect } = require('http2');
 const app = express()
 const mysql = require('mysql');
 let path = require('path');
@@ -38,7 +39,10 @@ const database = mysql.createConnection({
 });
 
 database.connect((err) => {
-    if (err) throw err;
+    if (err){
+        console.log("ERROR")
+        throw err;
+    } 
     console.log('Connected!')
     
 });
@@ -80,10 +84,13 @@ function search(req, res, next) {
 //userFullName, userEmail, username, userPassword, userConfirmPassword
 app.post('/*/:userFullName/:userEmail/:username/:userPassword/:userConfirmPassword', Register, (req, res) => {
     if (req.valid){
+        console.log("SUCCESSFUL REGISTRATION");
         res.redirect('VPTestHome.html');
     } else{
+        console.log("FAILED REGISTRATION");
+        console.log( req.resultMessage);
         res.json({
-            errorMessage:res.resultMessage
+            errorMessage: req.resultMessage
         });
     }
 });
@@ -95,19 +102,26 @@ function Register(req, res, next) {
     var userConfirmPassword = req.params.userConfirmPassword;
     //if validate == false, don't register
 
+    req.resultMessage = "";
+    
     if (ValidateUserExists(userEmail)){
-        req.resultMessage = "Failure";
+        req.resultMessage += "User exists in System already. ";
         return -1;
     }
-    else if( !isValidPassword(userPassword, userConfirmPassword)){
-        req.resultMessage = "Failure";
+
+
+    if( !isValidPassword(userPassword, userConfirmPassword)){
+        req.resultMessage += "User Password not valid. ";
         return -1;
     }
-    else if (!isValidEmail(userEmail)){
-        req.resultMessage = "Failure";
+
+
+    if (!isValidEmail(userEmail)){
+        req.resultMessage += "User email not valid. ";
         return -1;
     }
     
+
     userEncryptedPassword = userPassword;
     //userEncryptedPassword = encryptPassword(userPassword);
     //add user to DB
@@ -120,11 +134,11 @@ function Register(req, res, next) {
 
     database.query(query, (err, result) => {
         if (err){
-            req.resultMessage = "Failure";
+            req.resultMessage += "Failure, error in DB";
 
             next();
         }
-        req.resultMessage = "Success";
+        req.resultMessage += "Successfully entered user into DB";
         next();
     });    
     
@@ -139,27 +153,28 @@ function Post(req, res, next) {
 function Message(req, res, next) {
 }
 
-async function ValidateUserExists(userEmail, req) {
+//doesn't seem to work with async
+function ValidateUserExists(userEmail) {
     //check if user is already in DB, if so, return true
     let query = `SELECT * FROM User WHERE Email = '` + userEmail + `'` 
-    return await database.query(query, (err, result) => {
-        
+    //return await database.query(query, (err, result) => {
+    database.query(query, (err, result) => {    
         if (err){
-            //req.userExistsMessage = "Failure to check";
-            console.log("HI!");
-            return -1;
+            //req.userExistsMessage = ;
+            console.log("Failure to check");
+            return true;
             //next();
         }
         //if the user does not exist
         if(result.length === 0){
-            //req.userExistsMessage = "User does not exist in DB";
-            console.log("HI2!");
-            return 1;
+            //req.userExistsMessage = ;
+            console.log("User does not exist in DB");
+            return false;
         }
         else{
-            //req.userExistsMessage = "User does exist in DB";
-            console.log("HI3!");
-            return -1;
+            //req.userExistsMessage = ;
+            console.log("User does exist in DB");
+            return true;
         }
     });  
 }
@@ -173,10 +188,9 @@ function decryptPassword(password){
 }
 
 function isValidPassword(password, confirmpassword) {
+    // console.log(password);
+    // console.log(confirmpassword);
     if (password != confirmpassword){
-        return false;
-    }
-    if (password.length > 14 ){
         return false;
     }
 
