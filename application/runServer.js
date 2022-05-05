@@ -17,6 +17,8 @@ app.get('/*/:search/:category', search, (req, res) => {
 
 })
 
+
+
 app.use(express.static('public/html'));
 app.use(express.static('public/html/aboutPages'));
 app.use(express.static('public/images'));
@@ -38,7 +40,7 @@ const database = mysql.createConnection({
 database.connect((err) => {
     if (err) throw err;
     console.log('Connected!')
-
+    
 });
 
 
@@ -65,7 +67,7 @@ function search(req, res, next) {
             req.searchResult = "";
             req.searchTerm = "";
             req.category = "";
-
+            
             next();
         }
         req.searchResult = result;
@@ -75,6 +77,16 @@ function search(req, res, next) {
     });
 }
 
+//userFullName, userEmail, username, userPassword, userConfirmPassword
+app.post('/*/:userFullName/:userEmail/:username/:userPassword/:userConfirmPassword', Register, (req, res) => {
+    if (req.valid){
+        res.redirect('VPTestHome.html');
+    } else{
+        res.json({
+            errorMessage:res.resultMessage
+        });
+    }
+});
 
 function Register(req, res, next) {
     var userEmail = req.params.userEmail;
@@ -85,18 +97,19 @@ function Register(req, res, next) {
 
     if (ValidateUserExists(userEmail)){
         req.resultMessage = "Failure";
-        return -1
+        return -1;
     }
     else if( !isValidPassword(userPassword, userConfirmPassword)){
         req.resultMessage = "Failure";
-        return -1
+        return -1;
     }
     else if (!isValidEmail(userEmail)){
         req.resultMessage = "Failure";
-        return -1
+        return -1;
     }
     
-    userEncryptedPassword = encryptPassword(userPassword);
+    userEncryptedPassword = userPassword;
+    //userEncryptedPassword = encryptPassword(userPassword);
     //add user to DB
 
     let query = `INSERT INTO User (Name, Email, Password) VALUES ('` 
@@ -126,23 +139,26 @@ function Post(req, res, next) {
 function Message(req, res, next) {
 }
 
-function ValidateUserExists(userEmail) {
+async function ValidateUserExists(userEmail, req) {
     //check if user is already in DB, if so, return true
     let query = `SELECT * FROM User WHERE Email = '` + userEmail + `'` 
-    database.query(query, (err, result) => {
+    return await database.query(query, (err, result) => {
         
         if (err){
-            req.userExistsMessage = "Failure to check";
+            //req.userExistsMessage = "Failure to check";
+            console.log("HI!");
             return -1;
             //next();
         }
         //if the user does not exist
         if(result.length === 0){
-            req.userExistsMessage = "User does not exist in DB";
+            //req.userExistsMessage = "User does not exist in DB";
+            console.log("HI2!");
             return 1;
         }
         else{
-            req.userExistsMessage = "User does exist in DB";
+            //req.userExistsMessage = "User does exist in DB";
+            console.log("HI3!");
             return -1;
         }
     });  
@@ -160,7 +176,7 @@ function isValidPassword(password, confirmpassword) {
     if (password != confirmpassword){
         return false;
     }
-    if (password.length < 8 ){
+    if (password.length > 14 ){
         return false;
     }
 
