@@ -75,6 +75,9 @@
 
       </header>
 
+
+      <!-- TESTING IF NOTIFICATION SHOWS-->
+      <div id="feedback"></div>
       <!-- Header Ends-->
 
       <div class="page-wrap">
@@ -197,10 +200,20 @@
   }
 
   function register(userFullName, userEmail, username, userPassword, userConfirmPassword){
-    const password = encryptPassword(userPassword);
-    const confirmPassword = encryptPassword(userConfirmPassword);
+    var password = encryptPassword(userPassword);
+    var confirmPassword = encryptPassword(userConfirmPassword);
 
     fetch(`/registration.html/${userFullName}/${userEmail}/${username}/${userPassword}/${userConfirmPassword}`, {method: "post"})
+                .then(async (response) => {
+                  return await response.json()
+                })
+                .then(async (result) => 
+                {
+                  feedback = result.finalMessage;
+                  //document.location.href = '/VPTestHome.html'
+                  document.getElementById("feedback").innerHTML += `<p class="text-left">${feedback}<button type="button"
+                  class="btn btn-outline-secondary btn-sm float-md-right">Sort by price</button></p>`
+    })
   }
 
   function encryptPassword(userPassword){

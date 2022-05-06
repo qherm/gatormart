@@ -83,17 +83,11 @@ function search(req, res, next) {
 
 //userFullName, userEmail, username, userPassword, userConfirmPassword
 app.post('/*/:userFullName/:userEmail/:username/:userPassword/:userConfirmPassword', Register, (req, res) => {
-    if (req.valid){
-        console.log("SUCCESSFUL REGISTRATION");
-        res.redirect('VPTestHome.html');
-    } else{
-        console.log("FAILED REGISTRATION");
-        console.log( req.resultMessage);
-        res.json({
-            errorMessage: req.resultMessage
-        });
-    }
-});
+    res.json({
+        finalMessage: req.resultMessage,
+    });
+    
+})
 
 function Register(req, res, next) {
     req.valid = false;
@@ -108,20 +102,21 @@ function Register(req, res, next) {
     
     if (ValidateUserExists(userEmail)){
         req.resultMessage += "User exists in System already. ";
-        return -1;
+        return false;
     }
 
 
     if( !isValidPassword(userPassword, userConfirmPassword)){
         req.resultMessage += "User Password not valid. ";
-        return -1;
+        return false;
     }
 
 
     if (!isValidEmail(userEmail)){
         req.resultMessage += "User email not valid. ";
-        return -1;
+        return false;
     }
+
     //${userFullName}/${userEmail}/${username}/${userPassword}/${userConfirmPassword}
 
     userEncryptedPassword = userPassword;
@@ -140,10 +135,10 @@ function Register(req, res, next) {
         if (err){
             console.log(err);
             req.resultMessage += "Failure, error in DB";
-
+            req.valid = false;
             next();
         }
-        req.resultMessage += "Successfully entered user into DB";
+        req.resultMessage += "success";
         req.valid = true;
         next();
     });    
