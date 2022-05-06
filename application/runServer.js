@@ -96,13 +96,15 @@ app.post('/*/:userFullName/:userEmail/:username/:userPassword/:userConfirmPasswo
 });
 
 function Register(req, res, next) {
+    req.valid = false;
+    req.resultMessage = "";
+
+    var userFullName = req.params.userFullName;
     var userEmail = req.params.userEmail;
-    var userName = req.params.userName;
+    var userName = req.params.username;
     var userPassword = req.params.userPassword;
     var userConfirmPassword = req.params.userConfirmPassword;
     //if validate == false, don't register
-
-    req.resultMessage = "";
     
     if (ValidateUserExists(userEmail)){
         req.resultMessage += "User exists in System already. ";
@@ -120,25 +122,29 @@ function Register(req, res, next) {
         req.resultMessage += "User email not valid. ";
         return -1;
     }
-    
+    //${userFullName}/${userEmail}/${username}/${userPassword}/${userConfirmPassword}
 
     userEncryptedPassword = userPassword;
     //userEncryptedPassword = encryptPassword(userPassword);
     //add user to DB
-
-    let query = `INSERT INTO User (Name, Email, Password) VALUES ('` 
-                    + userName +  `', '`
+    let query = `INSERT INTO User (name, Email, Username, Password, Bio_Description, Phone_Number) VALUES ('` 
+                    + userFullName +  `', '`
                     + userEmail +  `', '`
-                    + userEncryptedPassword +  `')`;
+                    + userName +  `', '`
+                    + userEncryptedPassword +  `', '`
+                    + '' +  `', '`
+                    + '' +  `')`;
 
 
     database.query(query, (err, result) => {
         if (err){
+            console.log(err);
             req.resultMessage += "Failure, error in DB";
 
             next();
         }
         req.resultMessage += "Successfully entered user into DB";
+        req.valid = true;
         next();
     });    
     
