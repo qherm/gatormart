@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <title>VP result page</title>
     <meta charset="utf-8" />
@@ -26,16 +25,16 @@
 
 </html>
 
-<body>
+<body onload="displayResults();">
   <div class="main-container">
     <header>
       <!-- Navbar -->
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="./home.html">
+        <a class="navbar-brand" href="./VPTestHome.html">
           <img src="../images/Gmart.png" width="30" height="30" alt="">
         </a>
-        <a class="navbar-brand" href="./home.html">GatorMart</a>
+        <a class="navbar-brand" href="./VPTestHome.html">GatorMart</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -199,3 +198,70 @@
 </body>
 
 </html>
+
+
+
+
+
+
+<script>
+  function test(search, category) {
+    if (search == "") {
+      search = "EMPTYSEARCHTEMP"
+    }
+    if (category == "") {
+      category = "EMPTYCATEGORYTEMP"
+    }
+    fetch(`/VPResult.html/${search}/${category}`, { method: "get" })
+      .then(async (response) => {
+        return await response.json()
+      })
+      .then(async (result) => {
+        const searchResult = result.searchResult;
+        sessionStorage.searchResult = JSON.stringify(searchResult)
+        sessionStorage.searchTerm = search
+        sessionStorage.categoryTerm = category
+
+        document.location.href = '/VPResult.html'
+      })
+  }
+</script>
+
+<script>
+  function displayResults() {
+    var searchResults = JSON.parse(sessionStorage.searchResult);
+    var search = sessionStorage.searchTerm;
+    var category = sessionStorage.categoryTerm;
+
+    let resultsString = "1- " + searchResults.length + " of " + searchResults.length + " results ";
+    if (search != "EMPTYSEARCHTEMP" && category != "EMPTYCATEGORYTEMP") {
+      resultsString += ` for "` + search + `" in "` + category + `"`;
+    }
+    else if (search == "EMPTYSEARCHTEMP" && category != "EMPTYCATEGORYTEMP") {
+      resultsString += ` in "` + category + `"`;
+    }
+    else if (search != "EMPTYSEARCHTEMP" && category == "EMPTYCATEGORYTEMP") {
+      resultsString += ` for "` + search + `"`;
+    }
+    else {
+      resultsString += " total";
+    }
+    document.getElementById("resultsGiven").innerHTML += `<p class="text-left">${resultsString}<button type="button"
+                class="btn btn-outline-secondary btn-sm float-md-right">Sort by price</button></p>`
+
+    for (let i = 0; i < searchResults.length; i++) {
+      document.getElementById("main-content").innerHTML +=
+        `<div class="col-md-3 mb-5">
+           <div class="card shadow" style="width: 18rem;">
+           <a href="/productDetail.html">
+           <img src = "${searchResults[i].File_Link}" alt="${searchResults[i].Title}" class="card-img-top" alt="..." /></a>
+           <div class="card-body">
+              <h5 class="card-title font-poppins">${searchResults[i].Title}</h5>
+              <h6 class="mb-3">$${searchResults[i].Price}</h6>
+            <a href="/productDetail.html" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
+          </div>
+          </div>
+          </div>`
+    }
+  }
+</script>

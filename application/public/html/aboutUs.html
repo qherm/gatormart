@@ -172,7 +172,59 @@
         </div>
       </div>
       <!-- Footer Starts-->
+      <div class="footer">
+        <footer class="footer-distributed" id="footer">
+          <div class="footer-left">
+            <img src="" />
+            <h3>Gator<span>Mart</span></h3>
 
+            <p class="footer-links">
+              <a href="#">Home</a>
+              |
+              <a href="#">About</a>
+              |
+              <a href="#">Contact</a>
+            </p>
+
+            <p class="footer-company-name">© 2022 GatorMart Pvt. Ltd.</p>
+          </div>
+
+          <div class="footer-center">
+            <div>
+              <i class="fa fa-lightbulb-o"></i>
+              <p>
+                <span>Software Engineering - CSC648/848</span>
+                <span>Spring, 2022, Section 03, Team 02</span>
+              </p>
+            </div>
+
+            <!-- <div>
+                    <i class="fa fa-phone"></i>
+                    <p></p>
+                </div> -->
+            <div>
+              <i class="fa fa-envelope"></i>
+              <p>
+                <a href=""><span>support@gatormart.com</span></a>
+              </p>
+            </div>
+          </div>
+          <div class="footer-right">
+            <p class="footer-company-about">
+              <span>About GatorMart</span>
+              GatorMart is an online hub exclusively for SFSU community. GatorMart provides service to current students,
+              faculty, and staff.
+            </p>
+            <div class="footer-icons">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+              <a href="#"><i class="fa fa-linkedin"></i></a>
+              <a href="#"><i class="fa fa-youtube"></i></a>
+            </div>
+          </div>
+        </footer>
+      </div>
       <!-- Footer Ends-->
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -184,3 +236,27 @@
   </body>
 
 </html>
+
+<script>
+  function test(search, category) {
+    if(search == ""){
+      search = "EMPTYSEARCHTEMP"
+    }
+    if(category == ""){
+      category = "EMPTYCATEGORYTEMP"
+    }
+    fetch(`/aboutUs.html/${search}/${category}`, {method: "get"})
+                .then(async (response) => {
+                  return await response.json()
+                })
+                .then(async (result) => 
+                {
+                  const searchResult = result.searchResult;
+                  sessionStorage.searchResult = JSON.stringify(searchResult)
+                  sessionStorage.searchTerm = search
+                  sessionStorage.categoryTerm = category
+
+                  document.location.href = '/VPResult.html'}
+                  )
+  }
+</script>

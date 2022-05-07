@@ -184,3 +184,27 @@
     </body>
 
 </html>
+
+<script>
+    function test(search, category) {
+      if(search == ""){
+        search = "EMPTYSEARCHTEMP"
+      }
+      if(category == ""){
+        category = "EMPTYCATEGORYTEMP"
+      }
+      fetch(`/postItem.html/${search}/${category}`, {method: "get"})
+                  .then(async (response) => {
+                    return await response.json()
+                  })
+                  .then(async (result) => 
+                  {
+                    const searchResult = result.searchResult;
+                    sessionStorage.searchResult = JSON.stringify(searchResult)
+                    sessionStorage.searchTerm = search
+                    sessionStorage.categoryTerm = category
+  
+                    document.location.href = '/VPResult.html'
+      })
+    }
+  </script>

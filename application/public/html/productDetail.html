@@ -50,7 +50,7 @@
                   <option value="Furniture">Furniture</option>
                 </select>
               </div>
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <input class="form-control mr-sm-2" id = "search" autocomplete = "off" type="text" placeholder="Search" aria-label="Search">
 
               <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit"
                 onclick="test(document.getElementById('search').value, document.getElementById('category').value)">
@@ -172,3 +172,27 @@
   </body>
 
 </html>
+
+<script>
+  function test(search, category) {
+    if(search == ""){
+      search = "EMPTYSEARCHTEMP"
+    }
+    if(category == ""){
+      category = "EMPTYCATEGORYTEMP"
+    }
+    fetch(`/productDetail.html/${search}/${category}`, {method: "get"})
+                .then(async (response) => {
+                  return await response.json()
+                })
+                .then(async (result) => 
+                {
+                  const searchResult = result.searchResult;
+                  sessionStorage.searchResult = JSON.stringify(searchResult)
+                  sessionStorage.searchTerm = search
+                  sessionStorage.categoryTerm = category
+
+                  document.location.href = '/VPResult.html'
+    })
+  }
+</script>
