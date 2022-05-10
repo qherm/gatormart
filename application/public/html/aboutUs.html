@@ -19,6 +19,7 @@
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit-icons.min.js"></script>
+    <script src="../javascripts/search.js"></script>
   </head>
 
   <body>
@@ -54,7 +55,7 @@
               <input class="form-control mr-sm-2" id = "search" autocomplete = "off" type="text" placeholder="Search" aria-label="Search">
 
               <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit"
-                onclick="test(document.getElementById('search').value, document.getElementById('category').value)">
+                onclick="search(document.getElementById('search').value, document.getElementById('category').value)">
                 <i class="fa fa-search fa-lg" aria-hidden="true"></i>
               </button>
             </form>
@@ -236,7 +237,7 @@
 
 </html>
 
-<script>
+<!-- <script>
   function test(search, category) {
     if(search == ""){
       search = "EMPTYSEARCHTEMP"
@@ -258,4 +259,4 @@
                   document.location.href = '/VPResult.html'}
                   )
   }
-</script>
+</script> -->

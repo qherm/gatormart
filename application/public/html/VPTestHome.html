@@ -193,7 +193,7 @@
     if(category == ""){
       category = "EMPTYCATEGORYTEMP"
     }
-    fetch(`/VPTestHome.html/search/${search}/${category}`, {method: "get"})
+    fetch('/search', {method: "get", body:{search: search, category: category}})
                 .then(async (response) => {
                   return await response.json()
                 })
@@ -205,6 +205,6 @@
                   sessionStorage.categoryTerm = category
 
                   document.location.href = '/VPResult.html'
-    })
+                })
   }
 </script>

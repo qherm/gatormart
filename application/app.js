@@ -34,7 +34,7 @@ database.connect((err) => {
     console.log('Connected!');
 });
 
-app.get('/*/search/:search/:category', search);
+app.get('/search', search);
 
 // (req, res) => {
 //     var searchResult = req.searchResult;
@@ -46,7 +46,6 @@ app.get('/*/search/:search/:category', search);
 //     });
 // });
 
-//userFullName, userEmail, username, userPassword, userConfirmPassword
 app.post('/register', auth.register);
 
 // function Register(req, res, next) {

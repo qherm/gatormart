@@ -2,8 +2,8 @@ const express = require('express');
 
 class Search {
     search(req, res, next) {
-        var searchTerm = req.params.search;
-        var category = req.params.category;
+        var searchTerm = req.body.search;
+        var category = req.body.category;
         let query = 'SELECT * FROM Post'
         
         if (searchTerm != 'EMPTYSEARCHTEMP' && category != 'EMPTYCATEGORYTEMP'){
