@@ -1,10 +1,10 @@
 const express = require('express');
-
 class Search {
-    search(req, res, next) {
-        var searchTerm = req.body.search;
-        var category = req.body.category;
-        let query = 'SELECT * FROM Post'
+    search(req, res) {
+        var searchTerm = req.params.search;
+        var category = req.params.category;
+        console.log(searchTerm, category);
+        let query = 'SELECT * FROM Post';
         
         if (searchTerm != 'EMPTYSEARCHTEMP' && category != 'EMPTYCATEGORYTEMP'){
             query = `SELECT * FROM Post WHERE Category = '` + category + `' AND ( Title LIKE '%` + searchTerm + `%' OR Post_Description LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%')`;
@@ -23,13 +23,11 @@ class Search {
                 req.searchResult = "";
                 req.searchTerm = "";
                 req.category = "";
-                
-                next();
+            } else {
+                req.searchResult = result;
+                req.searchTerm = searchTerm;
+                req.category = category;
             }
-            req.searchResult = result;
-            req.searchTerm = searchTerm;
-            req.category = category;
-            next();
         });
     }
 }

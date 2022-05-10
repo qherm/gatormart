@@ -1,13 +1,14 @@
-let search = (search, category) => {
+function search(search, category){
     if(search == ""){
         search = "EMPTYSEARCHTEMP"
       }
       if(category == ""){
         category = "EMPTYCATEGORYTEMP"
       }
-      fetch('/search', {method: "get", body:{search: search, category: category}})
+      console.log("HERE");
+      fetch(`/search/${search}/${category}`, {method: "get"})
                   .then(async (response) => {
-                    return await response.json()
+                    return await response.json();
                   })
                   .then(async (result) => 
                   {
@@ -16,6 +17,6 @@ let search = (search, category) => {
                     sessionStorage.searchTerm = search
                     sessionStorage.categoryTerm = category
   
-                    document.location.href = '/VPResult.html'
+                    // document.location.href = '/VPResult.html'
                   })
 }

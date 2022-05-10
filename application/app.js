@@ -34,7 +34,7 @@ database.connect((err) => {
     console.log('Connected!');
 });
 
-app.get('/search', search);
+app.get('/search/:search/:category', search);
 
 // (req, res) => {
 //     var searchResult = req.searchResult;
@@ -185,6 +185,6 @@ function isValidEmail(email){
     return false;
 }
 
-// module.exports{
-
-// }
+module.exports = {
+    database: database,
+};
