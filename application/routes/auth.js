@@ -1,6 +1,7 @@
-// add imports
+const database = require('../db/db.js');
 
 class Auth {
+    // maybe doesn't work? idk
     isValidEmail(email){
         let userEmail = email.toLowerCase();
         if (/@mail.sfsu.edu\s*$/.test(userEmail)) {
@@ -8,7 +9,7 @@ class Auth {
         } 
         return false;
     }
-    
+
     emailExists(email,callback) {
         database.query("SELECT * FROM user WHERE email=?",email,(err,results)=> {
             if(err) throw err;
@@ -45,7 +46,7 @@ class Register extends Auth {
 
 class Login extends Auth {
     login(req,res,next){
-
+        
     }
 }
 

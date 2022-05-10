@@ -1,4 +1,6 @@
 const express = require('express');
+const database = require('../db/db.js');
+
 class Search {
     search(req, res) {
         var searchTerm = req.params.search;
