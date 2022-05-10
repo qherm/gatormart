@@ -1,6 +1,5 @@
-const mysql = require('mysql');
 const express = require('express');
-// const { connect } = require('http2');
+const mysql = require('mysql');
 
 // Set up to read .env file
 const database = mysql.createConnection({

@@ -6,7 +6,7 @@ class Auth {
         let userEmail = email.toLowerCase();
         if (/@mail.sfsu.edu\s*$/.test(userEmail)) {
             return true;
-        } 
+        }
         return false;
     }
 
@@ -46,7 +46,7 @@ class Register extends Auth {
 
 class Login extends Auth {
     login(req,res,next){
-        
+
     }
 }
 

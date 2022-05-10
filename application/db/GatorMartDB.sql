@@ -6,74 +6,85 @@
 -- -----------------------------------------------------
 -- Schema GatorMatorDB
 -- -----------------------------------------------------
-DROP DATABASE IF EXISTS `GatorMartDB` ;
+DROP DATABASE IF EXISTS gatormartdb;
 
 -- -----------------------------------------------------
 -- Schema GatorMatorDB
 -- -----------------------------------------------------
-CREATE DATABASE IF NOT EXISTS `GatorMartDB` DEFAULT CHARACTER SET utf8 ;
-USE `GatorMartDB` ;
+CREATE DATABASE IF NOT EXISTS gatormartdb DEFAULT CHARACTER SET utf8 ;
+USE gatormartdb ;
 
 
 -- -----------------------------------------------------
--- Table `GatorMatorDB`.`User`
+-- Table gatormartdb.users
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `GatorMartDB`.`User` ;
+DROP TABLE IF EXISTS gatormartdb.users ;
 
-CREATE TABLE IF NOT EXISTS `GatorMartDB`.`User` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(225) NOT NULL,
-  `Email` VARCHAR(225) UNIQUE NOT NULL,
-  `Username` VARCHAR(225) UNIQUE NOT NULL,
-  `Password` VARCHAR(225) NOT NULL,
-  `Bio_Description` VARCHAR(225) NOT NULL,
-  `Phone_Number` VARCHAR(225) NOT NULL,
-  PRIMARY KEY (`ID`));
-
-
--- -----------------------------------------------------
--- Table `GatorMatorDB`.`Post`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `GatorMartDB`.`Post` ;
-
-CREATE TABLE IF NOT EXISTS `GatorMartDB`.`Post` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
-  `User_ID` INT NOT NULL,
-  `Title` VARCHAR(225) NOT NULL,
-  `Category_ID` INT NOT NULL,
-  `Available` INT NOT NULL,
-  `Post_Description` VARCHAR(225) NOT NULL,
-  `Price` FLOAT NOT NULL,
-  `Type` VARCHAR(225) NOT NULL,
-  `Direction` VARCHAR(225) NOT NULL,
-  `File_Link` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`ID`));
+CREATE TABLE IF NOT EXISTS gatormartdb.users (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(225) NOT NULL,
+  email VARCHAR(225) UNIQUE NOT NULL,
+  username VARCHAR(225) UNIQUE NOT NULL,
+  password VARCHAR(225) NOT NULL,
+  bio VARCHAR(225) NOT NULL,
+  phone_number VARCHAR(225) NOT NULL,
+  PRIMARY KEY (id));
 
 
 -- -----------------------------------------------------
--- Table `GatorMatorDB`.`Review`
+-- Table gatormartdb.post
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `GatorMartDB`.`Review` ;
+DROP TABLE IF EXISTS gatormartdb.posts ;
 
-CREATE TABLE IF NOT EXISTS `GatorMartDB`.`Review` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS gatormartdb.posts (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  title VARCHAR(225) NOT NULL,
+  category_id INT NOT NULL,
+  available BIT NOT NULL,
+  description VARCHAR(225) NOT NULL,
+  price FLOAT NOT NULL,
+  type VARCHAR(225) NOT NULL,
+  direction VARCHAR(225) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+-- -----------------------------------------------------
+-- Table gatormartdb.post
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS gatormartdb.images;
+
+CREATE TABLE IF NOT EXISTS gatormartdb.images(
+  id INT NOT NULL AUTO_INCREMENT,
+  post_id INT NOT NULL,
+  PRIMARY KEY(id)
+  FOREIGN KEY(post_id) REFERENCES posts(id)
+);
+
+-- -----------------------------------------------------
+-- Table gatormartdb.reviews
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS gatormartdb.reviews ;
+
+CREATE TABLE IF NOT EXISTS gatormartdb.reviews (
+  id INT NOT NULL AUTO_INCREMENT,
   `User_ID` INT NOT NULL,
   `Post_ID` INT NOT NULL,
   `Direction` VARCHAR(225) NOT NULL,
   `Review_Describtion` VARCHAR(225) NOT NULL,
   `Rating` INT NOT NULL,
-PRIMARY KEY (`ID`));
+PRIMARY KEY (id));
 
 
 -- -----------------------------------------------------
--- Table `GatorMatorDB`.`Review`
+-- Table gatormartdb.categories
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `GatorMartDB`.`Category` ;
+DROP TABLE IF EXISTS gatormartdb.categories ;
 
-CREATE TABLE IF NOT EXISTS `GatorMartDB`.`Category` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
-  `Category` VARCHAR(225) NOT NULL,
-PRIMARY KEY (`ID`));
+CREATE TABLE IF NOT EXISTS gatormartdb.categories (
+  id INT NOT NULL AUTO_INCREMENT,
+  category VARCHAR(225) NOT NULL,
+PRIMARY KEY (id));
 
 -- ---------------------------------------------------------------------------------------------------------- --
 -- 								DATA INSERTS                                                                  --
