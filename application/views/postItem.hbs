@@ -7,46 +7,46 @@
 
 <body>
     <div class="main-container">
-       
+
 
         <div class="page-wrap">
-             <div class="post-item">
-            <div class="grid-container">
-                <div class="form-box">
-                    <!-- TODO: Fill out action when route is done-->
-                    <form class="form-postitems" method="POST" enctype="multipart/form-data" action="/">
-                        <div class="banner">
-                            <div class="h1-postitems">Post Item For Sale Or List Jobs</div>
-                        </div>
-                        <div class="item float-right">
-                            Labels denoted with <span>*</span> are mandatory.
-                        </div>
-                        <div class="item">
-                            <label for="name"> Item/Job Name <span>*</span></label>
-                            <input id="name" type="text" name="name" required />
-                        </div>
-                        <div class="item">
-                            <label for="name">Category <span>*</span></label>
-                            <select id="form_need" type="text" name="name" class="form-control" required />
-                            <option value="" selected disabled>--Select Category--</option>
-                            <option value="Books">Books</option>
-                            <option value="School Supplies">School Supplies</option>
-                            <option value="Furniture">Furniture</option>
-                            <option value="Help Wanted">Help Wanted</option>
-                            <option value="Services">Services</option>
-                            <option value="Miscellaneous">Miscellaneous</option>
-                            </select>
-                        </div>
-                        <div class="item">
-                            <label for="price">Price <span>*</span></label>
-                            <input id="number" type="text" name="price" required />
-                        </div>
-                        <div class="item">
-                            <label for="condition">Condition </label>
-                            <input id="condition" type="text" name="condition" />
-                        </div>
-                        <div class="item">
-                            <label for="location">Location <span>*</span></label>
+            <div class="post-item">
+                <div class="grid-container">
+                    <div class="form-box">
+                        <!-- TODO: Fill out action when route is done-->
+                        <form class="form-postitems" method="POST" enctype="multipart/form-data" action="/">
+                            <div class="banner">
+                                <div class="h1-postitems">Post Item For Sale Or List Jobs</div>
+                            </div>
+                            <div class="item float-right">
+                                Labels denoted with <span>*</span> are mandatory.
+                            </div>
+                            <div class="item">
+                                <label for="name"> Item/Job Name <span>*</span></label>
+                                <input id="name" type="text" name="name" required />
+                            </div>
+                            <div class="item">
+                                <label for="name">Category <span>*</span></label>
+                                <select id="form_need" type="text" name="name" class="form-control" required />
+                                <option value="" selected disabled>--Select Category--</option>
+                                <option value="Books">Books</option>
+                                <option value="School Supplies">School Supplies</option>
+                                <option value="Furniture">Furniture</option>
+                                <option value="Help Wanted">Help Wanted</option>
+                                <option value="Services">Services</option>
+                                <option value="Miscellaneous">Miscellaneous</option>
+                                </select>
+                            </div>
+                            <div class="item">
+                                <label for="price">Price <span>*</span></label>
+                                <input id="number" type="text" name="price" required />
+                            </div>
+                            <div class="item">
+                                <label for="condition">Condition </label>
+                                <input id="condition" type="text" name="condition" />
+                            </div>
+                            <div class="item">
+                                <label for="location">Location <span>*</span></label>
                                 <select id="form_need" name="need" class="form-control" required="required"
                                     data-error="Please select the location.">
                                     <option value="" selected disabled>--Select Location--</option>
@@ -55,28 +55,32 @@
                                     <option>SFSU Burk Building</option>
                                     <option>Other</option>
                                 </select>
-                            {{!-- <input id="location" type="text" name="location" required /> --}}
-                        </div>
-                        <div class="item">
-                            <label for="picture">Upload Picture <span>*</span></label>
-                            <input id="picture" type="file" required />
-                        </div>
-                        <div class="item">
-                            <label for="instructions">Description <span>*</span></label>
-                            <textarea id="instructions" rows="3" required></textarea>
-                        </div>
-                        <p><small>0/100 characters</small></p>
-                        <div class="btn-block">                            
-                            <button type="button" class="light mr-5" href="/">Cancel</button>
-                            <button type="submit" class="certain " href="/">Submit</button>
-                            <p><small>May take up to 24 hours for approval</small></p>
-                        </div>
-                    </form>
+                                {{!-- <input id="location" type="text" name="location" required /> --}}
+                            </div>
+                            <div class="item">
+                                <label for="picture">Upload Picture <span>*</span></label>
+                                <input id="picture" type="file" required />
+                            </div>
+                            <div class="item">
+                                <label for="instructions">Description <span>*</span></label>
+                                <textarea id="instructions" rows="3" required></textarea>
+                            </div>
+                            <p><small>0/100 characters</small></p>
+                            <div class="btn-block">
+                                <button type="submit" class="certain " href="/userPage">Submit</button>
+                                <button type="clear" class="light"> Clear Form</button>
+                                <p><small>May take up to 24 hours for approval</small></p>
+                            </div>
+                        </form>
+                    </div>
+
+                    <script>
+                        //js elements to submit and clear form go here
+                    </script>
                 </div>
             </div>
-           </div>
         </div>
-    
+
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

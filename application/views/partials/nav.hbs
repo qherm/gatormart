@@ -1,45 +1,56 @@
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="/">
-            <img src="../images/Gmart.png" width="30" height="30" alt="">
-          </a>
-          <a class="navbar-brand" href="/">GatorMart</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">
+    <img src="../images/Gmart.png" width="30" height="30" alt="">
+  </a>
+  <a class="navbar-brand" href="/">GatorMart</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="/aboutUs">About Us <span class="sr-only">(current)</span></a>
-              </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0" id="navBarSearchForm">
-              <div class="select-dropdown">
-                <select name="category" id="category">
-                  <option value="">All</option>
-                  <option value="Textbook">Textbooks</option>
-                  <option value="Notes">Notes</option>
-                  <option value="Furniture">Furniture</option>
-                </select>
-              </div>
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/aboutUs">About Us <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" id="navBarSearchForm">
+      <div class="select-dropdown">
+        <select name="category" id="category">
+          <option value="">All</option>
+          <option value="Textbook">Textbooks</option>
+          <option value="Notes">Electronics</option>
+          <option value="Furniture">Furniture</option>
+        </select>
+      </div>
+      {{!-- <div class="btn-group"> USING BOOTSTRAP OPTION
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          All
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Services</a>
+          <a class="dropdown-item" href="#">Textbooks</a>
+          <a class="dropdown-item" href="#">Electronics</a>
+        </div>
+      </div> --}}
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
 
-              <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit"
-                onclick="test(document.getElementById('search').value, document.getElementById('category').value)">
-                <i class="fa fa-search fa-lg" aria-hidden="true"></i>
-              </button>
-            </form>
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="/postItem">Post/Sell<span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/userPage">My Page <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/login">Login/Register<span class="sr-only">(current)</span></a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+      <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit"
+        onclick="test(document.getElementById('search').value, document.getElementById('category').value)">
+        <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+      </button>
+    </form>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/postItem">Post/Sell<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/userPage">My Page <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/login">Login/Register<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
