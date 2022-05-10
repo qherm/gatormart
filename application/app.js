@@ -4,7 +4,8 @@ const app = express()
 const mysql = require('mysql');
 let path = require('path');
 
-const search = require('routes/search.js');
+const search = require('./routes/search.js');
+const auth = require('./routes/auth.js');
 
 app.engine('html', require('ejs').renderFile);
 
@@ -43,7 +44,7 @@ app.get('/*/search/:search/:category', search, (req, res) => {
 });
 
 //userFullName, userEmail, username, userPassword, userConfirmPassword
-app.post('/register', reg.register);
+app.post('/register', auth.register);
 
 // function Register(req, res, next) {
 //     req.valid = false;
