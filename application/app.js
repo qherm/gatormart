@@ -18,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public'));
 app.listen(3000, () => console.log('Server running on port 3000'));
 
+// Set up to read .env file
 const database = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -33,15 +34,17 @@ database.connect((err) => {
     console.log('Connected!');
 });
 
-app.get('/*/search/:search/:category', search, (req, res) => {
-    var searchResult = req.searchResult;
-    res.json({
-        results: searchResult.length,
-        searchTerm: req.searchTerm,
-        searchResult: searchResult,
-        category: req.category
-    });
-});
+app.get('/*/search/:search/:category', search);
+
+// (req, res) => {
+//     var searchResult = req.searchResult;
+//     res.json({
+//         results: searchResult.length,
+//         searchTerm: req.searchTerm,
+//         searchResult: searchResult,
+//         category: req.category
+//     });
+// });
 
 //userFullName, userEmail, username, userPassword, userConfirmPassword
 app.post('/register', auth.register);
