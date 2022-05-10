@@ -4,6 +4,8 @@ const app = express()
 const mysql = require('mysql');
 let path = require('path');
 
+const search = require('routes/search.js');
+
 app.engine('html', require('ejs').renderFile);
 
 app.use(express.static('public/html'));
@@ -14,8 +16,6 @@ app.use(express.static('public/css'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public'));
 app.listen(3000, () => console.log('Server running on port 3000'));
-
-const reg = Register();
 
 const database = mysql.createConnection({
     host: 'localhost',
@@ -29,8 +29,7 @@ database.connect((err) => {
         console.log("ERROR")
         throw err;
     } 
-    console.log('Connected!')
-    
+    console.log('Connected!');
 });
 
 app.get('/*/search/:search/:category', search, (req, res) => {
@@ -43,88 +42,8 @@ app.get('/*/search/:search/:category', search, (req, res) => {
     });
 });
 
-function search(req, res, next) {
-    var searchTerm = req.params.search;
-    var category = req.params.category;
-    let query = 'SELECT * FROM Post'
-    
-    if (searchTerm != 'EMPTYSEARCHTEMP' && category != 'EMPTYCATEGORYTEMP'){
-        query = `SELECT * FROM Post WHERE Category = '` + category + `' AND ( Title LIKE '%` + searchTerm + `%' OR Post_Description LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%')`;
-    }
-    else if (searchTerm != 'EMPTYSEARCHTEMP' && category == 'EMPTYCATEGORYTEMP'){
-        query = `SELECT * FROM Post WHERE Title LIKE '%` + searchTerm + `%' OR Post_Description LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%'`;
-    }
-    else if (searchTerm == 'EMPTYSEARCHTEMP' && category != 'EMPTYCATEGORYTEMP'){
-        query = `SELECT * FROM Post WHERE Category = '` + category + `'`;
-    }
-    else if (searchTerm == 'EMPTYSEARCHTEMP' && category == 'EMPTYCATEGORYTEMP'){
-        query = `SELECT * FROM Post`;
-    }
-    database.query(query, (err, result) => {
-        if (err){
-            req.searchResult = "";
-            req.searchTerm = "";
-            req.category = "";
-            
-            next();
-        }
-        req.searchResult = result;
-        req.searchTerm = searchTerm;
-        req.category = category;
-        next();
-    });
-}
-
 //userFullName, userEmail, username, userPassword, userConfirmPassword
 app.post('/register', reg.register);
-
-class Auth {
-    emailExists(email,callback) {
-        database.query("SELECT * FROM user WHERE email=?",email,(err,results)=> {
-            if(err) throw err;
-            return callback(results);
-        })
-    }
-
-    usernameExists(username,callback) {
-        database.query("SELECT * FROM user WHERE email=? OR Username=?",username,(err,results)=> {
-            if(err) throw err;
-            return callback(results);
-        })
-    }
-
-    encryptPassword(password){
-        
-    }
-}
-
-class Register extends Auth {
-    register(req, res, next){
-        console.log("IN POST: ",req.resultMessage);
-        let email = req.body.email;
-        let name = req.body.name;
-        let username = req.body.username;
-        let password = req.body.password;
-        let confirmPassword = req.body.confirmPassword;
-
-        res.json({
-            finalMessage: req.resultMessage,
-        });
-    }
-}
-
-class Login extends Auth {
-    login(req,res,next){
-
-    }
-}
-
-let emailExists = (email, callback) => {
-    database.query("SELECT * FROM user WHERE email=?",[email],(err,results)=> {
-        if(err) throw err;
-        return callback(results);
-    })
-}
 
 // function Register(req, res, next) {
 //     req.valid = false;
