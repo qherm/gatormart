@@ -1,0 +1,24 @@
+{
+  "name": "csc648-03-sp22-team02",
+  "version": "1.0.0",
+  "description": "1. Change the name of the repository. All that needs to change is the NN to your respective team number. Team numbers whose value is less than 10, please pad with a 0. Ex team 1 is Team01 team 11 is Team11. Please make sure to also remove the username from the repository as well. Teams with incorrectly name repository will have points deducted from their milestone 0 grades.\r       - Please follow the naming convention assigned by your instructor.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CSC-648-SFSU/csc648-03-sp22-team02.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CSC-648-SFSU/csc648-03-sp22-team02/issues"
+  },
+  "homepage": "https://github.com/CSC-648-SFSU/csc648-03-sp22-team02#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mysql": "^2.18.1",
+    "pg-promise": "^10.11.1"
+  }
+}

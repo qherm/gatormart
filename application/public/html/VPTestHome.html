@@ -193,7 +193,7 @@
     if(category == ""){
       category = "EMPTYCATEGORYTEMP"
     }
-    fetch(`/VPTestHome.html/${search}/${category}`, {method: "get"})
+    fetch(`/VPTestHome.html/search/${search}/${category}`, {method: "get"})
                 .then(async (response) => {
                   return await response.json()
                 })

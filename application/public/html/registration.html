@@ -106,7 +106,7 @@
               <div class="check">Passwords must <span id="confirm-pass-req" class="req">match.</span></div>
               <br />
               <!-- <button type="submit" id="register-button" onclick="register(document.getElementById('full-name-register').value, document.getElementById('email-register').value, document.getElementById('username-register').value, document.getElementById('password-register').value, document.getElementById('confirm-password-register').value)">Submit</button> -->
-              <button type="submit" id="register-button" onclick="register('UserTest 1', 'userTest1@mail.sfsu.edu', 'IamUser1', 'Thisisnotsecure', 'Thisisnotsecure')">Submit</button>
+              <button type="submit" id="register-button" onclick="register('UserTest111', 'userTest12345@mail.sfsu.edu', 'IamUser1', 'Thisisnotsecure', 'Thisisnotsecure')">Submit</button>
               <div class="registration-bottom">Already have an account? <a href="../html/login.html">Log In Here</a></div>
             </fieldset>
           </div>
@@ -184,7 +184,7 @@
     if(category == ""){
       category = "EMPTYCATEGORYTEMP"
     }
-    fetch(`/registration.html/${search}/${category}`, {method: "get"})
+    fetch(`/registration.html/search/${search}/${category}`, {method: "get"})
                 .then(async (response) => {
                   return await response.json()
                 })
@@ -199,25 +199,25 @@
     })
   }
 
-  function register(userFullName, userEmail, username, userPassword, userConfirmPassword){
+  function register(name, email, username, password, confirmPassword){
     var password = encryptPassword(userPassword);
     var confirmPassword = encryptPassword(userConfirmPassword);
 
-    fetch(`/registration.html/${userFullName}/${userEmail}/${username}/${userPassword}/${userConfirmPassword}`, {method: "post"})
-                .then(async (response) => {
-                  return await response.json()
-                })
-                .then(async (result) => 
-                {
-                  feedback = result.finalMessage;
-                  //document.location.href = '/VPTestHome.html'
-                  document.getElementById("feedback").innerHTML += `<p class="text-left">${feedback}<button type="button"
-                  class="btn btn-outline-secondary btn-sm float-md-right">Sort by price</button></p>`
-    })
+    fetch('/register', {
+      method: "post", 
+      body: {
+        email: email,
+        name: name,
+        username: username,
+        password: password,
+        confirmPassword: confirmPassword
+      }})
+      .then(async (response) => {
+        return await response.json()
+      })
+      .then(async (result) => {
+        feedback = result.message;
+        document.getElementById("feedback").innerHTML += `<p class="text-left">${feedback}<br></p>`
+      })
   }
-
-  function encryptPassword(userPassword){
-    return userPassword;
-  }
-
 </script>

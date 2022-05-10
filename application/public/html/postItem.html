@@ -193,7 +193,7 @@
       if(category == ""){
         category = "EMPTYCATEGORYTEMP"
       }
-      fetch(`/postItem.html/${search}/${category}`, {method: "get"})
+      fetch(`/postItem.html/search/${search}/${category}`, {method: "get"})
                   .then(async (response) => {
                     return await response.json()
                   })

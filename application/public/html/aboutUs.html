@@ -244,7 +244,7 @@
     if(category == ""){
       category = "EMPTYCATEGORYTEMP"
     }
-    fetch(`/aboutUs.html/${search}/${category}`, {method: "get"})
+    fetch(`/aboutUs.html/search/${search}/${category}`, {method: "get"})
                 .then(async (response) => {
                   return await response.json()
                 })

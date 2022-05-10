@@ -170,7 +170,7 @@
     if(category == ""){
       category = "EMPTYCATEGORYTEMP"
     }
-    fetch(`/login.html/${search}/${category}`, {method: "get"})
+    fetch(`/login.html/search/${search}/${category}`, {method: "get"})
                 .then(async (response) => {
                   return await response.json()
                 })

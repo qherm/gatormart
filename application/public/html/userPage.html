@@ -335,7 +335,7 @@
       if(category == ""){
         category = "EMPTYCATEGORYTEMP"
       }
-      fetch(`/userPage.html/${search}/${category}`, {method: "get"})
+      fetch(`/userPage.html/search/${search}/${category}`, {method: "get"})
                   .then(async (response) => {
                     return await response.json()
                   })
