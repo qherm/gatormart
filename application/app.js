@@ -43,9 +43,7 @@ app.use((err, req, res, next) => {
   res.render("error", { err_message: err });
 });
 
-app.get('/search/:category/:search', search.redirect_search);
-app.get('/search//',search.redirect_search);
-app.get('/searchResult/:category/:search', search.search);
+// app.get('/search', search.search);
 app.post('/register', auth.register);
 
 // app.use((req, res, next) => {

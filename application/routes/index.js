@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+const search = require('./search');
 // var isLoggedIn = require('../middleware/routeprotectors').userIsLoggedIn;
 // var { getRecentPosts, getPostById, getCommentsByPostId } = require('../middleware/postsmiddleware');
 // var db = require('../config/database');
@@ -60,9 +61,7 @@ router.get("/message", (req, res, next) => {
   res.render("message");
 });
 
-router.get("/searchResult", (req, res, next) => {
-  res.render("searchResult");
-});
+router.get("/searchResult", search.search);
 
 // router.use("/postItem", isLoggedIn);
 router.get("/postItem", (req, res, next) => {

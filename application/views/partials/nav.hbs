@@ -8,7 +8,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   {{!-- TEMPORARY --}}
-      <button onclick="redirect_search('this is a test','of the search bar');"></button>
+      <button onclick="search('this is a test','of the search bar');"></button>
   {{!-- TEMPORARY --}}
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -38,7 +38,7 @@
       </div> --}}
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit"
-        onclick="redirect_search(document.getElementById('search').value, document.getElementById('category').value)">
+        onclick=`search("","")`>
         <i class="fa fa-search fa-lg" aria-hidden="true"></i>
       </button>
     </form>
