@@ -22,59 +22,13 @@ DROP TABLE IF EXISTS gatormartdb.users ;
 
 CREATE TABLE IF NOT EXISTS gatormartdb.users (
   id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(225) NOT NULL,
+  full_name VARCHAR(225) NOT NULL,
   email VARCHAR(225) UNIQUE NOT NULL,
   username VARCHAR(225) UNIQUE NOT NULL,
-  password VARCHAR(225) NOT NULL,
+  passwd VARCHAR(225) NOT NULL,
   bio VARCHAR(225) NOT NULL,
   phone_number VARCHAR(225) NOT NULL,
   PRIMARY KEY (id));
-
-
--- -----------------------------------------------------
--- Table gatormartdb.post
--- -----------------------------------------------------
-DROP TABLE IF EXISTS gatormartdb.posts ;
-
-CREATE TABLE IF NOT EXISTS gatormartdb.posts (
-  id INT NOT NULL AUTO_INCREMENT,
-  user_id INT NOT NULL,
-  title VARCHAR(225) NOT NULL,
-  category_id INT NOT NULL,
-  available BIT NOT NULL,
-  description VARCHAR(225) NOT NULL,
-  price FLOAT NOT NULL,
-  type VARCHAR(225) NOT NULL,
-  direction VARCHAR(225) NOT NULL,
-  PRIMARY KEY (id)
-);
-
--- -----------------------------------------------------
--- Table gatormartdb.post
--- -----------------------------------------------------
-DROP TABLE IF EXISTS gatormartdb.images;
-
-CREATE TABLE IF NOT EXISTS gatormartdb.images(
-  id INT NOT NULL AUTO_INCREMENT,
-  post_id INT NOT NULL,
-  PRIMARY KEY(id)
-  FOREIGN KEY(post_id) REFERENCES posts(id)
-);
-
--- -----------------------------------------------------
--- Table gatormartdb.reviews
--- -----------------------------------------------------
-DROP TABLE IF EXISTS gatormartdb.reviews ;
-
-CREATE TABLE IF NOT EXISTS gatormartdb.reviews (
-  id INT NOT NULL AUTO_INCREMENT,
-  `User_ID` INT NOT NULL,
-  `Post_ID` INT NOT NULL,
-  `Direction` VARCHAR(225) NOT NULL,
-  `Review_Describtion` VARCHAR(225) NOT NULL,
-  `Rating` INT NOT NULL,
-PRIMARY KEY (id));
-
 
 -- -----------------------------------------------------
 -- Table gatormartdb.categories
@@ -86,44 +40,117 @@ CREATE TABLE IF NOT EXISTS gatormartdb.categories (
   category VARCHAR(225) NOT NULL,
 PRIMARY KEY (id));
 
+-- -----------------------------------------------------
+-- Table gatormartdb.post
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS gatormartdb.posts;
+
+CREATE TABLE IF NOT EXISTS gatormartdb.posts (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  title VARCHAR(225) NOT NULL,
+  category_id INT NOT NULL,
+  available BIT NOT NULL,
+  description VARCHAR(225) NOT NULL,
+  price FLOAT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (category_id) REFERENCES categories(id)
+);
+
+-- -----------------------------------------------------
+-- Table gatormartdb.post
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS gatormartdb.images;
+
+CREATE TABLE IF NOT EXISTS gatormartdb.images(
+  id INT NOT NULL AUTO_INCREMENT,
+  post_id INT NOT NULL,
+  image_link VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (post_id) REFERENCES posts(id)
+);
+
+-- -----------------------------------------------------
+-- Table gatormartdb.messages
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS gatormartdb.messages;
+
+CREATE TABLE IF NOT EXISTS gatormartdb.messages (
+  id INT NOT NULL AUTO_INCREMENT,
+  body VARCHAR(255) NOT NULL,
+  post_id INT NOT NULL,
+  sender_id INT NOT NULL,
+  receiver_id INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (post_id) REFERENCES posts(id),
+  FOREIGN KEY (sender_id) REFERENCES users(id),
+  FOREIGN KEY (receiver_id) REFERENCES users(id)
+);
+
+-- -----------------------------------------------------
+-- Table gatormartdb.reviews
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS gatormartdb.reviews;
+
+CREATE TABLE IF NOT EXISTS gatormartdb.reviews (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  post_id INT NOT NULL,
+  is_buyer BIT NOT NULL,
+  review VARCHAR(225) NOT NULL,
+  rating INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (post_id) REFERENCES posts(id)
+);
+
+
 -- ---------------------------------------------------------------------------------------------------------- --
 -- 								DATA INSERTS                                                                  --
 -- ---------------------------------------------------------------------------------------------------------- --
 
-INSERT INTO User (ID, Name, Email, Username, Password, Bio_Description, Phone_Number)
-VALUES
-(1, 'Linor Shire', 'LShire1@mail.sfsu.edu', 'LShire1', 'UniquePassword1', 'Just a senior at SFSU!', '(111) 111 - 1111'),
-(2, 'Iglas Dunagan', 'IDunagan2@mail.sfsu.edu', 'IDunagan2', 'UniquePassword2', 'Just a junior at SFSU!', '(222) 222 - 222'),
-(3, 'Craymor Gresham', 'CGresham3@mail.sfsu.edu', 'CGresham3', 'UniquePassword3', 'Just a sophomore at SFSU!', '(333) 333 - 3333'),
-(4, 'Nicholas Briones', 'NBriones4@mail.sfsu.edu', 'NBriones4', 'UniquePassword4', 'Just a freshman at SFSU!', '(444) 444 - 4444'),
-(5, 'Alex Glover', 'AGlover5@mail.sfsu.edu', 'AGlover5', 'UniquePassword5', 'Just a teacher at SFSU!', '(555) 555 - 5555'),
-(6, 'Linus Griffin', 'LGriffin6@mail.sfsu.edu', 'LGriffin6', 'UniquePassword6', 'Just a faculty member at SFSU!', '(666) 666 - 6666'),
-(7, 'Mo Maurice', 'MMaurice7@mail.sfsu.edu', 'MMaurice7', 'UniquePassword7', 'Just another senior at SFSU!', '(777) 777 - 7777'),
-(8, 'Alex Gomez', 'AGomez8@mail.sfsu.edu', 'AGpomez8', 'UniquePassword8', 'Just another junior at SFSU!', '(888) 888 - 8888'),
-(9, 'Ricky Guillotte', 'RGuillotte9@mail.sfsu.edu', 'RGuillotte9', 'UniquePassword9', 'Just another sophomore at SFSU!', '(999) 999 - 9999'),
-(10, 'Leandro Brode', 'LBrode10@mail.sfsu.edu', 'LBrode10', 'UniquePassword10', 'Just another freshman at SFSU!', '(000) 000 - 0000');
 -- ---------------------------------------------------------------------------------------------------------- --
-INSERT INTO Category(ID, Category)
+INSERT INTO users (full_name, email, username, passwd, bio, phone_number)
 VALUES
-(1, 'Textbooks'),
-(2, 'Notes'),
-(3, 'Furniture');
+('Linor Shire', 'LShire1@mail.sfsu.edu', 'LShire1', 'UniquePassword1', 'Just a senior at SFSU!', '(111) 111 - 1111'),
+('Iglas Dunagan', 'IDunagan2@mail.sfsu.edu', 'IDunagan2', 'UniquePassword2', 'Just a junior at SFSU!', '(222) 222 - 222'),
+('Craymor Gresham', 'CGresham3@mail.sfsu.edu', 'CGresham3', 'UniquePassword3', 'Just a sophomore at SFSU!', '(333) 333 - 3333'),
+('Nicholas Briones', 'NBriones4@mail.sfsu.edu', 'NBriones4', 'UniquePassword4', 'Just a freshman at SFSU!', '(444) 444 - 4444'),
+('Alex Glover', 'AGlover5@mail.sfsu.edu', 'AGlover5', 'UniquePassword5', 'Just a teacher at SFSU!', '(555) 555 - 5555'),
+('Linus Griffin', 'LGriffin6@mail.sfsu.edu', 'LGriffin6', 'UniquePassword6', 'Just a faculty member at SFSU!', '(666) 666 - 6666'),
+('Mo Maurice', 'MMaurice7@mail.sfsu.edu', 'MMaurice7', 'UniquePassword7', 'Just another senior at SFSU!', '(777) 777 - 7777'),
+('Alex Gomez', 'AGomez8@mail.sfsu.edu', 'AGpomez8', 'UniquePassword8', 'Just another junior at SFSU!', '(888) 888 - 8888'),
+('Ricky Guillotte', 'RGuillotte9@mail.sfsu.edu', 'RGuillotte9', 'UniquePassword9', 'Just another sophomore at SFSU!', '(999) 999 - 9999'),
+('Leandro Brode', 'LBrode10@mail.sfsu.edu', 'LBrode10', 'UniquePassword10', 'Just another freshman at SFSU!', '(000) 000 - 0000');
+-- ---------------------------------------------------------------------------------------------------------- --
+INSERT INTO categories(category)
+VALUES
+('Textbooks'),
+('Notes'),
+('Furniture'),
+('Electronics'),
+('Fashion'),
+('Toys, Hobby & DIY'),
+('Art'),
+('Sports and Outdoor')
+;
 
 -- ---------------------------------------------------------------------------------------------------------- --
-INSERT INTO Post (ID, User_ID, Title, Category_ID, Available, Post_Description, Price, Type, Direction, File_Link)
+INSERT INTO posts (user_id, title, category_id, available, description, price)
 VALUES
-(1, 1, 'Learning Life: The Path to Academic Success and Personal Happiness', 1, 1, 'For self improvement class, okay quality.', 20, 'product', 'providing', '../images/BookSelfImprove.jpg'),
-(2, 2, 'Calculus: Early Transcendentals', 1, 1, 'For Calculus, it is slightly used..', 12, 'product', 'providing', '../images/BookCalculus.jpg'),
-(3, 3, 'Physics for Scientists and Engineers: A Strategic Approach', 1, 1, 'For physics, it is used/damaged.', 5, 'product', 'providing', '../images/BookPhysics.jpg'),
-(4, 4, 'Understanding and Using English Grammar', 1, 1, 'For English, it`s just like new!', 10, 'product', 'providing', '../images/BookEnglish.jpg'), 
-(5, 5, 'CSC 648 Notes', 2, 1, 'For Software Engineering, incredibly indepth!', 100, 'product', 'providing', '../images/NotesCSC648.jpg'),
-(6, 6, 'CSC 665 Notes', 2, 1, 'For Artifical Intelligence, not much written.', 5, 'product', 'providing', '../images/NotesCSC665.jpg'),
-(7, 7, 'CSC 642 Notes', 2, 1, 'For Human Computer Interaction, simple', 3, 'product', 'providing', '../images/NotesCSC642.jpg'),
-(8, 8, 'Coffee Table', 3, 1, 'Slightly stained coffee table, no damage, need gone ASAP!', 7, 'product', 'providing', '../images/FurnitureTable.jpg'),
-(9, 9, 'Computer Chair', 3, 1, 'Old computer chair; crusty, but comfortable!', 15, 'product', 'providing', '../images/FurnitureChair.jpg'),
-(10, 10, 'Couch', 3, 1, 'Freshly bought couch, doesnt fit in my dorm!', 30, 'product', 'providing', '../images/FurnitureCouch.jpg');
+(1, 'Learning Life: The Path to Academic Success and Personal Happiness', 1, 1, 'For self improvement class, okay quality.', 20),
+(2, 'Calculus: Early Transcendentals', 1, 1, 'For Calculus, it is slightly used..', 12),
+(3, 'Physics for Scientists and Engineers: A Strategic Approach', 1, 1, 'For physics, it is used/damaged.', 5),
+(4, 'Understanding and Using English Grammar', 1, 1, 'For English, it`s just like new!', 10), 
+(5, 'CSC 648 Notes', 2, 1, 'For Software Engineering, incredibly indepth!', 100),
+(6, 'CSC 665 Notes', 2, 1, 'For Artifical Intelligence, not much written.', 5),
+(7, 'CSC 642 Notes', 2, 1, 'For Human Computer Interaction, simple', 3),
+(8, 'Coffee Table', 3, 1, 'Slightly stained coffee table, no damage, need gone ASAP!', 7),
+(9, 'Computer Chair', 3, 1, 'Old computer chair; crusty, but comfortable!', 15),
+(10, 'Couch', 3, 1, 'Freshly bought couch, doesnt fit in my dorm!', 30);
 
 -- ---------------------------------------------------------------------------------------------------------- --
-SELECT * FROM GatorMartDB.User;
-SELECT * FROM GatorMartDB.Category;
-SELECT * FROM GatorMartDB.Post;
+INSERT INTO messages (body, post_id, sender_id, receiver_id)
+VALUES
+('I would like to buy this item', 1, 1, 2);
