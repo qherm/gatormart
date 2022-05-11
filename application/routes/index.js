@@ -12,11 +12,11 @@ router.get("/home", function (req, res, next) {
   res.render("home");
 });
 
-router.get("/aboutUs", function (req, res, next) {
-  res.render("aboutUs");
+router.get("/about", function (req, res, next) {
+  res.render("about");
 });
 
-router.get("/aboutMelissa", function (req, res, next) {
+router.get("/about", function (req, res, next) {
   res.render("aboutMelissa");
 });
 
@@ -73,9 +73,5 @@ router.get("/postItem", (req, res, next) => {
 router.get("/userPage", (req, res, next) => {
   res.render("userPage");
 });
-
-// router.get('/posts/:id(\\d+)', (req, res, next) => {
-//   res.render('imagepost', { title: `Post ${req.params.id}` });
-// });
 
 module.exports = router;
