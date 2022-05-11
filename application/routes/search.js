@@ -2,11 +2,21 @@ const express = require('express');
 const database = require('../db/db.js');
 
 class Search {
+    redirect_search(req, res){
+        res.redirect(`/searchResult/${req.category}/${req.search}`);
+    }
+
     search(req, res) {
-        var searchTerm = req.params.search;
+        var search = req.params.search;
         var category = req.params.category;
-        console.log(searchTerm, category);
-        let query = 'SELECT * FROM Post';
+        console.log(search, category);
+        let query;
+        
+        if(!category.length){
+            query = `SELECT * FROM Post WHERE Title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR category LIKE '%` + search + `%'`;
+        } else if(!search.length){
+            query = `SELECT * FROM Post WHERE category = '` + category + `'`;
+        }
         
         if (searchTerm != 'EMPTYSEARCHTEMP' && category != 'EMPTYCATEGORYTEMP'){
             query = `SELECT * FROM Post WHERE Category = '` + category + `' AND ( Title LIKE '%` + searchTerm + `%' OR Post_Description LIKE '%` + searchTerm + `%' OR Category LIKE '%` + searchTerm + `%')`;
@@ -21,14 +31,21 @@ class Search {
             query = `SELECT * FROM Post`;
         }
         database.query(query, (err, result) => {
+            console.log("in db query")
             if (err){
-                req.searchResult = "";
-                req.searchTerm = "";
-                req.category = "";
+                res.json({
+                    result: "",
+                    search: "",
+                    category: ""
+                })
             } else {
-                req.searchResult = result;
-                req.searchTerm = searchTerm;
-                req.category = category;
+                // res.json({
+                //     result: result,
+                //     search: search,
+                //     category: category
+                // });
+                console.log("here")
+                res.redirect('/searchResult')
             }
         });
     }
@@ -36,4 +53,4 @@ class Search {
 
 let search = new Search();
 
-module.exports = search.search;
+module.exports = search;

@@ -17,10 +17,11 @@
   },
   "homepage": "https://github.com/CSC-648-SFSU/csc648-03-sp22-team02#readme",
   "dependencies": {
-    "express": "^4.18.1",
-    "mysql": "^2.18.1",
-    "pg-promise": "^10.11.1",
     "ejs": "3.1.7",
-    "express-handlebars": "^5.3.0"
+    "express": "^4.18.1",
+    "express-handlebars": "^5.3.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.16",
+    "pg-promise": "^10.11.1"
   }
 }

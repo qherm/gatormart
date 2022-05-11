@@ -1,48 +1,10 @@
-// const express = require('express');
-// const exphbs = require('express-handlebars');
-// // const database = require('./db/db.js');
-// const app = express();
-
-// let path = require('path');
-
-// const search = require('./routes/search.js');
-// const auth = require('./routes/auth.js');
-
-// app.engine(
-//     "hbs",
-//     handlebars({
-//       layoutsDir: path.join(__dirname, "views/layouts"),
-//       partialsDir: path.join(__dirname, "views/partials"),
-//       extname: ".hbs",
-//       defaultLayout: "body",
-//       helpers: {
-//         emptyObject: (obj) => {
-//           return !(obj.constructor === Object && Object.keys(obj).length == 0);
-//         },
-//       },
-//     })
-//   );
-
-// app.set('view engine', 'hbs');
-
-// // app.use(express.static('public/html'));
-// // app.use(express.static('public/html/aboutPages'));
-// // app.use(express.static('public/images'));
-// // app.use(express.static('public/css'));
-
-// app.use(express.static(path.join(__dirname, 'public')));
-// app.set('views', path.join(__dirname, 'views'));
-
-// app.get('/search/:search/:category', search);
-// app.post('/register', auth.register);
-
-// module.exports = app;
-
 const express = require("express");
 var app = express();
 let path = require("path");
 var handlebars = require("express-handlebars");
 var indexRouter = require("./routes/index");
+const search = require('./routes/search');
+const auth = require('./routes/auth');
 // var usersRouter = require('./routes/users');
 // var postRouter = require('./routes/posts');
 // var commentRouter = require('./routes/comments');
@@ -80,6 +42,11 @@ app.use((err, req, res, next) => {
   console.log(err);
   res.render("error", { err_message: err });
 });
+
+app.get('/search/:category/:search', search.redirect_search);
+app.get('/search//',search.redirect_search);
+app.get('/searchResult/:category/:search', search.search);
+app.post('/register', auth.register);
 
 // app.use((req, res, next) => {
 //     requestPrint(req.url);

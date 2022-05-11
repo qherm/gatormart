@@ -16,7 +16,7 @@ router.get("/about", function (req, res, next) {
   res.render("about");
 });
 
-router.get("/about", function (req, res, next) {
+router.get("/aboutUs", function (req, res, next) {
   res.render("aboutMelissa");
 });
 
