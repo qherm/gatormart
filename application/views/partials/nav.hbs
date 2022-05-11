@@ -13,7 +13,7 @@
         <a class="nav-link" href="/about">About Us <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" id="navBarSearchForm" onsubmit="return search('test','test search')">
+    <form class="form-inline my-2 my-lg-0" id="navBarSearchForm" onsubmit="return search(document.getElementById('searchbar').value, document.getElementById('category').value)">
       <div class="select-dropdown">
         <select name="category" id="category">
           <option value="">All</option>
@@ -23,7 +23,7 @@
         </select>
       </div>
 
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="search">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="searchbar">
       <button class="btn btn-warning my-2 my-sm-0 search-button">
         <i class="fa fa-search fa-lg" aria-hidden="true"></i>
       </button>
