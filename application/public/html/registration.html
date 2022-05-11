@@ -26,10 +26,10 @@
         <!-- Navbar -->
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="./VPTestHome.html">
+          <a class="navbar-brand" href="./home.html">
             <img src="../images/Gmart.png" width="30" height="30" alt="">
           </a>
-          <a class="navbar-brand" href="./VPTestHome.html">GatorMart</a>
+          <a class="navbar-brand" href="./home.html">GatorMart</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,7 @@
                   <option value="Furniture">Furniture</option>
                 </select>
               </div>
-              <input class="form-control mr-sm-2" id = "search" autocomplete = "off" type="text" placeholder="Search" aria-label="Search">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
 
               <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit"
                 onclick="test(document.getElementById('search').value, document.getElementById('category').value)">
@@ -75,9 +75,6 @@
 
       </header>
 
-
-      <!-- TESTING IF NOTIFICATION SHOWS-->
-      <div id="feedback"></div>
       <!-- Header Ends-->
 
       <div class="page-wrap">
@@ -88,25 +85,24 @@
           <div class="user-registration-right-column" method="POST" enctype="application/x-www-form-urlencoded">
             <fieldset class="form">
               <div class="register-h1">Full Name<span>*</span></div>
-              <input id="text-box full-name-register" type="text" placeholder="First Last" required name="name">
+              <input id="text-box" type="text" placeholder="First Last" required name="name">
               <div class="register-h1">SFSU email<span>*</span></div>
-              <input id="text-box email-register" type="text" placeholder="Email" required name="email">
+              <input id="text-box" type="text" placeholder="Email" required name="email">
               <div class="check">Must be an official SFSU email.</div>
               <div class="register-h1">Username<span>*</span></div>
-              <input id="text-box username-register" type="text" placeholder="Username" required name="name"><br />
+              <input id="text-box" type="text" placeholder="Username" required name="name"><br />
               <div class="check">This is the display name that will be used on GatorMart.</span>
               </div>
               <div class="register-h1">Password<span>*</span></div>
-              <input id="text-box password-register" type="password" placeholder="Password" required name="password">
+              <input id="text-box" type="password" placeholder="Password" required name="password">
               <div class="check"><span id="pass-req1" class="req">Password must be 8 or more characters, and contain upper
                   and lowercase letters.</span>
               </div>
               <div class="register-h1">Confirm Password<span>*</span></div>
-              <input id="text-box confirm-password-register" type="password" placeholder="Confirm Your Password" required name="cpassword">
+              <input id="text-box" type="password" placeholder="Confirm Your Password" required name="cpassword">
               <div class="check">Passwords must <span id="confirm-pass-req" class="req">match.</span></div>
               <br />
-              <!-- <button type="submit" id="register-button" onclick="register(document.getElementById('full-name-register').value, document.getElementById('email-register').value, document.getElementById('username-register').value, document.getElementById('password-register').value, document.getElementById('confirm-password-register').value)">Submit</button> -->
-              <button type="submit" id="register-button" onclick="register('UserTest111', 'userTest12345@mail.sfsu.edu', 'IamUser1', 'Thisisnotsecure', 'Thisisnotsecure')">Submit</button>
+              <button type="submit" id="register-button">Submit</button>
               <div class="registration-bottom">Already have an account? <a href="../html/login.html">Log In Here</a></div>
             </fieldset>
           </div>
@@ -174,50 +170,3 @@
   </body>
 
 </html>
-
-
-<script>
-  function test(search, category) {
-    if(search == ""){
-      search = "EMPTYSEARCHTEMP"
-    }
-    if(category == ""){
-      category = "EMPTYCATEGORYTEMP"
-    }
-    fetch(`/registration.html/search/${search}/${category}`, {method: "get"})
-                .then(async (response) => {
-                  return await response.json()
-                })
-                .then(async (result) => 
-                {
-                  const searchResult = result.searchResult;
-                  sessionStorage.searchResult = JSON.stringify(searchResult)
-                  sessionStorage.searchTerm = search
-                  sessionStorage.categoryTerm = category
-
-                  document.location.href = '/VPResult.html'
-    })
-  }
-
-  function register(name, email, username, password, confirmPassword){
-    var password = encryptPassword(userPassword);
-    var confirmPassword = encryptPassword(userConfirmPassword);
-
-    fetch('/register', {
-      method: "post", 
-      body: {
-        email: email,
-        name: name,
-        username: username,
-        password: password,
-        confirmPassword: confirmPassword
-      }})
-      .then(async (response) => {
-        return await response.json()
-      })
-      .then(async (result) => {
-        feedback = result.message;
-        document.getElementById("feedback").innerHTML += `<p class="text-left">${feedback}<br></p>`
-      })
-  }
-</script>

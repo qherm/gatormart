@@ -25,16 +25,16 @@
 
 </html>
 
-<body onload="displayResults();">
+<body>
   <div class="main-container">
     <header>
       <!-- Navbar -->
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="./VPTestHome.html">
+        <a class="navbar-brand" href="./home.html">
           <img src="../images/Gmart.png" width="30" height="30" alt="">
         </a>
-        <a class="navbar-brand" href="./VPTestHome.html">GatorMart</a>
+        <a class="navbar-brand" href="./home.html">GatorMart</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -55,7 +55,7 @@
                 <option value="Furniture">Furniture</option>
               </select>
             </div>
-            <input class="form-control mr-sm-2" id="search" autocomplete="off" type="text" placeholder="Search" aria-label="Search">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
 
             <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit"
               onclick="test(document.getElementById('search').value, document.getElementById('category').value)">
@@ -81,67 +81,58 @@
     </header>
     <!-- Header Ends-->
     <div class="page-wrap">
-      <section class="section my-4">
-        <div class="container text-center">
-          <div class="title py-5">
-            <div id="resultsGiven"></div>
+      <!-- <div id="main-content">
+        <div class="itemcard">
+          <img class="itemcard-image" src="" alt="Missing Image">
+          <div class="itemcard-body">
+            <p class="itemcard-title">Learning Life: The Path to Academic Success and Personal Happiness</p>
+            <p class="itemcard-text">Card description</p>
+            <a href="" class="anchor-buttons">Post Details</a>
           </div>
-
-
-          <section class="mt-5">
-            <div class="row">
-              <div id="main-content"></div>
-            </div>
-          </section>
-          <!-- </div>
-        </div> -->
-          <!-- </section> -->
-
-
-          <!-- <section class="section my-4">
+        </div>
+      </div> -->
+      <section class="section my-4">
         <div class="container text-center">
           <div class="title py-5">
             <p class="text-left">1-6 0f 6 results for "Intro to Java" <button type="button"
                 class="btn btn-outline-secondary btn-sm float-md-right">Sort by price</button></p>
-          </div> -->
-          <!-- Image cards  -->
-          <!-- <section class="mt-5">
-          <div class="row">
-            <div class="col-md-3 mb-5">
-              <div class="card shadow" style="width: 18rem;">
-                <a href="#">
-                  <img
-                    src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
-                    class="card-img-top" alt="..." /></a>
-                <div class="card-body">
-                  <h5 class="card-title font-poppins">Item Name</h5>
-                  <h6 class="mb-3">$52.99</h6>
-                  <a href="#" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 mb-5">
-              <div class="card shadow" style="width: 18rem;">
-                <a href="#">
-                  <img
-                    src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
-                    class="card-img-top" alt="..." /></a>
-                <div class="card-body">
-                  <h5 class="card-title font-poppins">Item Name</h5>
-                  <h6 class="mb-3">$52.99</h6>
-                  <a href="#" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
-                </div>
-              </div>
-            </div>
+
           </div>
-        </section> -->
+          <!-- Image cards  -->
+          <section class="mt-5">
+            <div class="row">
+              <div class="col-md-3 mb-5">
+                <div class="card shadow" style="width: 18rem;">
+                  <a href="#">
+                    <img
+                      src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
+                      class="card-img-top" alt="..." /></a>
+                  <div class="card-body">
+                    <h5 class="card-title font-poppins">This is a really long Item Name</h5>
+                    <h6 class="mb-3">$52.99</h6>
+                    <a href="#" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-5">
+                <div class="card shadow" style="width: 18rem;">
+                  <a href="#">
+                    <img
+                      src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
+                      class="card-img-top" alt="..." /></a>
+                  <div class="card-body">
+                    <h5 class="card-title font-poppins">Item Name</h5>
+                    <h6 class="mb-3">$52.99</h6>
+                    <a href="#" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
         </div>
       </section>
     </div>
-
-
-
-    <!-- </div> -->
     <!-- Footer Starts-->
     <div class="footer">
       <footer class="footer-distributed" id="footer">
@@ -207,70 +198,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-<script>
-  function test(search, category) {
-    if (search == "") {
-      search = "EMPTYSEARCHTEMP"
-    }
-    if (category == "") {
-      category = "EMPTYCATEGORYTEMP"
-    }
-    fetch(`/VPResult.html/search/${search}/${category}`, { method: "get" })
-      .then(async (response) => {
-        return await response.json()
-      })
-      .then(async (result) => {
-        const searchResult = result.searchResult;
-        sessionStorage.searchResult = JSON.stringify(searchResult)
-        sessionStorage.searchTerm = search
-        sessionStorage.categoryTerm = category
-
-        document.location.href = '/VPResult.html'
-      })
-  }
-</script>
-
-<script>
-  function displayResults() {
-    var searchResults = JSON.parse(sessionStorage.searchResult);
-    var search = sessionStorage.searchTerm;
-    var category = sessionStorage.categoryTerm;
-
-    let resultsString = "1- " + searchResults.length + " of " + searchResults.length + " results ";
-    if (search != "EMPTYSEARCHTEMP" && category != "EMPTYCATEGORYTEMP") {
-      resultsString += ` for "` + search + `" in "` + category + `"`;
-    }
-    else if (search == "EMPTYSEARCHTEMP" && category != "EMPTYCATEGORYTEMP") {
-      resultsString += ` in "` + category + `"`;
-    }
-    else if (search != "EMPTYSEARCHTEMP" && category == "EMPTYCATEGORYTEMP") {
-      resultsString += ` for "` + search + `"`;
-    }
-    else {
-      resultsString += " total";
-    }
-    document.getElementById("resultsGiven").innerHTML += `<p class="text-left">${resultsString}<button type="button"
-                class="btn btn-outline-secondary btn-sm float-md-right">Sort by price</button></p>`
-
-    for (let i = 0; i < searchResults.length; i++) {
-      document.getElementById("main-content").innerHTML +=
-        `<div class="col-md-3 mb-5">
-           <div class="card shadow" style="width: 18rem;">
-           <a href="/productDetail.html">
-           <img src = "${searchResults[i].File_Link}" alt="${searchResults[i].Title}" class="card-img-top" alt="..." /></a>
-           <div class="card-body">
-              <h5 class="card-title font-poppins">${searchResults[i].Title}</h5>
-              <h6 class="mb-3">$${searchResults[i].Price}</h6>
-            <a href="/productDetail.html" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
-          </div>
-          </div>
-          </div>`
-    }
-  }
-</script>

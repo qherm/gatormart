@@ -1,0 +1,140 @@
+<!--
+      FILE: views/home.hbs
+      DESCRIPTION: The home page of GatorMart. Contains a welcome message, description, and featured items. 
+
+      ADDED BY: Xiaoqing Yao
+  -->
+
+<body>
+    <div class="main-container">
+        <header>
+            <!-- Navbar -->
+
+            <!-- Navbar -->
+
+        </header>
+        <!-- Header Ends-->
+        <div class="page-wrap">
+            <div class="welcome-bg">
+            <div class="welcome">
+                <div class="welcome-left">    
+                    <h1>Welcome to GatorMart</h1>
+                </div>  
+            <div class="welcome-right">
+                <h3>
+                    Bulletin boards and paper waste are a thing of the past.<br> Find anything and everything you need
+                    from the SFSU community here.
+                </h3>
+            </div>
+            </div>
+            </div>
+            {{!-- <div class="bg-image position-relative">
+                <img src="../images/SFSU.jpeg" class="w-100" />
+                <div class="mask position-absolute top-0 end-0 bottom-0 start-0 "
+                    style="background-color: rgba(0, 0, 0, 0.6)">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <p class="h1 text-white mb-0 text-uppercase">Welcome to GatorMart!</p>
+                    </div> --}}
+                </div>
+            </div>
+            <section class="section my-4">
+                <div class="container text-center">
+                    <div class="title py-5">
+                        <h2>Featured Items</h2>
+                    </div>
+                    <!-- Image cards  -->
+                    <section class="mt-5">
+                        <div class="row">
+                            <div class="col-md-3 mb-5">
+                                <div class="card shadow" style="width: 18rem;">
+                                    <a href="productDetail">
+                                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
+                                            class="card-img-top" alt="..." /></a>
+                                    <div class="card-body">
+                                        <h5 class="card-title font-poppins">Calculus: Early Transcendentals</h5>
+                                        <span>textbooks </span>
+                                        <h6 class="mb-3">$52</h6>
+                                        <a href="productDetail" class="btn btn-primary font-size-09 text-light product-button">View
+                                            Details</a>
+                                        <a href="message"
+                                            class="btn btn-primary font-size-09 text-light product-button">Message
+                                            Seller</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-5">
+                                <div class="card shadow" style="width: 18rem;">
+                                    <a href="#">
+                                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
+                                            class="card-img-top" alt="..." /></a>
+                                    <div class="card-body">
+                                        <h5 class="card-title font-poppins">weekly CSC220 tutoring</h5>
+                                        <span>services </span>
+                                        <h6 class="mb-3">$75</h6>
+                                        <a href="productDetail" class="btn btn-primary font-size-09 text-light product-button">View
+                                            Details</a>
+                                        <a href="message"
+                                            class="btn btn-primary font-size-09 text-light product-button">Message
+                                            Seller</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-5">
+                                <div class="card shadow" style="width: 18rem;">
+                                    <a href="#">
+                                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
+                                            class="card-img-top" alt="..." /></a>
+                                    <div class="card-body">
+                                        <h5 class="card-title font-poppins">iPad Pro 7th Generation: Space Grey 128MB
+                                        </h5>
+                                        <span>electronics </span>
+                                        <h6 class="mb-3">$200</h6>
+                                        <a href="#" class="btn btn-primary font-size-09 text-light product-button">View
+                                            Details</a>
+                                        <a href="#"
+                                            class="btn btn-primary font-size-09 text-light product-button">Message
+                                            Seller</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-5">
+                                <div class="card shadow" style="width: 18rem;">
+                                    <a href="#">
+                                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
+                                            class="card-img-top" alt="..." /></a>
+                                    <div class="card-body">
+                                        <h5 class="card-title font-poppins">Desk chair</h5>
+                                        <span>furniture </span>
+                                        <h6 class="mb-3">$80</h6>
+                                        <a href="#" class="btn btn-primary font-size-09 text-light product-button">View
+                                            Details</a>
+                                        <a href="#"
+                                            class="btn btn-primary font-size-09 text-light product-button">Message
+                                            Seller</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </section>
+
+        </div>
+        </section>
+
+    </div>
+
+    <!-- Footer Starts-->
+
+    </div>
+    <!-- Footer Ends-->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>

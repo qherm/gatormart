@@ -26,10 +26,10 @@
         <!-- Navbar -->
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="./VPTestHome.html">
+          <a class="navbar-brand" href="./home.html">
             <img src="../images/Gmart.png" width="30" height="30" alt="">
           </a>
-          <a class="navbar-brand" href="./VPTestHome.html">GatorMart</a>
+          <a class="navbar-brand" href="./home.html">GatorMart</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,7 @@
                   <option value="Furniture">Furniture</option>
                 </select>
               </div>
-              <input class="form-control mr-sm-2" id = "search" autocomplete = "off" type="text" placeholder="Search" aria-label="Search">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
 
               <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit"
                 onclick="test(document.getElementById('search').value, document.getElementById('category').value)">
@@ -160,28 +160,3 @@
   </body>
 
 </html>
-
-
-<script>
-  function test(search, category) {
-    if(search == ""){
-      search = "EMPTYSEARCHTEMP"
-    }
-    if(category == ""){
-      category = "EMPTYCATEGORYTEMP"
-    }
-    fetch(`/login.html/search/${search}/${category}`, {method: "get"})
-                .then(async (response) => {
-                  return await response.json()
-                })
-                .then(async (result) => 
-                {
-                  const searchResult = result.searchResult;
-                  sessionStorage.searchResult = JSON.stringify(searchResult)
-                  sessionStorage.searchTerm = search
-                  sessionStorage.categoryTerm = category
-
-                  document.location.href = '/VPResult.html'
-    })
-  }
-</script>

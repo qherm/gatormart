@@ -1,0 +1,63 @@
+<!--
+      FILE: views/registration.hbs
+      DESCRIPTION: This page is generated when the user wishes to create an account at GatorMart. 
+      It prompts the user to fill out a form with their SFSU email and basic information. 
+
+      ADDED BY: Melissa Ho
+  -->
+
+<body>
+  <div class="main-container">
+    <header>
+      <!-- Navbar -->
+      <!-- Navbar -->
+
+    </header>
+
+    <!-- Header Ends-->
+
+    <div class="page-wrap">
+      <div class="registration-container">
+        <div class="user-registration-left-column">
+          <div class="registration-label">Register for GatorMart</div>
+        </div>
+        <div class="user-registration-right-column" method="POST" enctype="application/x-www-form-urlencoded">
+          <fieldset class="form">
+            <div class="register-h1">Full Name<span>*</span></div>
+            <input id="text-box" type="text" placeholder="First Last" required name="name">
+            <div class="register-h1">SFSU email<span>*</span></div>
+            <input id="text-box" type="text" placeholder="Email" required name="email">
+            <div class="check">Must be an official SFSU email.</div>
+            <div class="register-h1">Username<span>*</span></div>
+            <input id="text-box" type="text" placeholder="Username" required name="name"><br />
+            <div class="check">This is the display name that will be used on GatorMart.</span>
+            </div>
+            <div class="register-h1">Password<span>*</span></div>
+            <input id="text-box" type="password" placeholder="Password" required name="password">
+            <div class="check"><span id="pass-req1" class="req">Password must be 8 or more characters, and contain upper
+                and lowercase letters.</span>
+            </div>
+            <div class="register-h1">Confirm Password<span>*</span></div>
+            <input id="text-box" type="password" placeholder="Confirm Your Password" required name="cpassword">
+            <div class="check">Passwords must <span id="confirm-pass-req" class="req">match.</span></div>
+            <br />
+            <button type="submit" id="register-button">Submit</button>
+            <div class="registration-bottom">Already have an account? <a href="/login">Log In Here</a></div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <!-- Footer Starts-->
+
+    <!-- Footer Ends-->
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>

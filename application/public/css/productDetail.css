@@ -56,13 +56,13 @@ body{
     margin-bottom: 30px;
 }
 
-.product-info span {
+/* .product-info span {
     font-size: 12px;
     color: #358ed7;
     letter-spacing: 1px;
     text-transform: uppercase;
     text-decoration: none;
-}
+} */
 
 .product-title {
     font-size: 40px;
