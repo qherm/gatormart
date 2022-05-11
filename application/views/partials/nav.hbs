@@ -8,7 +8,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   {{!-- TEMPORARY --}}
-      <button onclick="search('this is a test','of the search bar');"></button>
+      <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit" onclick="search('thisis a stest', 'sbearebageb')">
+        <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+      </button>
   {{!-- TEMPORARY --}}
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -16,7 +18,8 @@
         <a class="nav-link" href="/about">About Us <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" id="navBarSearchForm">
+    <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+    <form class="form-inline my-2 my-lg-0" id="navBarSearchForm" target="dummyframe">
       <div class="select-dropdown">
         <select name="category" id="category">
           <option value="">All</option>
@@ -36,9 +39,8 @@
           <a class="dropdown-item" href="#">Electronics</a>
         </div>
       </div> --}}
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit"
-        onclick=`search("","")`>
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="search">
+      <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit" onclick="search('thisis a stest', 'sbearebageb')">
         <i class="fa fa-search fa-lg" aria-hidden="true"></i>
       </button>
     </form>
@@ -54,4 +56,7 @@
       </li>
     </ul>
   </div>
+  <button class="btn btn-warning my-2 my-sm-0 search-button" type="submit" onclick="search('thisis a stest', 'sbearebageb')">
+        Aegiasjf<i class="fa fa-search fa-lg" aria-hidden="true"></i>
+  </button>
 </nav>

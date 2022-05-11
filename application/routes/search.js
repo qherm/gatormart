@@ -14,7 +14,6 @@ class Search {
         let category = req.query.category;
         let query;
         console.log(search, category);
-
         
         if(!category.length&&!search.length){
             query = "SELECT * FROM posts";
