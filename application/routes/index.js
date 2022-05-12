@@ -61,7 +61,12 @@ router.get("/message", (req, res, next) => {
   res.render("message");
 });
 
-router.get("/searchResult", search.search);
+router.get("/search", search.search);
+
+
+router.get("/searchResult", (req, res, next) => {
+  res.render("searchResult");
+});
 
 // router.use("/postItem", isLoggedIn);
 router.get("/postItem", (req, res, next) => {
