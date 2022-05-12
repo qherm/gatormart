@@ -524,3 +524,9 @@ for search button on nav bar */
   text-transform: uppercase;
   text-decoration: none;
 }
+
+.card-img-top{
+  width: 30rem; /* You can set the dimensions to whatever you want */
+  height: 15rem;
+  object-fit: cover;
+}

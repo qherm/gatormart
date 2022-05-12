@@ -12,36 +12,8 @@ router.get("/home", function (req, res, next) {
   res.render("home");
 });
 
-router.get("/aboutUs", function (req, res, next) {
-  res.render("aboutUs");
-});
-
-router.get("/aboutMelissa", function (req, res, next) {
-  res.render("aboutMelissa");
-});
-
-router.get("/aboutShane", function (req, res, next) {
-  res.render("aboutShane");
-});
-
-router.get("/aboutMinggu", function (req, res, next) {
-  res.render("aboutMinggu");
-});
-
-router.get("/aboutChuting", function (req, res, next) {
-  res.render("aboutChuting");
-});
-
-router.get("/aboutRobert", function (req, res, next) {
-  res.render("aboutRobert");
-});
-
-router.get("/aboutJoe", function (req, res, next) {
-  res.render("aboutJoe");
-});
-
-router.get("/aboutXiaoqing", function (req, res, next) {
-  res.render("aboutXiaoqing");
+router.get("/about", function (req, res, next) {
+  res.render("about");
 });
 
 router.get("/login", (req, res, next) => {
@@ -52,26 +24,26 @@ router.get("/registration", (req, res, next) => {
   res.render("registration");
 });
 
-router.get("/productDetail", (req, res, next) => {
-  res.render("productDetail");
+router.get("/pdetail", (req, res, next) => {
+  res.render("pdetail");
 });
 
 router.get("/message", (req, res, next) => {
   res.render("message");
 });
 
-router.get("/searchResult", (req, res, next) => {
-  res.render("searchResult");
+router.get("/result", (req, res, next) => {
+  res.render("result");
 });
 
 // router.use("/postItem", isLoggedIn);
-router.get("/postItem", (req, res, next) => {
-  res.render("postItem");
+router.get("/post", (req, res, next) => {
+  res.render("post");
 });
 
 // router.use("/userPage", isLoggedIn);
-router.get("/userPage", (req, res, next) => {
-  res.render("userPage");
+router.get("/profile", (req, res, next) => {
+  res.render("profile");
 });
 
 // router.get('/posts/:id(\\d+)', (req, res, next) => {
