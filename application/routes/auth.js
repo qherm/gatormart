@@ -38,6 +38,17 @@ class Register extends Auth {
         let password = req.body.password;
         let confirmPassword = req.body.confirmPassword;
 
+        /*
+            PREVIOUS QUERY TO ADD A USER INTO DB
+            let query = `INSERT INTO users (full_name, email, username, passwd, bio, phone_number) VALUES ('` 
+                    + username +  `', '`
+                    + email +  `', '`
+                    + username +  `', '`
+                    + userencryptedpassword +  `', '`
+                    + '' +  `', '`
+                    + '' +  `')`;
+                    
+        */
         res.json({
             finalMessage: req.resultMessage,
         });
