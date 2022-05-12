@@ -2,24 +2,16 @@ const express = require('express');
 const database = require('../db/db.js');
 
 class Search {
-    // redirect_search(req, res){
-    //     let search = req.query.testdne;
-    //     let category = "";
-    //     console.log(search)
-    //     res.redirect(`/searchResult?category=${req.category}&search=${req.search}`);
-    // }
-
     search(req, res) {
         let search = req.query.search;
         let category = req.query.category;
         let query;
-        console.log(search, category);
         
-        if(!category.length&&!search.length){
+        if(!category&&!search){
             query = "SELECT * FROM posts";
-        } else if(!category.length){
+        } else if(!category){
             query = `SELECT * FROM posts WHERE title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR category LIKE '%` + search + `%'`;
-        } else if(!search.length){
+        } else if(!search){
             query = `SELECT * FROM posts WHERE category = '` + category + `'`;
         } else{
             query = `SELECT * FROM posts WHERE category = '` + category + `' AND ( Title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR Category LIKE '%` + search + `%')`;
@@ -41,18 +33,16 @@ class Search {
         database.query(query, (err, result) => {
             console.log("in db query")
             if (err){
-                res.render('searchResult', {
+                res.json({
                     result: "",
-                    category: category,
-                    search: search
+                    category: "temp_category",
+                    search: "temp_search"
                 });
             } else {
-                console.log("here")
-                console.log(result)
-                res.render('searchResult', {
+                res.json({
                     result: result,
-                    category: category,
-                    search: search
+                    category: "temp_category",
+                    search: "temp_search"
                 });
             }
         });

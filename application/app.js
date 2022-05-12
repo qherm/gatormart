@@ -25,15 +25,14 @@ app.engine(
 );
 
 app.set("view engine", "hbs");
-// app.use(express.static('public/html'))
-// app.use(express.static('public/html/aboutPages'))
+
+// Maybe important...
 app.use(express.static("public/images"));
 app.use(express.static("public/css"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
-// app.use('/users', usersRouter);
-// app.use('/posts', postRouter);
-// app.use('/comments', commentRouter);
+//
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/public", express.static(path.join(__dirname, "public")));
@@ -43,7 +42,14 @@ app.use((err, req, res, next) => {
   res.render("error", { err_message: err });
 });
 
-// app.get('/search', search.search);
+app.get("/search", (req,res,next)=>{
+  res.redirect('searchResult');
+});
+
+app.get('/searchResult', (req,res,next)=>{
+  res.render('searchResult');
+});
+
 app.post('/register', auth.register);
 
 // app.use((req, res, next) => {
