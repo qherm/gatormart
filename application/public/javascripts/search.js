@@ -8,7 +8,8 @@ let search = (search, category) => {
       const categ = result.category;
       console.log("Hi!")
       console.log(result.result);
-      document.location.href = `/searchResult?category=${result.category}&search=${result.search}&result=${result.result}`;
+      document.location.href = `/searchResult`;
+      //document.location.href = `/searchResult?category=${result.category}&search=${result.search}&result=${result.result}`;
       
       var searchResults = result.result;
       var searchTerm = result.search;
