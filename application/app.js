@@ -1,13 +1,10 @@
 const express = require("express");
 var app = express();
 let path = require("path");
-var handlebars = require("express-handlebars");
-var indexRouter = require("./routes/index");
-const search = require('./routes/search');
-const auth = require('./routes/auth');
-// var usersRouter = require('./routes/users');
-// var postRouter = require('./routes/posts');
-// var commentRouter = require('./routes/comments');
+const handlebars = require("express-handlebars");
+const indexRouter = require("./routes/index");
+const aboutRouter = require("./routes/about");
+const searchRouter = require("./routes/search");
 
 app.engine(
   "hbs",
@@ -24,14 +21,20 @@ app.engine(
   })
 );
 
+// Use hbs views folder
 app.set("view engine", "hbs");
+app.set('views', path.join(__dirname, '/views'));
 
-// Maybe important...
+
 app.use(express.static("public/images"));
 app.use(express.static("public/css"));
 app.use(express.static(path.join(__dirname, "public")));
+
+// Define routes
 app.use("/", indexRouter);
-//
+app.use("/about", aboutRouter);
+app.use("/searchResult", searchRouter);
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -41,20 +44,5 @@ app.use((err, req, res, next) => {
   console.log(err);
   res.render("error", { err_message: err });
 });
-
-app.get("/search", (req,res,next)=>{
-  res.redirect('searchResult');
-});
-
-app.get('/searchResult', (req,res,next)=>{
-  res.render('searchResult');
-});
-
-app.post('/register', auth.register);
-
-// app.use((req, res, next) => {
-//     requestPrint(req.url);
-//     next();
-// });
 
 module.exports = app;

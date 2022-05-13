@@ -153,3 +153,11 @@ VALUES
 INSERT INTO messages (body, post_id, sender_id, receiver_id)
 VALUES
 ('I would like to buy this item', 1, 1, 2);
+-- ---------------------------------------------------------------------------------------------------------- --
+INSERT INTO images ()
+
+
+
+
+
+'../images/BookSelfImprove.jpg'
