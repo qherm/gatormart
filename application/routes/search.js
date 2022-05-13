@@ -1,6 +1,7 @@
 const express = require('express');
 const database = require('../db/db.js');
 
+
 class Search {
     // redirect_search(req, res){
     //     let search = req.query.testdne;
@@ -42,13 +43,13 @@ class Search {
                 res.json({
                     result: "",
                     category: category,
-                    search: search
+                    searchTerm: search
                 });
             } else {
                 res.json({
                     result: result,
                     category: category,
-                    search: search
+                    searchTerm: search
                 });
             }
         });
