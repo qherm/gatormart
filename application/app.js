@@ -2,9 +2,12 @@ const express = require("express");
 var app = express();
 let path = require("path");
 const handlebars = require("express-handlebars");
+
+// Define Routers
 const indexRouter = require("./routes/index");
 const aboutRouter = require("./routes/about");
 const searchRouter = require("./routes/search");
+const postItemRouter = require("./routes/post-item");
 
 app.engine(
   "hbs",
@@ -33,6 +36,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/about", aboutRouter);
 app.use("/searchResult", searchRouter);
+app.use("/postItem", postItemRouter);
 
 
 app.use(express.json());
