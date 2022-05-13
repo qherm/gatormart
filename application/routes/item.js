@@ -1,6 +1,8 @@
 const database = require('../db/db.js');
 const express = require('express');
 const router = express.Router();
+let bodyParser = require('body-parser');
+// let jsonParser = bodyParser.json();
 
 /* 
     Methodology:
@@ -38,6 +40,6 @@ router.get("/", post.renderItemPage);
 router.get('/post', (req, res) => {
     res.render('post');
 });
-router.post('/post', post.postItem);
+router.post('/post', bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}), post.postItem);
 
 module.exports = router;
