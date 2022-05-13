@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS gatormartdb.posts (
   title VARCHAR(225) NOT NULL,
   category VARCHAR(255) NOT NULL,
   available BIT NOT NULL,
+  condition VARCHAR(255) NOT NULL,
   description VARCHAR(225) NOT NULL,
   price FLOAT NOT NULL,
   PRIMARY KEY (id),
@@ -136,18 +137,18 @@ VALUES
 ;
 
 -- ---------------------------------------------------------------------------------------------------------- --
-INSERT INTO posts (user_id, title, category, available, description, price)
+INSERT INTO posts (user_id, title, category, available, condition, description, price)
 VALUES
-(1, 'Learning Life: The Path to Academic Success and Personal Happiness', 'Textbooks', 1, 'For self improvement class, okay quality.', 20),
-(2, 'Calculus: Early Transcendentals', 'Textbooks', 1, 'For Calculus, it is slightly used..', 12),
-(3, 'Physics for Scientists and Engineers: A Strategic Approach', 'Textbooks', 1, 'For physics, it is used/damaged.', 5),
-(4, 'Understanding and Using English Grammar', 'Textbooks', 1, 'For English, it`s just like new!', 10), 
-(5, 'CSC 648 Notes', 'Notes', 1, 'For Software Engineering, incredibly indepth!', 100),
-(6, 'CSC 665 Notes', 'Notes', 1, 'For Artifical Intelligence, not much written.', 5),
-(7, 'CSC 642 Notes', 'Notes', 1, 'For Human Computer Interaction, simple', 3),
-(8, 'Coffee Table', 'Furniture', 1, 'Slightly stained coffee table, no damage, need gone ASAP!', 7),
-(9, 'Computer Chair', 'Furniture', 1, 'Old computer chair; crusty, but comfortable!', 15),
-(10, 'Couch', 'Furniture', 1, 'Freshly bought couch, doesnt fit in my dorm!', 30);
+(1, 'Learning Life: The Path to Academic Success and Personal Happiness', 'Textbooks', 1, 'Okay Quality', 'For self improvement class, okay quality.', 20),
+(2, 'Calculus: Early Transcendentals', 'Textbooks', 1, 'Decent Quality', 'For Calculus, it is slightly used..', 12),
+(3, 'Physics for Scientists and Engineers: A Strategic Approach', 'Textbooks', 1, 'Damaged', 'For physics, it is used/damaged.', 5),
+(4, 'Understanding and Using English Grammar', 'Textbooks', 1, 'Like new', 'For English, it`s just like new!', 10), 
+(5, 'CSC 648 Notes', 'Notes', 1, 'Good quality', 'For Software Engineering, incredibly indepth!', 100),
+(6, 'CSC 665 Notes', 'Notes', 1, 'Great Quality', 'For Artifical Intelligence, not much written.', 5),
+(7, 'CSC 642 Notes', 'Notes', 1, 'OK Quality', 'For Human Computer Interaction, simple', 3),
+(8, 'Coffee Table', 'Furniture', 1, 'Slightly Used', 'Slightly stained coffee table, no damage, need gone ASAP!', 7),
+(9, 'Computer Chair', 'Furniture', 1, 'Old', 'Old computer chair; crusty, but comfortable!', 15),
+(10, 'Couch', 'Furniture', 1, 'New', 'Freshly bought couch, doesnt fit in my dorm!', 30);
 
 -- ---------------------------------------------------------------------------------------------------------- --
 INSERT INTO messages (body, post_id, sender_id, receiver_id)

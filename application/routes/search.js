@@ -47,7 +47,6 @@ class Search {
 const search = new Search();
 
 router.get('/', (req,res)=>{
-    console.log("HERE")
     res.render('searchResult');
 });
 router.post('/', search.search);

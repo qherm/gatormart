@@ -7,7 +7,7 @@ const handlebars = require("express-handlebars");
 const indexRouter = require("./routes/index");
 const aboutRouter = require("./routes/about");
 const searchRouter = require("./routes/search");
-const postItemRouter = require("./routes/post-item");
+const itemRouter = require("./routes/item");
 
 app.engine(
   "hbs",
@@ -32,14 +32,17 @@ app.use(express.static("public/images"));
 app.use(express.static("public/css"));
 app.use(express.static(path.join(__dirname, "public")));
 
+
 // Define routes
 app.use("/", indexRouter);
 app.use("/about", aboutRouter);
 app.use("/searchResult", searchRouter);
-app.use("/postItem", postItemRouter);
+app.use("/item", itemRouter);
 
-
+// Maybe remove this:
 app.use(express.json());
+
+
 app.use(express.urlencoded({ extended: false }));
 app.use("/public", express.static(path.join(__dirname, "public")));
 
