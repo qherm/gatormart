@@ -154,10 +154,16 @@ INSERT INTO messages (body, post_id, sender_id, receiver_id)
 VALUES
 ('I would like to buy this item', 1, 1, 2);
 -- ---------------------------------------------------------------------------------------------------------- --
-INSERT INTO images ()
-
-
-
-
-
-'../images/BookSelfImprove.jpg'
+INSERT INTO images (post_id, image_link)
+VALUES
+(1, '/public/images/BookSelfImprove.jpg'),
+(2, '/public/images/BookCalculus.jpg'),
+(3, '/public/images/BookPhysics.jpg'),
+(4, '/public/images/BookEnglish.jpg'),
+(5, '/public/images/NotesCSC648.jpg'),
+(6, '/public/images/NotesCSC665.jpg'),
+(7, '/public/images/NotesCSC642.jpg'),
+(8, '/public/images/FurnitureTable.jpg'),
+(9, '/public/images/FurnitureChair.jpg'),
+(10, '/public/images/FurnitureCouch.jpg'),
+(10, '/public/images/textbook_1.jpg');
