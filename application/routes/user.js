@@ -2,14 +2,18 @@ const express = require('express');
 const router = express.Router();
 const app = require('../app')
 const database = require('../db/db.js');
+const sessions = require('../sessions')
 
 class UserDetails {
     findUser(req, res) {
-        console.log("in find user")
         //what we need
         let userID = req.query.id;
         let query = "";
-        if(userID){
+        if(userID==="null" || parseInt(userID)==sessions.session.user_id){
+            // 1. Check for session id
+            // 2. Present all other info as well as messages
+            query = "";
+        } else{
             query = `SELECT full_name, email, username, bio FROM users WHERE users.id = '` + userID + `'`;
         }
         //JOIN posts ON posts.user_id = users.id 

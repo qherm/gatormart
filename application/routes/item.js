@@ -4,6 +4,7 @@ const path = require('path');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
+const sessions = require('../sessions');
 
 /* 
     Methodology:
@@ -17,6 +18,7 @@ const fileUpload = require('express-fileupload');
 
 class Post {
     static uploadPath = path.join(__dirname+"/../public/images/");
+
     getItemInfo (req,res){
         const id = req.query.id;
         let query = "";
@@ -78,8 +80,7 @@ class Post {
     }
 
     postItem(req, res, next){
-        // GET USER ID FROM SESSION
-        const user_id = 1;
+        const user_id = sessions.session.user_id;
         let price = parseInt(req.body.price);
         price = price ? price : 0;
         let query = `INSERT INTO posts (user_id, title, category, available, quality, description, price) VALUES
@@ -109,7 +110,11 @@ router.get("/", (req,res) => {
 router.get("/json", post.getItemInfo);
 
 router.get('/post', (req, res) => {
-    res.render('post');
+    if(sessions.session.user_id < 0){
+        res.redirect('/auth/login');
+    } else{
+        res.render('post');
+    }
 });
 
 router.post('/post', post.postItem, post.getPostId, post.uploadImage);
