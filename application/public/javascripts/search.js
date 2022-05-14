@@ -16,11 +16,12 @@ let getResults = () => {
             console.log(result)
             const newCards = result.result;
             const cardSection = document.getElementById('cards-section-append');
+            console.log(newCards.post_id);
             for(let i=0;i<newCards.length;i++){
                 cardSection.innerHTML+=`
                 <div class="col-md-3 mb-2">
                 <div class="card shadow" style="width: 18rem;">
-                  <a href="/item?id=${newCards[i].id}">
+                  <a href="/item?id=${newCards[i].post_id}">
                     <img
                       src="${newCards[i].image_link}"
                       class="card-img-top"
@@ -30,7 +31,7 @@ let getResults = () => {
                     <h5 class="card-title font-poppins">${newCards[i].title}</h5>
                     <span>${newCards[i].category}</span>
                     <h6 class="mb-3">$${newCards[i].price}</h6>
-                    <a href="/item?id=${newCards[i].id}" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
+                    <a href="/item?id=${newCards[i].post_id}" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
                     <a href="message" class="btn btn-primary font-size-09 text-light product-button">Message Seller</a>
                   </div>
                 </div>
