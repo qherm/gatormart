@@ -1,17 +1,17 @@
-let grabUser = (id) => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const userID = urlParams.get('id');
-    fetch(`/user?id=${userID}`, { method: 'get' })
-        .then(async (response) => {
-            return response;
-        })
-        .then(console.log)
-}
+// let grabUser = (id) => {
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const userID = urlParams.get('id');
+//     fetch(`/user?id=${userID}`, { method: 'get' })
+//         .then(async (response) => {
+//             return response;
+//         })
+//         .then(console.log)
+// }
 
 let getUser = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const userID = urlParams.get('id');
-    fetch(`/userPage?id=${userID}`, { method: 'post' })
+    fetch(`/user/json?id=${userID}`, { method: 'get' })
         .then((response) => response.json())
         .then((result) => {
             //console.log(result)

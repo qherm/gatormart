@@ -13,9 +13,9 @@ let getItemInfo = () => {
         .then(response => response.json())
         .then(results => {
             // console.log(result)
-            console.log(results)
+            //console.log(results)
             const [itemInfo] = results.itemInfo;
-            console.log(itemInfo)
+            //console.log(itemInfo)
             document.getElementById('item-info').innerHTML = `<!-- Left Column / Product Image -->
             <div id="left-column">
               <img src="${itemInfo.image_link}" id="product-img">
@@ -29,7 +29,7 @@ let getItemInfo = () => {
               <div class="product-info">
                 <span>${itemInfo.category}</span>
                 <div class="product-title"> ${itemInfo.title}</div>
-                <div class="posted-user"> Posted by: <a href="/userPage?id=${id}" id="user">${itemInfo.username}</a> on 1/1/2001</div>
+                <div class="posted-user"> Posted by: <a href="/user?id=${id}" id="user">${itemInfo.username}</a> on 1/1/2001</div>
                 <div class="location"> Location: Cesar Chavez Center</div>
                 <div class="product-description">${itemInfo.description}
                 </div>

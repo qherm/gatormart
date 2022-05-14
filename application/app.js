@@ -39,7 +39,7 @@ app.use("/", indexRouter);
 app.use("/about", aboutRouter);
 app.use("/searchResult", searchRouter);
 app.use("/item", itemRouter);
-app.use("/userPage", userRouter);
+app.use("/user", userRouter);
 
 // Maybe remove this:
 app.use(express.json());

@@ -49,10 +49,21 @@ class Search {
     //     }
     //     return query + " JOIN images ON images.post_id = posts.id";
     // }
+    getCategories(req, res){
+        database.query("SELECT category FROM categories", (err,result) => {
+            if(err){
+                res.send(err);
+            } else{
+                res.json({result})
+            }
+        })
+    }
     search(req, res) {
         let search = req.query.search;
         let category = req.query.category;
         let query = "";
+        console.log(category);
+        console.log(search);
         
         if(!category&&!search){
             query = "SELECT * FROM posts JOIN images ON images.post_id = posts.id";
@@ -84,5 +95,6 @@ router.get('/', (req,res)=>{
     res.render('searchResult');
 });
 router.post('/', search.search);
+router.get('/categories', search.getCategories);
 
 module.exports = router;

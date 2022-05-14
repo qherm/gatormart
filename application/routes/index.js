@@ -39,8 +39,8 @@ router.get("/home", function (req, res, next) {
 //   res.render("postItem");
 // });
 
-// router.get("/userPage", (req, res, next) => {
-//   res.render("userPage");
+// router.get("/user", (req, res, next) => {
+//   res.render("user");
 // });
 
 module.exports = router;

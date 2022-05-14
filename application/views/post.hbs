@@ -5,7 +5,7 @@
       ADDED BY: Chuting Yan 
   -->
 
-<body>
+<body onload="getCategories()">
     <div class="main-container">
         <div class="page-wrap">
             <div class="post-item">
@@ -25,14 +25,14 @@
                             </div>
                             <div class="item">
                                 <label for="name">Category <span>*</span></label>
-                                <select id="form_need" type="text" name="category" class="form-control" required />
-                                <option value="" selected disabled>--Select Category--</option>
-                                <option value="Books">Books</option>
-                                <option value="School Supplies">School Supplies</option>
-                                <option value="Furniture">Furniture</option>
-                                <option value="Help Wanted">Help Wanted</option>
-                                <option value="Services">Services</option>
-                                <option value="Miscellaneous">Miscellaneous</option>
+                                <select id="category" type="text" name="category" class="form-control" required />
+                                    <option value="" selected disabled>--Select Category--</option>
+                                    {{!-- <option value="Books">Books</option>
+                                    <option value="School Supplies">School Supplies</option>
+                                    <option value="Furniture">Furniture</option>
+                                    <option value="Help Wanted">Help Wanted</option>
+                                    <option value="Services">Services</option>
+                                    <option value="Miscellaneous">Miscellaneous</option> --}}
                                 </select>
                             </div>
                             <div class="item">

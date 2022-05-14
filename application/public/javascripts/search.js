@@ -6,17 +6,31 @@ let search = (search, category) => {
         .then(console.log)
 }
 
+let getCategories = () => {
+  console.log("HERE");
+  fetch(`/searchResult/categories`, {method:'get'})
+    .then((response) => response.json())
+    .then((result) => {
+      const categoryDropdown = document.getElementById('category');
+      console.log(categoryDropdown);
+      const categories = result.result;
+      for(const category in categories){
+        categoryDropdown.innerHTML += "<option value=" + categories[category].category + ">" + categories[category].category + "</option>"
+      }
+    }
+  )
+}
+ 
 let getResults = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
     const search = urlParams.get('search');
+    console.log("getting results");
     fetch(`/searchResult?category=${category}&search=${search}`, {method:'post'})
         .then((response)=>response.json())
         .then((result) => {
-            console.log(result)
             const newCards = result.result;
             const cardSection = document.getElementById('cards-section-append');
-            console.log(newCards.post_id);
             for(let i=0;i<newCards.length;i++){
                 cardSection.innerHTML+=`
                 <div class="col-md-3 mb-2">
