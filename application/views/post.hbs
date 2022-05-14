@@ -73,7 +73,14 @@
                             </div>
                         </form>
                     </div>
-
+                    <form ref='uploadForm' 
+                    id='uploadForm' 
+                    action='/item/grog' 
+                    method='post' 
+                    encType="multipart/form-data">
+                        <input type="file" name="sampleFile" />
+                        <input type='submit' value='Upload!' />
+                    </form>   
                     <script>
                         //js elements to submit and clear form go here
                     </script>
