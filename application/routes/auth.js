@@ -71,7 +71,7 @@ class Login extends Auth {
                     res.send("that is not a user");
                 } else{
                     sessions.session = req.session;
-                    sessions.session.user_id = result[0].id;
+                    sessions.session.userid = result[0].id;
                     res.redirect("/");
                 }
             }

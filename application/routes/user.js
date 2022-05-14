@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const app = require('../app')
 const database = require('../db/db.js');
-const sessions = require('../sessions')
+const sessions = require('../sessions');
 
 class UserDetails {
     findUser(req, res) {
