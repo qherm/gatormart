@@ -70,7 +70,9 @@ class Search {
                 res.json({})
             } else{
                 console.log(results)
-                res.json({result:results});
+                res.json({
+                    result:results
+                });
             }
         });
     }

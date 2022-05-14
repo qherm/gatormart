@@ -13,6 +13,7 @@ let getResults = () => {
     fetch(`/searchResult?category=${category}&search=${search}`, {method:'post'})
         .then((response)=>response.json())
         .then((result) => {
+            console.log(result)
             const newCards = result.result;
             const cardSection = document.getElementById('cards-section-append');
             for(let i=0;i<newCards.length;i++){
@@ -35,6 +36,17 @@ let getResults = () => {
                 </div>
               </div>
                 `
+            }
+
+            const numResultsSection = document.getElementById('num-results');
+            if((!search) && (!category)){
+              numResultsSection.innerText = `0-${newCards.length} results total`;
+            }
+            else if(!search){
+              numResultsSection.innerText += `0-${newCards.length} results for ${category} `;
+            }
+            else{
+              numResultsSection.innerText += `0-${newCards.length} results for ${search} `;
             }
         });
 }
