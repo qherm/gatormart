@@ -113,16 +113,16 @@ CREATE TABLE IF NOT EXISTS gatormartdb.reviews (
 -- ---------------------------------------------------------------------------------------------------------- --
 INSERT INTO users (full_name, email, username, passwd, bio, phone_number)
 VALUES
-('Linor Shire', 'LShire1@mail.sfsu.edu', 'LShire1', 'UniquePassword1', 'Just a senior at SFSU!', '(111) 111 - 1111'),
-('Iglas Dunagan', 'IDunagan2@mail.sfsu.edu', 'IDunagan2', 'UniquePassword2', 'Just a junior at SFSU!', '(222) 222 - 222'),
+('Linor Shire', 'lshire1@mail.sfsu.edu', 'LShire1', 'UniquePassword1', 'Just a senior at SFSU!', '(111) 111 - 1111'),
+('Iglas Dunagan', 'idunagan2@mail.sfsu.edu', 'IDunagan2', 'UniquePassword2', 'Just a junior at SFSU!', '(222) 222 - 222'),
 ('Craymor Gresham', 'cgresham3@mail.sfsu.edu', 'CGresham3', 'UniquePassword3', 'Just a sophomore at SFSU!', '(333) 333 - 3333'),
-('Nicholas Briones', 'NBriones4@mail.sfsu.edu', 'NBriones4', 'UniquePassword4', 'Just a freshman at SFSU!', '(444) 444 - 4444'),
-('Alex Glover', 'AGlover5@mail.sfsu.edu', 'AGlover5', 'UniquePassword5', 'Just a teacher at SFSU!', '(555) 555 - 5555'),
-('Linus Griffin', 'LGriffin6@mail.sfsu.edu', 'LGriffin6', 'UniquePassword6', 'Just a faculty member at SFSU!', '(666) 666 - 6666'),
-('Mo Maurice', 'MMaurice7@mail.sfsu.edu', 'MMaurice7', 'UniquePassword7', 'Just another senior at SFSU!', '(777) 777 - 7777'),
-('Alex Gomez', 'AGomez8@mail.sfsu.edu', 'AGpomez8', 'UniquePassword8', 'Just another junior at SFSU!', '(888) 888 - 8888'),
-('Ricky Guillotte', 'RGuillotte9@mail.sfsu.edu', 'RGuillotte9', 'UniquePassword9', 'Just another sophomore at SFSU!', '(999) 999 - 9999'),
-('Leandro Brode', 'LBrode10@mail.sfsu.edu', 'LBrode10', 'UniquePassword10', 'Just another freshman at SFSU!', '(000) 000 - 0000');
+('Nicholas Briones', 'nbriones4@mail.sfsu.edu', 'NBriones4', 'UniquePassword4', 'Just a freshman at SFSU!', '(444) 444 - 4444'),
+('Alex Glover', 'aglover5@mail.sfsu.edu', 'AGlover5', 'UniquePassword5', 'Just a teacher at SFSU!', '(555) 555 - 5555'),
+('Linus Griffin', 'lgriffin6@mail.sfsu.edu', 'LGriffin6', 'UniquePassword6', 'Just a faculty member at SFSU!', '(666) 666 - 6666'),
+('Mo Maurice', 'mmaurice7@mail.sfsu.edu', 'MMaurice7', 'UniquePassword7', 'Just another senior at SFSU!', '(777) 777 - 7777'),
+('Alex Gomez', 'agomez8@mail.sfsu.edu', 'AGpomez8', 'UniquePassword8', 'Just another junior at SFSU!', '(888) 888 - 8888'),
+('Ricky Guillotte', 'rguillotte9@mail.sfsu.edu', 'RGuillotte9', 'UniquePassword9', 'Just another sophomore at SFSU!', '(999) 999 - 9999'),
+('Leandro Brode', 'lbrode10@mail.sfsu.edu', 'LBrode10', 'UniquePassword10', 'Just another freshman at SFSU!', '(000) 000 - 0000');
 -- ---------------------------------------------------------------------------------------------------------- --
 INSERT INTO categories(category)
 VALUES

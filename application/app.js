@@ -12,15 +12,15 @@ const userRouter = require("./routes/user");
 const authRouter = require("./routes/auth");
 
 // Define sessions:
-const cookieParser = require('cookie-parser')
-const sessions = require('express-session');
+const sessions = require('./sessions');
 
-app.use(sessions({
+app.use(sessions.sessions({
   secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
   saveUninitialized: true,
   cookie: {maxAge: 1000 * 60 * 60 * 24},     // Cookie expires after 1 full day
   resave: false
 }));
+app.use(sessions.cookieParser());
 
 app.engine(
   "hbs",

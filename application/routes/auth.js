@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const database = require('../db/db.js');
 const bodyParser = require('body-parser');
+const sessions = require('../sessions');
 
 class Auth {
     isValidEmail(email){
@@ -33,7 +34,6 @@ class Auth {
 
 class Register extends Auth {
     register(req, res, next){
-        console.log("IN POST: ",req.resultMessage);
         let email = req.body.email.toLowerCase();
         let name = req.body.name;
         let username = req.body.username;
@@ -61,16 +61,18 @@ class Login extends Auth {
     login(req,res,next){
         const email = req.body.email.toLowerCase();
         const password = super.encryptPassword(req.body.password);
-        database.query(`SELECT EXISTS(SELECT email, passwd FROM users WHERE email = "${email}" AND passwd = "${password}")`, (err, result) => {
+        // database.query(`SELECT EXISTS(SELECT email, passwd FROM users WHERE email = "${email}" AND passwd = "${password}")`, (err, result) => {
+        database.query(`SELECT id FROM users WHERE email = "${email}" AND passwd = "${password}"`, (err, result) => {
             if(err){
                 res.send(err);
             } else{
-                console.log(Object.keys(result[0]))
-                const exists = result[0][Object.keys(result[0])[0]];
-                if(exists){
-                    res.send("that is a user!")
-                } else{
+                // const exists = result[0][Object.keys(result[0])[0]];
+                if(result.length == 0){
                     res.send("that is not a user");
+                } else{
+                    sessions.session = req.session;
+                    sessions.session.user_id = result[0].id;
+                    res.redirect("/");
                 }
             }
         })
