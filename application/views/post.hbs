@@ -7,14 +7,12 @@
 
 <body>
     <div class="main-container">
-
-
         <div class="page-wrap">
             <div class="post-item">
                 <div class="grid-container">
                     <div class="form-box">
                         <!-- TODO: Fill out action when route is done-->
-                        <form class="form-postitems" method="post" action="/item/post">
+                        <form class="form-postitems" encType="multipart/form-data" method="post" action="/item/post">
                             <div class="banner">
                                 <div class="h1-postitems">Post Item For Sale Or List Jobs</div>
                             </div>
@@ -43,7 +41,7 @@
                             </div>
                             <div class="item">
                                 <label for="condition">Condition </label>
-                                <input id="condition" type="text" name="condition" />
+                                <input id="condition" type="text" name="quality" />
                             </div>
                             {{!-- <div class="item">
                                 <label for="location">Location <span>*</span></label>
@@ -73,14 +71,15 @@
                             </div>
                         </form>
                     </div>
-                    <form ref='uploadForm' 
+                    {{!-- <form ref='uploadForm' 
                     id='uploadForm' 
                     action='/item/grog' 
                     method='post' 
                     encType="multipart/form-data">
                         <input type="file" name="sampleFile" />
+                        <input type="text" name="words">
                         <input type='submit' value='Upload!' />
-                    </form>   
+                    </form>    --}}
                     <script>
                         //js elements to submit and clear form go here
                     </script>

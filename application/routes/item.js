@@ -19,16 +19,22 @@ class Post {
         // Get params
         res.render('post?');
     }
+
     postItem(req, res){
-        // Get params
+        // GET USER ID FROM SESSIONS
         console.log(req.body);
-        console.log(req.file)
-        let query = "";
+        console.log(req.files);
+        let price = parseInt(req.body.price);
+        price = price ? price : 0;
+        let query = `INSERT INTO posts (user_id, title, category, available, quality, description, price)
+        VALUES
+        (1, "${req.body.title}", "${req.body.category}", 1, "${req.body.condition}", "${req.body.description}", ${price})`;
         database.query(query, (err, result) => {
             if(err){
-                res.send("error")
+                res.send(err)
             } else{
-                res.redirect('/post?');
+                // res.redirect('/post?');
+                res.send("SUCCESS!");
             }
         })
     }
@@ -38,7 +44,8 @@ const post = new Post();
 
 router.use(fileUpload({
     limits: {fileSize: 20000000} // 20 MB file upload limit
-}))
+}));
+router.use(bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}));
 
 router.get("/", post.renderItemPage);
 
@@ -46,14 +53,15 @@ router.get('/post', (req, res) => {
     res.render('post');
 });
 
-router.post('/grog', (req,res)=> {
-    console.log(req.files)
-    res.send("temp")
-});
+// router.post('/grog', (req,res)=> {
+//     console.log(req.files)
+//     res.send("temp")
+// });
 
-router.post('/post',fileUpload({
-    limits: {fileSize: 20000000} // 20 MB file upload limit
-}),  bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}), post.postItem);
-// router.post('/post', bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}), post.postItem);
+// router.post('/post',fileUpload({
+//     limits: {fileSize: 20000000} // 20 MB file upload limit
+// }),  bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}), post.postItem);
+
+router.post('/post', post.postItem);
 
 module.exports = router;
