@@ -7,6 +7,7 @@ const sessions = require('../sessions');
   Home Page
 */
 router.get("/", function (req, res, next) {
+  console.log(req.session.user_id)
   res.render("home");
 });
 

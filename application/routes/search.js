@@ -61,6 +61,7 @@ class Search {
     // }
 
     search(req, res) {
+        console.log(req.session.user_id);
         let search = req.query.search;
         let category = req.query.category;
         let query = "";
