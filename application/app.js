@@ -8,6 +8,7 @@ const indexRouter = require("./routes/index");
 const aboutRouter = require("./routes/about");
 const searchRouter = require("./routes/search");
 const itemRouter = require("./routes/item");
+const userRouter= require("./routes/user");
 
 app.engine(
   "hbs",
@@ -38,6 +39,7 @@ app.use("/", indexRouter);
 app.use("/about", aboutRouter);
 app.use("/searchResult", searchRouter);
 app.use("/item", itemRouter);
+app.use("/userPage", userRouter);
 
 // Maybe remove this:
 app.use(express.json());

@@ -169,5 +169,4 @@ VALUES
 (7, '/public/images/NotesCSC642.jpg'),
 (8, '/public/images/FurnitureTable.jpg'),
 (9, '/public/images/FurnitureChair.jpg'),
-(10, '/public/images/FurnitureCouch.jpg'),
-(10, '/public/images/textbook_1.jpg');
+(10, '/public/images/FurnitureCouch.jpg');

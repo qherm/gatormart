@@ -29,7 +29,7 @@ let getItemInfo = () => {
               <div class="product-info">
                 <span>${itemInfo.category}</span>
                 <div class="product-title"> ${itemInfo.title}</div>
-                <div class="posted-user"> Posted by: <a href="#" id="user">${itemInfo.username}</a> on 1/1/2001</div>
+                <div class="posted-user"> Posted by: <a href="/userPage?id=${id}" id="user">${itemInfo.username}</a> on 1/1/2001</div>
                 <div class="location"> Location: Cesar Chavez Center</div>
                 <div class="product-description">${itemInfo.description}
                 </div>
