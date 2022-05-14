@@ -1,13 +1,3 @@
-// let grabUser = (id) => {
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const userID = urlParams.get('id');
-//     fetch(`/user?id=${userID}`, { method: 'get' })
-//         .then(async (response) => {
-//             return response;
-//         })
-//         .then(console.log)
-// }
-
 let getUser = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const userID = urlParams.get('id');

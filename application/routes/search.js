@@ -36,6 +36,16 @@ class Search {
         }
         return false;
     }
+    getCategories(req, res){
+        database.query("SELECT category FROM categories", (err,result) => {
+            if(err){
+                res.send(err);
+            } else{
+                res.json({result})
+            }
+        })
+    }
+    
     // formQuery(search, category) {
     //     let query = "";
     //     if(!category&&!search){
@@ -49,22 +59,13 @@ class Search {
     //     }
     //     return query + " JOIN images ON images.post_id = posts.id";
     // }
-    getCategories(req, res){
-        database.query("SELECT category FROM categories", (err,result) => {
-            if(err){
-                res.send(err);
-            } else{
-                res.json({result})
-            }
-        })
-    }
+
     search(req, res) {
         let search = req.query.search;
         let category = req.query.category;
         let query = "";
-        console.log(category);
-        console.log(search);
         
+        // Put this in formQuery wrapper function
         if(!category&&!search){
             query = "SELECT * FROM posts JOIN images ON images.post_id = posts.id";
         } else if(!category){
@@ -74,13 +75,11 @@ class Search {
         } else{
             query = `SELECT * FROM posts JOIN images ON images.post_id = posts.id WHERE category = '` + category + `' AND ( Title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR Category LIKE '%` + search + `%')`;
         }
-        // query += " JOIN images ON images.post_id = posts.id"
 
         database.query(query, (err, results, next) => {
             if (err){
                 res.json({})
             } else{
-                console.log(results)
                 res.json({
                     result:results
                 });

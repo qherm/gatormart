@@ -1,4 +1,4 @@
-let search = (search, category) => {
+const search = (search, category) => {
     fetch(`/search?category=${category}&search=${search}`, {method:'get'})
         .then(async (response) => {
             return response;
@@ -6,13 +6,12 @@ let search = (search, category) => {
         .then(console.log)
 }
 
-let getCategories = () => {
+const getCategories = (div_title) => {
   console.log("HERE");
   fetch(`/searchResult/categories`, {method:'get'})
     .then((response) => response.json())
     .then((result) => {
-      const categoryDropdown = document.getElementById('category');
-      console.log(categoryDropdown);
+      const categoryDropdown = document.getElementById(div_title);
       const categories = result.result;
       for(const category in categories){
         categoryDropdown.innerHTML += "<option value=" + categories[category].category + ">" + categories[category].category + "</option>"
@@ -21,11 +20,13 @@ let getCategories = () => {
   )
 }
  
-let getResults = () => {
+const getResults = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
     const search = urlParams.get('search');
-    console.log("getting results");
+
+    document.getElementById('searchbar').value = search;
+    document.getElementById('category').value = category;
     fetch(`/searchResult?category=${category}&search=${search}`, {method:'post'})
         .then((response)=>response.json())
         .then((result) => {

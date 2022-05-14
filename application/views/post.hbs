@@ -5,7 +5,7 @@
       ADDED BY: Chuting Yan 
   -->
 
-<body onload="getCategories()">
+<body>
     <div class="main-container">
         <div class="page-wrap">
             <div class="post-item">
@@ -21,11 +21,11 @@
                             </div>
                             <div class="item">
                                 <label for="name"> Title <span>*</span></label>
-                                <input id="name" type="text" name="title" value="dummy_title" required />
+                                <input id="name" type="text" name="title" required />
                             </div>
                             <div class="item">
                                 <label for="name">Category <span>*</span></label>
-                                <select id="category" type="text" name="category" class="form-control" required />
+                                <select id="post-category" type="text" name="category" class="form-control" required />
                                     <option value="" selected disabled>--Select Category--</option>
                                     {{!-- <option value="Books">Books</option>
                                     <option value="School Supplies">School Supplies</option>
@@ -89,3 +89,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 </body>
+
+<script>
+    getCategories("post-category")
+</script>

@@ -17,10 +17,6 @@ const fileUpload = require('express-fileupload');
 
 class Post {
     static uploadPath = path.join(__dirname+"/../public/images/");
-    // constructor(){
-        
-    // }
-    
     getItemInfo (req,res){
         const id = req.query.id;
         let query = "";
@@ -28,13 +24,10 @@ class Post {
         if(id){
             query = `SELECT * FROM posts JOIN images ON images.post_id = posts.id JOIN users ON users.id = posts.user_id WHERE posts.id = '` + id + `'`;
         }
-        console.log(query)
         database.query(query, (err, results) => {
             if (err){
-                console.log("error")
-                res.json({})
+                res.json({});
             } else{
-                console.log(results)
                 res.json({itemInfo:results});
             }
         });
@@ -78,7 +71,6 @@ class Post {
             if(err){
                 res.send(err)
             } else{
-                console.log(result["LAST_INSERT_ID()"]);
                 res.locals.post_id = result["LAST_INSERT_ID()"];
                 next()
             }
@@ -113,7 +105,6 @@ router.use(bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimi
 
 router.get("/", (req,res) => {
     res.render("item");
-    // console.log(res)
 });
 router.get("/json", post.getItemInfo);
 
