@@ -1,7 +1,6 @@
 const database = require('../db/db.js');
 
 class Auth {
-    // maybe doesn't work? idk
     isValidEmail(email){
         let userEmail = email.toLowerCase();
         if (/@mail.sfsu.edu\s*$/.test(userEmail)) {
@@ -38,6 +37,17 @@ class Register extends Auth {
         let password = req.body.password;
         let confirmPassword = req.body.confirmPassword;
 
+        //previous register query
+        /*
+        let query = `INSERT INTO User (full_name, email, username, passwd, bio, phone_number) VALUES ('`
+            + name + `', '`
+            + email + `', '`
+            + username + `', '`
+            + this.encryptPassword(password) + `', '`
+            + '' + `', '`
+            + '' + `')`;
+
+            */
         res.json({
             finalMessage: req.resultMessage,
         });

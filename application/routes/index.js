@@ -27,8 +27,8 @@ router.get("/home", function (req, res, next) {
 // /*
 //   Products
 // */
-// router.get("/productDetail", (req, res, next) => {
-//   res.render("productDetail");
+// router.get("/item", (req, res, next) => {
+//   res.render("item");
 // });
 
 // router.get("/message", (req, res, next) => {
