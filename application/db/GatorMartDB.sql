@@ -115,7 +115,7 @@ INSERT INTO users (full_name, email, username, passwd, bio, phone_number)
 VALUES
 ('Linor Shire', 'LShire1@mail.sfsu.edu', 'LShire1', 'UniquePassword1', 'Just a senior at SFSU!', '(111) 111 - 1111'),
 ('Iglas Dunagan', 'IDunagan2@mail.sfsu.edu', 'IDunagan2', 'UniquePassword2', 'Just a junior at SFSU!', '(222) 222 - 222'),
-('Craymor Gresham', 'CGresham3@mail.sfsu.edu', 'CGresham3', 'UniquePassword3', 'Just a sophomore at SFSU!', '(333) 333 - 3333'),
+('Craymor Gresham', 'cgresham3@mail.sfsu.edu', 'CGresham3', 'UniquePassword3', 'Just a sophomore at SFSU!', '(333) 333 - 3333'),
 ('Nicholas Briones', 'NBriones4@mail.sfsu.edu', 'NBriones4', 'UniquePassword4', 'Just a freshman at SFSU!', '(444) 444 - 4444'),
 ('Alex Glover', 'AGlover5@mail.sfsu.edu', 'AGlover5', 'UniquePassword5', 'Just a teacher at SFSU!', '(555) 555 - 5555'),
 ('Linus Griffin', 'LGriffin6@mail.sfsu.edu', 'LGriffin6', 'UniquePassword6', 'Just a faculty member at SFSU!', '(666) 666 - 6666'),

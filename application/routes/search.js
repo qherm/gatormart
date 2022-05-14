@@ -43,7 +43,7 @@ class Search {
             } else{
                 res.json({result})
             }
-        })
+        });
     }
     
     // formQuery(search, category) {
