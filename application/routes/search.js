@@ -61,7 +61,7 @@ class Search {
     // }
 
     search(req, res) {
-        console.log(req.session.id);
+        //console.log(req.session.id);
         let search = req.query.search;
         let category = req.query.category;
         let query = "";

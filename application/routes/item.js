@@ -50,11 +50,12 @@ class Post {
             VALUES
             (${res.locals.post_id}, '/public/images/${fileName}')`;
         }
-        console.log(Post.uploadPath)
-        file.mv(path.join(Post.uploadPath, fileName), (err) => {
-            console.log(err)
+
+        let test = "First";
+
+        file.mv(path.join(Post.uploadPath, "img"+imageId), (err) => {
             if(err){
-                res.send(err);
+                console.log(err);
             }
         });
 
@@ -66,6 +67,7 @@ class Post {
                 res.redirect(`/item?id=${res.locals.post_id}`);
             }
         })
+        console.log(test)
     }
 
     getPostId(req,res,next){
@@ -77,6 +79,7 @@ class Post {
                 next()
             }
         })
+
     }
 
     postItem(req, res, next){
