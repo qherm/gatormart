@@ -8,20 +8,31 @@ class UserDetails {
     findUser(req, res) {
         //what we need
         let userID = req.query.id;
+        //console.log(userID);
+        //console.log(req.session.id);
         let query = "";
         if(userID==="null" || parseInt(userID)==req.session.user_id){
             // 1. Check for session id
             // 2. Present all other info as well as messages
             query = "";
         } else{
-            query = `SELECT full_name, email, username, bio FROM users WHERE users.id = '` + userID + `'`;
+            query = 
+            `SELECT users.full_name, users.email, users.username, users.bio, posts.id, posts.title, posts.category, posts.description, posts.price, images.image_link
+            FROM users 
+            JOIN posts
+            ON posts.user_id = users.id 
+            JOIN images
+            ON images.post_id = posts.id
+            WHERE users.id = '` + userID + `'`;
         }
+        
+        //}
         //JOIN posts ON posts.user_id = users.id 
         //JOIN messages ON messages.receiver_id = users.id
         //JOIN images ON images.user_id = posts.id
 
         database.query(query, (err, results, next) => {
-            console.log(results)
+            //console.log(results)
             if (err){
                 res.json({});
             } else{
