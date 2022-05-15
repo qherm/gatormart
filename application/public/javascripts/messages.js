@@ -1,5 +1,7 @@
 const getMessages = () => {
-    fetch(`/messages`, {method: 'get'})
-        .then(result=>result)
-        .then(console.log)
+    fetch(`/messages/json`, {method: 'get'})
+        .then(response=>response.json())
+        .then((result) => {
+            
+        });
 }

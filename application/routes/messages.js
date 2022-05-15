@@ -41,14 +41,12 @@ class Message {
         ("${messageBody}", "${postId}", "${sendingUser}", "${receivingUser}" );`;
         database.query(query, (err, result) => {
             if(err){
-                // res.send(err);
                 console.log(err);
             } else{
-                // next();
                 console.log('properly sent')
             }
         });
-        res.redirect();
+        res.redirect('/item?id='+postId);
     }
 
     /*
@@ -60,7 +58,21 @@ class Message {
         ${email}
         ${phonenumber}
     */
-    getMessages(){
+    getMessages(req,res){
+        if(!req.session.user_id){
+            req.session.last_visited = '/messages';
+            res.redirect('/auth/login');
+        }
+        database.query(`SELECT * FROM messages WHERE receiver_id=${req.session.user_id}`,(err, result) => {
+            if(err){
+                console.log(err);
+                res.json({})
+            } else{
+                console.log(result)
+                res.json({result});
+            }
+        });
+
     }
 }
 
@@ -69,6 +81,7 @@ const message = new Message();
 router.get('/', (req,res) => {
     res.render('message');
 });
+router,get('/json', message.getMessages);
 router.post('/send', message.getSessionUserEmail, message.sendMessage, (req,res) => {
     res.send("sent!");
 })
