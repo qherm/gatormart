@@ -32,7 +32,7 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Sort by
+                <span id="selected">Sort by</span>
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="#">Price: Low to High</a>
@@ -66,4 +66,7 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"
   ></script>
+  <script>
+    $('.dropdown a').click(function(){ $('#selected').text($(this).text()); });
+  </script>
 </body>

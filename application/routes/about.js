@@ -8,33 +8,33 @@ const app = require('../app');
 router.get("/", function (req, res, next) {
     res.render("about");
 });
+
+router.get("/Melissa", function (req, res, next) {
+    res.render("Melissa");
+  });
   
-router.get("/aboutMelissa", function (req, res, next) {
-    res.render("aboutMelissa");
-});
+  router.get("/Shane", function (req, res, next) {
+    res.render("Shane");
+  });
+  
+  router.get("/Minggu", function (req, res, next) {
+    res.render("Minggu");
+  });
+  
+  router.get("/Chuting", function (req, res, next) {
+    res.render("Chuting");
+  });
+  
+  router.get("/Robert", function (req, res, next) {
+    res.render("Robert");
+  });
+  
+  router.get("/Joe", function (req, res, next) {
+    res.render("Joe");
+  });
+  
+  router.get("/Xiaoqing", function (req, res, next) {
+    res.render("Xiaoqing");
+  });
 
-router.get("/aboutShane", function (req, res, next) {
-    res.render("aboutShane");
-});
-
-router.get("/aboutMinggu", function (req, res, next) {
-    res.render("aboutMinggu");
-});
-
-router.get("/aboutChuting", function (req, res, next) {
-    res.render("aboutChuting");
-});
-
-router.get("/aboutRobert", function (req, res, next) {
-    res.render("aboutRobert");
-});
-
-router.get("/aboutJoe", function (req, res, next) {
-    res.render("aboutJoe");
-});
-
-router.get("/aboutXiaoqing", function (req, res, next) {
-    res.render("aboutXiaoqing");
-});
-
-module.exports = router;
+  module.exports = router;
