@@ -21,30 +21,32 @@
         <div class="user-registration-left-column">
           <div class="registration-label">Register for GatorMart</div>
         </div>
-        <div class="user-registration-right-column" method="POST" enctype="application/x-www-form-urlencoded">
+        <form class="user-registration-right-column" method="POST" enctype="application/x-www-form-urlencoded" action="/auth/registration">
           <fieldset class="form">
             <div class="register-h1">Full Name<span>*</span></div>
-            <input id="text-box" type="text" placeholder="First Last" required name="name">
+            <input id="text-box" type="text" placeholder="First Last" name="name" required >
             <div class="register-h1">SFSU email<span>*</span></div>
-            <input id="text-box" type="text" placeholder="Email" required name="email">
+            <input id="text-box" type="text" placeholder="Email" name="email" required>
             <div class="check">Must be an official SFSU email.</div>
             <div class="register-h1">Username<span>*</span></div>
-            <input id="text-box" type="text" placeholder="Username" required name="name"><br />
+            <input id="text-box" type="text" placeholder="Username" name="username" required><br />
             <div class="check">This is the display name that will be used on GatorMart.</span>
             </div>
+            <div class="register-h1">Phone Number (optional)</div>
+            <input id="text-box" type="text" placeholder="Phone Number" name="phoneNumber" ><br />
             <div class="register-h1">Password<span>*</span></div>
-            <input id="text-box" type="password" placeholder="Password" required name="password">
+            <input id="text-box" type="password" placeholder="Password" name="password" required>
             <div class="check"><span id="pass-req1" class="req">Password must be 8 or more characters, and contain upper
                 and lowercase letters.</span>
             </div>
             <div class="register-h1">Confirm Password<span>*</span></div>
-            <input id="text-box" type="password" placeholder="Confirm Your Password" required name="cpassword">
+            <input id="text-box" type="password" placeholder="Confirm Your Password" name="confirmPassword" required>
             <div class="check">Passwords must <span id="confirm-pass-req" class="req">match.</span></div>
             <br />
             <button type="submit" id="register-button">Submit</button>
             <div class="registration-bottom">Already have an account? <a href="/login">Log In Here</a></div>
           </fieldset>
-        </div>
+        </form>
       </div>
     </div>
     <!-- Footer Starts-->

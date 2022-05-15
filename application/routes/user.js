@@ -9,7 +9,7 @@ class UserDetails {
         //what we need
         let userID = req.query.id;
         let query = "";
-        if(userID==="null" || parseInt(userID)==sessions.session.user_id){
+        if(userID==="null" || parseInt(userID)==req.session.user_id){
             // 1. Check for session id
             // 2. Present all other info as well as messages
             query = "";

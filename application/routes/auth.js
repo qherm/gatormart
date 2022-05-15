@@ -37,23 +37,34 @@ class Register extends Auth {
         let email = req.body.email.toLowerCase();
         let name = req.body.name;
         let username = req.body.username;
-        let password = req.body.password;
-        let confirmPassword = req.body.confirmPassword;
+        let password = super.encryptPassword(req.body.password);
+        let confirmPassword = super.encryptPassword(req.body.confirmPassword);
+        let phoneNumber = req.body.phoneNumber ? req.body.phoneNumber : "";
 
-        //previous register query
-        /*
-        let query = `INSERT INTO User (full_name, email, username, passwd, bio, phone_number) VALUES ('`
-            + name + `', '`
-            + email + `', '`
-            + username + `', '`
-            + this.encryptPassword(password) + `', '`
-            + '' + `', '`
-            + '' + `')`;
+        if(password!==confirmPassword){
+            console.log('here')
+            res.redirect('/auth/register');
+            return;
+        }
 
-            */
-        res.json({
-            finalMessage: req.resultMessage,
-        });
+        let query = `INSERT INTO users (full_name, email, username, passwd, bio, phone_number)
+        VALUES
+        ("${name}", "${email}", "${username}", "${password}", "", "${phoneNumber}")`
+        
+        database.query(query, (err,result) => {
+            if(err){
+                res.send(err);
+            } else{
+                database.query("SELECT LAST_INSERT_ID()", (error, resul) => {
+                    if(err){
+                        res.send(err);
+                    }else{
+                        req.session.user_id = resul[0]['LAST_INSERT_ID()'];
+                        res.redirect('/');
+                    }
+                })
+            }
+        })
     }
 }
 
@@ -70,9 +81,7 @@ class Login extends Auth {
                 if(result.length == 0){
                     res.send("that is not a user");
                 } else{
-                    // sessions.session = req.session;
                     req.session.user_id = result[0].id;
-                    console.log(req.session.user_id);
                     res.redirect("/");
                 }
             }
@@ -88,5 +97,9 @@ router.get('/login', (req, res) => {
     res.render('login')
 });
 router.post('/login', login.login);
+router.get('/registration', (req,res) => {
+    res.render('registration');
+})
+router.post("/registration", register.register);
 
 module.exports = router;
