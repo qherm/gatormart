@@ -36,6 +36,10 @@ router.get("/result", (req, res, next) => {
   res.render("result");
 });
 
+router.get("/mreceived", (req, res, next) => {
+  res.render("mreceived");
+});
+
 // router.use("/postItem", isLoggedIn);
 router.get("/post", (req, res, next) => {
   res.render("post");
