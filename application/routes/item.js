@@ -78,7 +78,6 @@ class Post {
                 next()
             }
         })
-
     }
 
     postItem(req, res, next){

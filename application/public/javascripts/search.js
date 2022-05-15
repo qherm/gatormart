@@ -7,7 +7,6 @@ const search = (search, category) => {
 }
 
 const getCategories = (div_title) => {
-  console.log("HERE");
   fetch(`/result/categories`, {method:'get'})
     .then((response) => response.json())
     .then((result) => {
