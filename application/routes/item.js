@@ -66,8 +66,7 @@ class Post {
                 // res.json({post_id: res.locals.post_id});
                 res.redirect(`/item?id=${res.locals.post_id}`);
             }
-        })
-        console.log(test)
+        });
     }
 
     getPostId(req,res,next){
@@ -112,6 +111,7 @@ router.get("/json", post.getItemInfo);
 
 router.get('/post', (req, res) => {
     if(!req.session.user_id){
+        req.session.last_visited = "/item/post";
         res.redirect('/auth/login');
     } else{
         res.render('post');

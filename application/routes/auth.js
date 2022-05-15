@@ -60,7 +60,7 @@ class Register extends Auth {
                         res.send(err);
                     }else{
                         req.session.user_id = resul[0]['LAST_INSERT_ID()'];
-                        res.redirect('/');
+                        res.redirect(req.session.last_visited ? req.session.last_visited : "/");
                     }
                 })
             }
@@ -81,8 +81,9 @@ class Login extends Auth {
                 if(result.length == 0){
                     res.send("that is not a user");
                 } else{
+                    console.log(req.session.last_visited);
                     req.session.user_id = result[0].id;
-                    res.redirect("/");
+                    res.redirect(req.session.last_visited ? req.session.last_visited : "/");
                 }
             }
         })

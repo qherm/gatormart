@@ -83,6 +83,7 @@ CREATE TABLE IF NOT EXISTS gatormartdb.messages (
   post_id INT NOT NULL,
   sender_id INT NOT NULL,
   receiver_id INT NOT NULL,
+  creation_time DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   FOREIGN KEY (post_id) REFERENCES posts(id),
   FOREIGN KEY (sender_id) REFERENCES users(id),
