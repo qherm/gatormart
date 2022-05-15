@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS gatormartdb.posts (
   available INT NOT NULL,
   quality VARCHAR(255) NOT NULL,
   description VARCHAR(225) NOT NULL,
+  creation_time DATETIME DEFAULT CURRENT_TIMESTAMP,
   price FLOAT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users(id),
