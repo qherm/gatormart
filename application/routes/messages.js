@@ -101,7 +101,19 @@ class Message {
                 creation_time DATETIME DEFAULT CURRENT_TIMESTAMP,
 
         */
-        database.query(`SELECT messages.body, messages. FROM messages WHERE receiver_id=${req.session.user_id} JOIN `,(err, result) => {
+        database.query(
+        `SELECT messages.id, messages.body, messages.post_ID, messages.sender_ID, messages.receiver_id, messages.creation_time,
+            posts.id, posts.title, images.image_link, users.username
+        FROM messages
+        JOIN users
+        ON users.id = messages.sender_ID
+        JOIN posts
+        ON posts.user_ID = messages.receiver_ID
+        JOIN images
+        ON images.post_id = posts.id
+        WHERE receiver_id=${req.session.user_id} 
+        
+        `,(err, result) => {
             if(err){
                 console.log(err);
                 res.json({});
