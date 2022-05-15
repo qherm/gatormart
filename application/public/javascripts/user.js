@@ -4,10 +4,12 @@ let getUser = () => {
     fetch(`/user/json?id=${userID}`, { method: 'get' })
         .then((response) => response.json())
         .then((result) => {
-            //console.log(result)
+            allResults = result.userInfo;
+            console.log(allResults);
             const [userInfo] = result.userInfo;
-            console.log(userInfo);
             const userSection = document.getElementById('userDetails');
+            const userPosts = document.getElementById('userPosts');
+            let allPosts = ``;
             userSection.innerHTML =
                 `            
                 <!-- Profile widget -->
@@ -37,8 +39,6 @@ let getUser = () => {
                         </div>
                     </div>
 
-
-
                     <div class="px-4 py-3">
                         <h5 class="mb-0">Description</h5>
                         <div class="p-4 rounded shadow-sm bg-light">
@@ -46,6 +46,29 @@ let getUser = () => {
                         </div>
                     </div>
                 `
+            for(let i=0;i<allResults.length;i++){
+                allPosts +=
+                `
+                <div class="col-md-3 mb-2">
+                <div class="card shadow" style="width: 18rem;">
+                  <a href="/item?id=${allResults[i].id}">
+                    <img
+                      src="${allResults[i].image_link}"
+                      class="card-img-top"
+                      alt="..."
+                    /></a>
+                  <div class="card-body">
+                    <h5 class="card-title font-poppins">${allResults[i].title}</h5>
+                    <span>${allResults[i].category}</span>
+                    <h6 class="mb-3">$${allResults[i].price}</h6>
+                    <a href="/item?id=${allResults[i].id}" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
+                    <a href="message" class="btn btn-primary font-size-09 text-light product-button">Message Seller</a>
+                  </div>
+                </div>
+              </div>
+                `
+            }
+            userPosts.innerHTML = allPosts;
         })
 }
 

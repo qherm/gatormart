@@ -80,7 +80,7 @@ class Post {
     }
 
     postItem(req, res, next){
-        const user_id = sessions.session.user_id;
+        const user_id = req.session.id;
         let price = parseInt(req.body.price);
         price = price ? price : 0;
         let query = `INSERT INTO posts (user_id, title, category, available, quality, description, price) VALUES
@@ -109,7 +109,8 @@ router.get("/", (req,res) => {
 router.get("/json", post.getItemInfo);
 
 router.get('/post', (req, res) => {
-    if(sessions.session.user_id < 0){
+    console.log(req.session.id);
+    if(req.session.id < 0){
         res.redirect('/auth/login');
     } else{
         res.render('post');
