@@ -10,6 +10,7 @@ const searchRouter = require("./routes/search");
 const itemRouter = require("./routes/item");
 const userRouter = require("./routes/user");
 const authRouter = require("./routes/auth");
+const messagesRouter = require("./routes/messages");
 
 // Define sessions:
 const sessions = require('./sessions');
@@ -52,10 +53,11 @@ app.use(express.urlencoded({ extended: false }));
 // Define routes
 app.use("/", indexRouter);
 app.use("/about", aboutRouter);
-app.use("/searchResult", searchRouter);
+app.use("/result", searchRouter);
 app.use("/item", itemRouter);
 app.use("/user", userRouter);
 app.use("/auth", authRouter);
+app.use("/messages", messagesRouter);
 
 // Maybe remove this:
 app.use(express.json());

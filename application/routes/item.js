@@ -53,7 +53,7 @@ class Post {
 
         let test = "First";
 
-        file.mv(path.join(Post.uploadPath, "img"+imageId), (err) => {
+        file.mv(path.join(Post.uploadPath, fileName), (err) => {
             if(err){
                 console.log(err);
             }

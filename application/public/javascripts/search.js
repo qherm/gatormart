@@ -8,7 +8,7 @@ const search = (search, category) => {
 
 const getCategories = (div_title) => {
   console.log("HERE");
-  fetch(`/searchResult/categories`, {method:'get'})
+  fetch(`/result/categories`, {method:'get'})
     .then((response) => response.json())
     .then((result) => {
       const categoryDropdown = document.getElementById(div_title);
@@ -27,7 +27,7 @@ const getResults = () => {
 
     document.getElementById('searchbar').value = search;
     document.getElementById('category').value = category;
-    fetch(`/searchResult?category=${category}&search=${search}`, {method:'post'})
+    fetch(`/result?category=${category}&search=${search}`, {method:'post'})
         .then((response)=>response.json())
         .then((result) => {
             const newCards = result.result;

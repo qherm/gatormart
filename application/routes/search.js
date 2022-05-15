@@ -36,6 +36,7 @@ class Search {
         }
         return false;
     }
+    
     getCategories(req, res){
         database.query("SELECT category FROM categories", (err,result) => {
             if(err){
@@ -92,7 +93,7 @@ class Search {
 const search = new Search();
 
 router.get('/', (req,res)=>{
-    res.render('searchResult');
+    res.render('result');
 });
 router.post('/', search.search);
 router.get('/categories', search.getCategories);
