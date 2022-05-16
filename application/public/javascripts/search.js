@@ -31,12 +31,13 @@ const getResults = () => {
         .then((response)=>response.json())
         .then((result) => {
             const newCards = result.result;
+            console.log(newCards);
             const cardSection = document.getElementById('cards-section-append');
             for(let i=0;i<newCards.length;i++){
                 cardSection.innerHTML+=`
                 <div class="col-md-3 mb-2">
                 <div class="card shadow" style="width: 18rem;">
-                  <a href="/item?id=${newCards[i].post_id}">
+                  <a href="/item?id=${newCards[i].id}">
                     <img
                       src="${newCards[i].image_link}"
                       class="card-img-top"
@@ -46,8 +47,42 @@ const getResults = () => {
                     <h5 class="card-title font-poppins">${newCards[i].title}</h5>
                     <span>${newCards[i].category}</span>
                     <h6 class="mb-3">$${newCards[i].price}</h6>
-                    <a href="/item?id=${newCards[i].post_id}" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
-                    <a href="message" class="btn btn-primary font-size-09 text-light product-button">Message Seller</a>
+                    <!-- Button Trigger Modal -->
+                <button type="button" class="cart-btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${newCards[i].id}">
+                  Message Seller
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter${newCards[i].id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <form class="modal-content" method="POST" action="/messages/send">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Message ${newCards[i].username}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="item">
+                          <label for="instructions">Message Body<span>*</span></label>
+                          <textarea id="instructions" name="body" rows="3" maxlength="10000" required></textarea>
+                        </div>
+                        <input type="hidden" name="post_id" value="${newCards[i].id}" id="send-message-user-id">
+                        <input type="hidden" name="receiver_id" value="${newCards[i].user_id}" id="send-message-user-id">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="phoneNumber" style="display: inline-block;" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
+                            Send Phone Number?
+                          </label>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="cart-btn btn-primary">Send Message</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
                   </div>
                 </div>
               </div>

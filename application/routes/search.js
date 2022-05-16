@@ -65,23 +65,26 @@ class Search {
         //console.log(req.session.id);
         let search = req.query.search;
         let category = req.query.category;
-        let query = "";
+        let query = `SELECT posts.id, posts.user_id, posts.title, posts.category, posts.price,
+                    users.username, images.image_link
+         FROM posts JOIN images ON images.post_id = posts.id JOIN users ON users.id=posts.user_id`;
         
         // Put this in formQuery wrapper function
         if(!category&&!search){
-            query = "SELECT * FROM posts JOIN images ON images.post_id = posts.id";
+            query += "";
         } else if(!category){
-            query = `SELECT * FROM posts JOIN images ON images.post_id = posts.id WHERE title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR category LIKE '%` + search + `%'`;
+            query += `WHERE title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR category LIKE '%` + search + `%'`;
         } else if(!search){
-            query = `SELECT * FROM posts JOIN images ON images.post_id = posts.id WHERE category = '` + category + `'`;
+            query += `WHERE category = '` + category + `'`;
         } else{
-            query = `SELECT * FROM posts JOIN images ON images.post_id = posts.id WHERE category = '` + category + `' AND ( Title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR Category LIKE '%` + search + `%')`;
+            query += `WHERE category = '` + category + `' AND ( Title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR Category LIKE '%` + search + `%')`;
         }
-
+        
         database.query(query, (err, results, next) => {
             if (err){
                 res.json({})
             } else{
+                console.log(results);
                 res.json({
                     result:results
                 });
@@ -93,6 +96,8 @@ class Search {
 const search = new Search();
 
 router.get('/', (req,res)=>{
+    console.log(req.url)
+    res.locals.session.last_visited = "/result" + req.url.substring(1);
     res.render('result');
 });
 router.post('/', search.search);

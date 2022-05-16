@@ -13,40 +13,24 @@ const getMessages = () => {
           for(let i = 0; i < result.length; i++){
             date = result[i].creation_time.split("T")[0];
             console.log(date);
-            messageDiv.innerHTML+= `<div class="card p-3 mt-5">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="user d-flex flex-row align-items-center">
-                <div class="flex-row align-left">                  
-                  <a href="/item?id=${result[i].post_ID}">
-                  <img
-                      src="${result[i].image_link}"
-                      width="50"
-                      class="thumbnail-img ml-1"
-                      alt="..."
-                    />
-                  </a>
-                </div>
-                <!--   <img src="https://i.imgur.com/0LKZQYM.jpg" width="30" class="user-img rounded-circle mr-2 ml-3" />  -->
-                <span><small class="font-weight-bold text-primary"><a href = "/user?id=${result[i].sender_ID}">${result[i].username}</a></small>
-                  <small class="font-weight-bold"> - ${result[i].body}
-                  </small></span>
-              </div>
-              <small>${date}</small>
+            messageDiv.innerHTML += `<div class="card p-3 mt-5">
+            <div class="card-header">
+            <a href = "/user?id=${result[i].sender_ID}">${result[i].username}</a> responded to <a href="/item?id=${result[i].post_ID}">${result[i].title}</a>
             </div>
-            <div class="action d-flex justify-content-between mt-3 align-items-center">
-
-              <div class="icons align-items-center">
-                <!-- <i class="fa fa-check-circle-o check-icon text-primary"></i>  -->
-              </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-5 justify-content-md-center">
+                        <a href="/item?id=${result[i].post_ID}"><img src="${result[i].image_link}"  class="thumbnail-img ml-1 rounded card-img-top" alt="..."/></a>
+                    </div>
+                    <div class="col-5">
+                        <p class="card-text">${result[i].body}</p>
+                    </div>
+                    <div class="col-2">
+                        <small>${date}</small>
+                    </div>
+                </div>
             </div>
           </div>`
           }
         });
 }
-
-/*
-  body VARCHAR(255) NOT NULL,
-  post_id INT NOT NULL,
-  sender_id INT NOT NULL,
-  receiver_id INT NOT NULL,
-  */

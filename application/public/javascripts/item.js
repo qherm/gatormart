@@ -57,7 +57,7 @@ let getItemInfo = () => {
                       <div class="modal-body">
                         <div class="item">
                           <label for="instructions">Message Body<span>*</span></label>
-                          <textarea id="instructions" name="body" rows="3" required></textarea>
+                          <textarea id="instructions" name="body" rows="3" maxlength="10000" required></textarea>
                         </div>
                         <input type="hidden" name="post_id" value="${id}" id="send-message-user-id">
                         <input type="hidden" name="receiver_id" value="${itemInfo.user_id}" id="send-message-user-id">

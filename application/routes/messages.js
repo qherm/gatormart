@@ -42,6 +42,61 @@ class Message {
         }
     }
 
+    getSenderUsername(req,res,next){
+        database.query("SELECT username FROM users WHERE id="+req.b)
+    }
+
+    getMessages(req,res){
+        if(!req.session.user_id){
+            req.session.last_visited = '/messages';
+            res.json({});
+            return;
+        }
+
+        /*
+                    `SELECT users.full_name, users.email, users.username, users.bio, posts.id, posts.title, posts.category, posts.description, posts.price, images.image_link
+            FROM users 
+            JOIN posts
+            ON posts.user_id = users.id 
+            JOIN images
+            ON images.post_id = posts.id
+            WHERE users.id = '` + userID + `'`;
+
+                id INT NOT NULL AUTO_INCREMENT,
+                body VARCHAR(255) NOT NULL,
+                post_id INT NOT NULL,
+                sender_id INT NOT NULL,
+                receiver_id INT NOT NULL,
+                creation_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+        */
+
+        // We need:
+        // sender username
+        // Post name
+        // Image from post
+        database.query(
+        `SELECT messages.id, messages.body, messages.post_ID, messages.sender_ID, messages.receiver_id, messages.creation_time,
+            posts.id, posts.title, images.image_link, users.username
+        FROM messages
+        JOIN users
+        ON users.id = messages.sender_ID
+        JOIN posts
+        ON posts.user_ID = messages.receiver_ID AND posts.id = messages.post_id
+        JOIN images
+        ON images.post_id = messages.post_id
+        WHERE receiver_id=${req.session.user_id}
+        ORDER BY creation_time DESC
+        `,(err, result) => {
+            if(err){
+                console.log(err);
+                res.json({});
+            } else{
+                console.log(result)
+                res.json({result});
+            }
+        });
+    }
+
     sendMessage(req,res,next){     
         const senderEmail = res.locals.sender_email;
         let messageBody = req.body.body;
@@ -66,63 +121,6 @@ class Message {
             }
         });
         res.redirect('/item?id='+postId);
-    }
-
-    /*
-    userinfo
-
-        Hey! I really want this bicycle.
-
-        Contact Info:
-        ${email}
-        ${phonenumber}
-    */
-    getMessages(req,res){
-        if(!req.session.user_id){
-            req.session.last_visited = '/messages';
-            res.json({});
-            return;
-        }
-
-        /*
-                    `SELECT users.full_name, users.email, users.username, users.bio, posts.id, posts.title, posts.category, posts.description, posts.price, images.image_link
-            FROM users 
-            JOIN posts
-            ON posts.user_id = users.id 
-            JOIN images
-            ON images.post_id = posts.id
-            WHERE users.id = '` + userID + `'`;
-
-                id INT NOT NULL AUTO_INCREMENT,
-                body VARCHAR(255) NOT NULL,
-                post_id INT NOT NULL,
-                sender_id INT NOT NULL,
-                receiver_id INT NOT NULL,
-                creation_time DATETIME DEFAULT CURRENT_TIMESTAMP,
-
-        */
-        database.query(
-        `SELECT messages.id, messages.body, messages.post_ID, messages.sender_ID, messages.receiver_id, messages.creation_time,
-            posts.id, posts.title, images.image_link, users.username
-        FROM messages
-        JOIN users
-        ON users.id = messages.sender_ID
-        JOIN posts
-        ON posts.user_ID = messages.receiver_ID
-        JOIN images
-        ON images.post_id = posts.id
-        WHERE receiver_id=${req.session.user_id} 
-        ORDER BY creation_time DESC
-        `,(err, result) => {
-            if(err){
-                console.log(err);
-                res.json({});
-            } else{
-                console.log(result)
-                res.json({result});
-            }
-        });
-
     }
 }
 

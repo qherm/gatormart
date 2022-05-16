@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS gatormartdb.messages;
 
 CREATE TABLE IF NOT EXISTS gatormartdb.messages (
   id INT NOT NULL AUTO_INCREMENT,
-  body VARCHAR(255) NOT NULL,
+  body VARCHAR(10000) NOT NULL,
   post_id INT NOT NULL,
   sender_id INT NOT NULL,
   receiver_id INT NOT NULL,
