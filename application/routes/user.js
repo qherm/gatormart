@@ -14,7 +14,14 @@ class UserDetails {
         if(userID==="null" || parseInt(userID)==req.session.user_id){
             // 1. Check for session id
             // 2. Present all other info as well as messages
-            query = "";
+            query = 
+            `SELECT users.full_name, users.email, users.username, users.bio, posts.id, posts.title, posts.category, posts.description, posts.price, images.image_link
+            FROM users 
+            JOIN posts
+            ON posts.user_id = users.id 
+            JOIN images
+            ON images.post_id = posts.id
+            WHERE users.id = '` + userID + `'`;
         } else{
             query = 
             `SELECT users.full_name, users.email, users.username, users.bio, posts.id, posts.title, posts.category, posts.description, posts.price, images.image_link

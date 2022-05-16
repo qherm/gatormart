@@ -16,7 +16,10 @@ let getItemInfo = () => {
             //console.log(results)
             const [itemInfo] = results.itemInfo;
             //console.log(itemInfo)
-            document.getElementById('item-info').innerHTML = `<!-- Left Column / Product Image -->
+            date = itemInfo.creation_time.split("T")[0];
+
+            document.getElementById('item-info').innerHTML = 
+            `<!-- Left Column / Product Image -->
             <div id="left-column">
               <img src="${itemInfo.image_link}" id="product-img">
             </div>
@@ -27,12 +30,12 @@ let getItemInfo = () => {
     
               <!-- Product Description -->
               <div class="product-info">
-                <span>${itemInfo.category}</span>
                 <div class="product-title"> ${itemInfo.title}</div>
-                <div class="posted-user"> Posted by: <a href="/user?id=${itemInfo.user_id}" id="user">${itemInfo.username}</a> on 1/1/2001</div>
-                <div class="location"> Location: Cesar Chavez Center</div>
-                <div class="product-description">${itemInfo.description}
-                </div>
+                <div class="posted-user"> Posted by: <a href="/user?id=${itemInfo.user_id}" id="user">${itemInfo.username}</a> on ${date}</div>
+
+                <div class="location"> Category: ${itemInfo.category}</div>
+                <div class="category"> Quality: ${itemInfo.quality}</div>
+                <div class="product-description">${itemInfo.description}</div>
               </div>
     
               <!-- Product Pricing -->

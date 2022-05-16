@@ -62,7 +62,6 @@ let getUser = () => {
                     <span>${allResults[i].category}</span>
                     <h6 class="mb-3">$${allResults[i].price}</h6>
                     <a href="/item?id=${allResults[i].id}" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
-                    <a href="message" class="btn btn-primary font-size-09 text-light product-button">Message Seller</a>
                   </div>
                 </div>
               </div>

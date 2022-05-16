@@ -46,7 +46,7 @@ const getResults = () => {
                     <span>${newCards[i].category}</span>
                     <h6 class="mb-3">$${newCards[i].price}</h6>
                     <a href="/item?id=${newCards[i].post_id}" class="btn btn-primary font-size-09 text-light product-button">View Details</a>
-                    <a href="message" class="btn btn-primary font-size-09 text-light product-button">Message Seller</a>
+                    <!--   <a href="message" class="btn btn-primary font-size-09 text-light product-button">Message Seller</a> -->
                   </div>
                 </div>
               </div>
