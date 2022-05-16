@@ -12,8 +12,9 @@ const getCategories = (div_title) => {
     .then((result) => {
       const categoryDropdown = document.getElementById(div_title);
       const categories = result.result;
+      console.log(categories);
       for(const category in categories){
-        categoryDropdown.innerHTML += "<option value=" + categories[category].category + ">" + categories[category].category + "</option>"
+        categoryDropdown.innerHTML += "<option value='" + categories[category].category + "'>" + categories[category].category + "</option>"
       }
     }
   )

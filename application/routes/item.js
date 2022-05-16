@@ -81,8 +81,10 @@ class Post {
     }
 
     postItem(req, res, next){
+        console.log(req.body)
         let price = parseInt(req.body.price);
         price = price ? price : 0;
+        console.log(req.body.category);
         let query = `INSERT INTO posts (user_id, title, category, available, quality, description, price) VALUES
         (${req.session.user_id}, "${req.body.title}", "${req.body.category}", 1, "${req.body.condition}", "${req.body.description}", ${price});`;
         database.query(query, (err, result) => {

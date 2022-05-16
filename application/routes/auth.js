@@ -3,8 +3,13 @@ const router = express.Router();
 const database = require('../db/db.js');
 const bodyParser = require('body-parser');
 const sessions = require('../sessions');
+const { createHash } = require('crypto');
 
 class Auth {
+    hash(string){
+        return createHash('sha256').update(string).digest('hex');
+    }
+
     isValidEmail(email){
         let userEmail = email.toLowerCase();
         if (/@mail.sfsu.edu\s*$/.test(userEmail)) {
@@ -26,10 +31,6 @@ class Auth {
             return callback(results);
         })
     }
-
-    encryptPassword(password){
-        return password;
-    }
 }
 
 class Register extends Auth {
@@ -37,12 +38,12 @@ class Register extends Auth {
         let email = req.body.email.toLowerCase();
         let name = req.body.name;
         let username = req.body.username;
-        let password = super.encryptPassword(req.body.password);
-        let confirmPassword = super.encryptPassword(req.body.confirmPassword);
+        let password = super.hash(req.body.password);
+        let confirmPassword = super.hash(req.body.confirmPassword);
         let phoneNumber = req.body.phoneNumber ? req.body.phoneNumber : "";
 
         if(password!==confirmPassword){
-            console.log('here')
+            console.log('here');
             res.redirect('/auth/register');
             return;
         }
@@ -71,7 +72,7 @@ class Register extends Auth {
 class Login extends Auth {
     login(req,res,next){
         const email = req.body.email.toLowerCase();
-        const password = super.encryptPassword(req.body.password);
+        const password = super.hash(req.body.password);
         // database.query(`SELECT EXISTS(SELECT email, passwd FROM users WHERE email = "${email}" AND passwd = "${password}")`, (err, result) => {
         database.query(`SELECT id FROM users WHERE email = "${email}" AND passwd = "${password}"`, (err, result) => {
             if(err){
@@ -79,7 +80,9 @@ class Login extends Auth {
             } else{
                 // const exists = result[0][Object.keys(result[0])[0]];
                 if(result.length == 0){
-                    res.send("that is not a user");
+                    console.log("HERE")
+                    res.locals.err = "A user with that email/password combination does not exist";
+                    res.redirect("/auth/login");
                 } else{
                     console.log(req.session.last_visited);
                     req.session.user_id = result[0].id;
@@ -87,6 +90,18 @@ class Login extends Auth {
                 }
             }
         })
+    }
+
+    logout(req,res){
+        if(req.session){
+            req.session.destroy((err)=>{
+                if(err){
+                    res.status(400).send("An error occured while logging you out.");
+                } else{
+                    res.redirect("/");
+                }
+            });
+        }
     }
 }
 
@@ -102,5 +117,6 @@ router.get('/registration', (req,res) => {
     res.render('registration');
 })
 router.post("/registration", register.register);
+router.get("/logout", login.logout);
 
 module.exports = router;

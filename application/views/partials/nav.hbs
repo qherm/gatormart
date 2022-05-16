@@ -34,6 +34,7 @@
       </button>
     </form>
     <ul class="navbar-nav mr-auto">
+      {{#if session.user_id}}
       <li class="nav-item active">
         <a class="nav-link" href="/item/post">Post/Sell<span class="sr-only">(current)</span></a>
       </li>
@@ -44,8 +45,13 @@
         <a class="nav-link" href="/user">My Page <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
+        <a class="nav-link" href="/auth/logout">Logout<span class="sr-only">(current)</span></a>
+      </li>
+      {{else}}
+      <li class="nav-item active">
         <a class="nav-link" href="/auth/login">Login/Register<span class="sr-only">(current)</span></a>
       </li>
+      {{/if}}
     </ul>
   </div>
 </nav>

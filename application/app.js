@@ -23,6 +23,11 @@ app.use(sessions.sessions({
 }));
 app.use(sessions.cookieParser());
 
+app.use((req,res,next) => {
+  res.locals.session = req.session;
+  next();
+})
+
 app.engine(
   "hbs",
   handlebars({
@@ -58,11 +63,6 @@ app.use("/item", itemRouter);
 app.use("/user", userRouter);
 app.use("/auth", authRouter);
 app.use("/messages", messagesRouter);
-
-// Maybe remove this:
-app.use(express.json());
-
-
 
 app.use((err, req, res, next) => {
   console.log(err);

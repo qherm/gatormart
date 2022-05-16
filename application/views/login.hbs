@@ -7,14 +7,6 @@
 
 <body>
   <div class="main-container">
-    <header>
-      <!-- Navbar -->
-
-      <!-- Navbar -->
-
-    </header>
-    <!-- Header Ends-->
-
     <div class="page-wrap">
       <div class="login-container">
         <div class="login-left">
@@ -29,6 +21,8 @@
             <div class="login-h1">Password<span class="login-check"> *</span></div>
             <input id="text-box" type="password" placeholder="Password" required name="password">
             <br />
+              {{err}}
+            <br>
             <button type="submit" id="login-button">Submit</button><br />
             <a href="#" id="login-links">Forgot Password</a>
             <br />

@@ -45,7 +45,7 @@ class Message {
     sendMessage(req,res,next){     
         const senderEmail = res.locals.sender_email;
         let messageBody = req.body.body;
-        const phoneNumber = res.locals.phone_number ? res.locals.phone_number : "";
+        const phoneNumber = req.body.phoneNumber === "on" ? res.locals.phone_number : "";
         const receivingUser = parseInt(req.body.receiver_id) ? parseInt(req.body.receiver_id) : -1;
         const sendingUser = parseInt(req.session.user_id) ? parseInt(req.session.user_id) : -1;
         const postId = parseInt(req.body.post_id) ? parseInt(req.body.post_id) : -1;
@@ -113,7 +113,6 @@ class Message {
         ON images.post_id = posts.id
         WHERE receiver_id=${req.session.user_id} 
         ORDER BY creation_time DESC
-        
         `,(err, result) => {
             if(err){
                 console.log(err);

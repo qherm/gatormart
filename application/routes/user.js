@@ -7,32 +7,25 @@ const sessions = require('../sessions');
 class UserDetails {
     findUser(req, res) {
         //what we need
-        let userID = req.query.id;
+        let userId = req.query.id;
         //console.log(userID);
         //console.log(req.session.id);
         let query = "";
-        if(userID==="null" || parseInt(userID)==req.session.user_id){
-            // 1. Check for session id
-            // 2. Present all other info as well as messages
-            query = "";
-        } else{
-            query = 
+        console.log(userId=="null");
+        if(userId==="null" || parseInt(userId)==req.session.user_id){
+            userId = req.session.user_id;
+        }
+        console.log(userId);
+        query = 
             `SELECT users.full_name, users.email, users.username, users.bio, posts.id, posts.title, posts.category, posts.description, posts.price, images.image_link
             FROM users 
             JOIN posts
             ON posts.user_id = users.id 
             JOIN images
             ON images.post_id = posts.id
-            WHERE users.id = '` + userID + `'`;
-        }
-        
-        //}
-        //JOIN posts ON posts.user_id = users.id 
-        //JOIN messages ON messages.receiver_id = users.id
-        //JOIN images ON images.user_id = posts.id
+            WHERE users.id = '` + userId + `'`;
 
         database.query(query, (err, results, next) => {
-            //console.log(results)
             if (err){
                 res.json({});
             } else{
@@ -47,7 +40,12 @@ class UserDetails {
 const User = new UserDetails();
 
 router.get('/', (req,res)=>{
-    res.render('user');
+    if(req.session.user_id){
+        res.render('user');
+    } else{
+        req.session.last_visited = "/user" + req.url.substring(1);
+        res.redirect("/auth/login");
+    }
 });
 router.get('/json', User.findUser);
 

@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS gatormartdb.posts (
   id INT NOT NULL AUTO_INCREMENT,
   user_id INT NOT NULL,
   title VARCHAR(225) NOT NULL,
+  featured INT NOT NULL,
   category VARCHAR(255) NOT NULL,
   available INT NOT NULL,
   quality VARCHAR(255) NOT NULL,
