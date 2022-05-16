@@ -67,7 +67,7 @@ class Search {
         let category = req.query.category;
         let query = `SELECT posts.id, posts.user_id, posts.title, posts.category, posts.price,
                     users.username, images.image_link
-         FROM posts JOIN images ON images.post_id = posts.id JOIN users ON users.id=posts.user_id`;
+         FROM posts JOIN images ON images.post_id = posts.id JOIN users ON users.id=posts.user_id `;
         
         // Put this in formQuery wrapper function
         if(!category&&!search){
