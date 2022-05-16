@@ -112,6 +112,7 @@ class Message {
         JOIN images
         ON images.post_id = posts.id
         WHERE receiver_id=${req.session.user_id} 
+        ORDER BY creation_time DESC
         
         `,(err, result) => {
             if(err){
