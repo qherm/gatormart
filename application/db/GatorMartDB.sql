@@ -137,7 +137,7 @@ VALUES
 ('Fashion'),
 ('Furniture'),
 ('Electronics'),
-('CDs & Vinyl')
+('CDs & Vinyl'),
 ('Movies & TV'),
 ('Video Games'),
 ('Sports and Outdoor'),
