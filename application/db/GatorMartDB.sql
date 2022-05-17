@@ -48,7 +48,8 @@ CREATE TABLE IF NOT EXISTS gatormartdb.posts (
   id INT NOT NULL AUTO_INCREMENT,
   user_id INT NOT NULL,
   title VARCHAR(225) NOT NULL,
-  featured INT NOT NULL,
+  featured INT NOT NULL DEFAULT 0,
+  admin_approved INT NOT NULL DEFAULT 0,
   category VARCHAR(255) NOT NULL,
   available INT NOT NULL,
   quality VARCHAR(255) NOT NULL,
@@ -129,17 +130,22 @@ VALUES
 -- ---------------------------------------------------------------------------------------------------------- --
 INSERT INTO categories(category)
 VALUES
+VALUES
 ('Books'),
+('Notes'),
 ('School Supplies'),
+('Art'),
+('Fashion'),
 ('Furniture'),
 ('Electronics'),
-('Fashion'),
+('CDs & Vinyl')
+('Movies & TV'),
+('Video Games'),
+('Sports and Outdoor'),
+('Toys, Hobby & DIY'),
 ('Help Wanted'),
 ('Services'),
 ('Miscellaneous'),
-('Toys, Hobby & DIY'),
-('Art'),
-('Sports and Outdoor')
 ;
 
 -- ---------------------------------------------------------------------------------------------------------- --
