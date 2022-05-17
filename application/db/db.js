@@ -6,14 +6,16 @@ const database = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'password',
-    database: 'GatorMartDB'
+    database: 'gatormartdb'
 });
 
 database.connect((err) => {
     if (err){
+	console.log(err);
         throw err;
-    } 
-    console.log('Connected to DB!');
+    } else{
+    	console.log('Connected to DB!');
+    }
 });
 
 module.exports = database;
