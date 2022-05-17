@@ -8,7 +8,7 @@ const getMessages = () => {
 
           numMessages.innerHTML = `${result.length} messages recieved`;
           for(let i = 0; i < result.length; i++){
-            date = result[i].creation_time.split("T")[0];
+            let date = result[i].creation_time.split("T")[0];
             messageDiv.innerHTML += `<div class="card p-3 mt-5">
             <div class="card-header">
             <a href = "/user?id=${result[i].sender_ID}">${result[i].username}</a> responded to <a href="/item?id=${result[i].post_ID}">${result[i].title}</a>

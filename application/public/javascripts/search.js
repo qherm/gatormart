@@ -44,6 +44,7 @@ const getResults = () => {
             const cardSection = document.getElementById('cards-section-append');
             cardSection.innerHTML="";
             for(let i=0;i<newCards.length;i++){
+
                 cardSection.innerHTML+=`
                 <div class="col-md-3 mb-2">
                 <div class="card shadow" style="width: 18rem;">
