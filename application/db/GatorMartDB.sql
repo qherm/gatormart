@@ -130,7 +130,6 @@ VALUES
 -- ---------------------------------------------------------------------------------------------------------- --
 INSERT INTO categories(category)
 VALUES
-VALUES
 ('Books'),
 ('Notes'),
 ('School Supplies'),
@@ -145,7 +144,7 @@ VALUES
 ('Toys, Hobby & DIY'),
 ('Help Wanted'),
 ('Services'),
-('Miscellaneous'),
+('Miscellaneous')
 ;
 
 -- ---------------------------------------------------------------------------------------------------------- --
