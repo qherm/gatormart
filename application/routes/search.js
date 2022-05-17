@@ -46,30 +46,15 @@ class Search {
             }
         });
     }
-    
-    // formQuery(search, category) {
-    //     let query = "";
-    //     if(!category&&!search){
-    //         query = "SELECT * FROM posts";
-    //     } else if(!category){
-    //         query = `SELECT * FROM posts WHERE title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR category LIKE '%` + search + `%'`;
-    //     } else if(!search){
-    //         query = `SELECT * FROM posts WHERE category = '` + category + `'`;
-    //     } else{
-    //         query = `SELECT * FROM posts WHERE category = '` + category + `' AND ( Title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR Category LIKE '%` + search + `%')`;
-    //     }
-    //     return query + " JOIN images ON images.post_id = posts.id";
-    // }
 
     search(req, res) {
-        //console.log(req.session.id);
-        let search = req.query.search;
-        let category = req.query.category;
+        const search = req.query.search;
+        const category = req.query.category;
+        const sortby = req.query.sortby;
         let query = `SELECT posts.id, posts.user_id, posts.title, posts.category, posts.price,
                     users.username, images.image_link
          FROM posts JOIN images ON images.post_id = posts.id JOIN users ON users.id=posts.user_id `;
         
-        // Put this in formQuery wrapper function
         if(!category&&!search){
             query += "";
         } else if(!category){
@@ -79,12 +64,15 @@ class Search {
         } else{
             query += `WHERE category = '` + category + `' AND ( Title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR Category LIKE '%` + search + `%')`;
         }
+
+        if(sortby){
+            query += " ORDER BY " + sortby;
+        }
         
         database.query(query, (err, results, next) => {
             if (err){
                 res.json({})
             } else{
-                console.log(results);
                 res.json({
                     result:results
                 });
@@ -96,7 +84,6 @@ class Search {
 const search = new Search();
 
 router.get('/', (req,res)=>{
-    console.log(req.url)
     res.locals.session.last_visited = "/result" + req.url.substring(1);
     res.render('result');
 });

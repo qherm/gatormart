@@ -3,7 +3,6 @@ const search = (search, category) => {
         .then(async (response) => {
             return response;
         })
-        .then(console.log)
 }
 
 const getCategories = (div_title) => {
@@ -12,7 +11,6 @@ const getCategories = (div_title) => {
     .then((result) => {
       const categoryDropdown = document.getElementById(div_title);
       const categories = result.result;
-      console.log(categories);
       for(const category in categories){
         categoryDropdown.innerHTML += "<option value='" + categories[category].category + "'>" + categories[category].category + "</option>"
       }
@@ -24,15 +22,27 @@ const getResults = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
     const search = urlParams.get('search');
+    sortby = document.getElementById('sortby').value;
 
     document.getElementById('searchbar').value = search;
     document.getElementById('category').value = category;
-    fetch(`/result?category=${category}&search=${search}`, {method:'post'})
+    
+    if(sortby=="Price ASC"){
+      document.getElementById('sortby').value = "Price: Low to High";
+    } else if(sortby=="Price DESC"){
+      document.getElementById('sortby').value = "Price: High to Low";
+    } else if(sortby=="Creation_time DESC"){
+      document.getElementById('sortby').value = "Date: Newest First";
+    } else if(sortby=="Creation_time ASC"){
+      document.getElementById('sortby').value = "Date: Oldest First";
+    } 
+    fetch(`/result?category=${category}&search=${search}&sortby=${sortby}`, {method:'post'})        
         .then((response)=>response.json())
         .then((result) => {
             const newCards = result.result;
-            console.log(newCards);
+            
             const cardSection = document.getElementById('cards-section-append');
+            cardSection.innerHTML="";
             for(let i=0;i<newCards.length;i++){
                 cardSection.innerHTML+=`
                 <div class="col-md-3 mb-2">
@@ -90,6 +100,7 @@ const getResults = () => {
             }
 
             const numResultsSection = document.getElementById('num-results');
+            numResultsSection.innerText = "";
             if((!search) && (!category)){
               numResultsSection.innerText = `0-${newCards.length} results total`;
             }

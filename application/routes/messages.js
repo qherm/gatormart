@@ -6,15 +6,12 @@ const database = require('../db/db.js');
 class Message {
     getSessionUserEmail(req,res,next){
         if(!req.session.user_id){
-            // FINISH LAST_VISITED LOGIC HERE
-
-            // req.session.last_visited = req.query;
-            // console.log(req.body.post_id);
             res.redirect('/auth/login');
         } else{
             database.query(`SELECT email FROM users WHERE id=${req.session.user_id}`, (err,result)=>{
                 if(err){
-                    console.log(err);
+                    res.send(err);
+                    return;
                 } else{
                     res.locals.sender_email = result[0].email;
                 }
@@ -25,15 +22,12 @@ class Message {
 
     getSessionUserPhoneNumber(req,res,next){
         if(!req.session.user_id){
-            // FINISH LAST_VISITED LOGIC HERE
-
-            // req.session.last_visited = req.query;
-            // console.log(req.body.post_id);
             res.redirect('/auth/login');
         } else{
             database.query(`SELECT phone_number FROM users WHERE id=${req.session.user_id}`, (err,result)=>{
                 if(err){
-                    console.log(err);
+                    res.send(err);
+                    return;
                 } else{
                     res.locals.phone_number = result[0].phone_number;
                 }
@@ -88,10 +82,8 @@ class Message {
         ORDER BY creation_time DESC
         `,(err, result) => {
             if(err){
-                console.log(err);
                 res.json({});
             } else{
-                console.log(result)
                 res.json({result});
             }
         });
@@ -115,9 +107,7 @@ class Message {
         ("${messageBody}", "${postId}", "${sendingUser}", "${receivingUser}" );`;
         database.query(query, (err, result) => {
             if(err){
-                console.log(err);
-            } else{
-                console.log('properly sent')
+                throw err;
             }
         });
         res.redirect('/item?id='+postId);

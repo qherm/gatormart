@@ -6,16 +6,13 @@ const sessions = require('../sessions');
 
 class UserDetails {
     findUser(req, res) {
-        //what we need
         let userId = req.query.id;
-        //console.log(userID);
-        //console.log(req.session.id);
         let query = "";
-        console.log(userId=="null");
+        
         if(userId==="null" || parseInt(userId)==req.session.user_id){
             userId = req.session.user_id;
         }
-        console.log(userId);
+
         query = 
             `SELECT users.full_name, users.email, users.username, users.bio, posts.id, posts.title, posts.category, posts.description, posts.price, images.image_link
             FROM users 

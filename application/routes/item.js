@@ -55,7 +55,7 @@ class Post {
 
         file.mv(path.join(Post.uploadPath, fileName), (err) => {
             if(err){
-                console.log(err);
+                throw err;
             }
         });
 
@@ -81,10 +81,8 @@ class Post {
     }
 
     postItem(req, res, next){
-        console.log(req.body)
         let price = parseInt(req.body.price);
         price = price ? price : 0;
-        console.log(req.body.category);
         let query = `INSERT INTO posts (user_id, title, category, available, quality, description, price) VALUES
         (${req.session.user_id}, "${req.body.title}", "${req.body.category}", 1, "${req.body.condition}", "${req.body.description}", ${price});`;
         database.query(query, (err, result) => {
@@ -120,15 +118,5 @@ router.get('/post', (req, res) => {
 });
 
 router.post('/post', post.postItem, post.getPostId, post.uploadImage);
-
-// router.post('/grog', (req,res)=> {
-//     console.log(req.files)
-//     res.send("temp")
-// });
-
-// router.post('/post',fileUpload({
-//     limits: {fileSize: 20000000} // 20 MB file upload limit
-// }),  bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}), post.postItem);
-
 
 module.exports = router;

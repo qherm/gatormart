@@ -43,7 +43,6 @@ class Register extends Auth {
         let phoneNumber = req.body.phoneNumber ? req.body.phoneNumber : "";
 
         if(password!==confirmPassword){
-            console.log('here');
             res.redirect('/auth/register');
             return;
         }
@@ -80,11 +79,9 @@ class Login extends Auth {
             } else{
                 // const exists = result[0][Object.keys(result[0])[0]];
                 if(result.length == 0){
-                    console.log("HERE")
                     res.locals.err = "A user with that email/password combination does not exist";
                     res.redirect("/auth/login");
                 } else{
-                    console.log(req.session.last_visited);
                     req.session.user_id = result[0].id;
                     res.redirect(req.session.last_visited ? req.session.last_visited : "/");
                 }

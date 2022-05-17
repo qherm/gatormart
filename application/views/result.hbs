@@ -16,21 +16,13 @@
               
             </p>
             <div class="dropdown float-right">
-              <button
-                class="btn btn-outline-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <span id="selected">Sort by</span>
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Price: Low to High</a>
-                <a class="dropdown-item" href="#">Price: High to Low</a>
-                <a class="dropdown-item" href="#">Newest post</a>
-              </div>
+              <select onchange="getResults()" class=" float-right" form="navBarSearchForm" name="sortby" id="sortby">
+                <option value="">Sort By</option>
+                <option class="dropdown-item" value="price ASC">Price: Low to High</option>
+                <option class="dropdown-item" value="price DESC">Price: High to Low</option>
+                <option class="dropdown-item" value="creation_time DESC">Date: Newest First</option>
+                <option class="dropdown-item" value="creation_time ASC">Date: Oldest First</option>
+              </select>
             </div>
 
           </div>

@@ -5,7 +5,6 @@ let getUser = () => {
         .then((response) => response.json())
         .then((result) => {
             allResults = result.userInfo;
-            console.log(allResults);
             const [userInfo] = result.userInfo;
             const userSection = document.getElementById('userDetails');
             const userPosts = document.getElementById('userPosts');

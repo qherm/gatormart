@@ -1,21 +1,10 @@
-// let post = (title, category, price, condition, picture, description) => {
-//     fetch(`/post?title=${title}&category=${category}&price=${price}&condition=${condition}&picture=${picture}&description=${description}`, {method:'post'})
-//         .then(async (response) => {
-//             return response;
-//         })
-//         .then(console.log)
-// }
-
 let getItemInfo = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
     fetch(`/item/json?id=${id}`, {method: "get"})
         .then(response => response.json())
         .then(results => {
-            // console.log(result)
-            //console.log(results)
             const [itemInfo] = results.itemInfo;
-            //console.log(itemInfo)
             document.getElementById('item-info').innerHTML = `<!-- Left Column / Product Image -->
             <div id="left-column">
               <img src="${itemInfo.image_link}" id="product-img">
