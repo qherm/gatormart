@@ -16,7 +16,6 @@ class UserDetails {
             if (err){
                 throw err;
             } else{
-                console.log(results);
                 res.locals.posts = results;
                 next();
             }
@@ -31,7 +30,6 @@ class UserDetails {
             if (err){
                 throw err;
             } else{
-                console.log(results)
                 res.locals.full_name = results[0].full_name;
                 res.locals.email = results[0].email;
                 res.locals.username = results[0].username;
