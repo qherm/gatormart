@@ -1,21 +1,13 @@
 const express = require("express");
-var app = express();
-let path = require("path");
+let app = express();
+const path = require("path");
+const database = require('./db/db');
 
 const handlebars = require("express-handlebars");
 let hbs = handlebars.create({});
 hbs.handlebars.registerHelper('isdefined', (val) => {
   return val !== undefined;
 })
-
-// Define Routers:
-const indexRouter = require("./routes/index");
-const aboutRouter = require("./routes/about");
-const searchRouter = require("./routes/search");
-const itemRouter = require("./routes/item");
-const userRouter = require("./routes/user");
-const authRouter = require("./routes/auth");
-const messagesRouter = require("./routes/messages");
 
 // Define sessions:
 const sessions = require('./sessions');
@@ -27,11 +19,25 @@ app.use(sessions.sessions({
   resave: false
 }));
 app.use(sessions.cookieParser());
-
 app.use((req,res,next) => {
   res.locals.session = req.session;
   next();
-})
+});
+
+// Load categories after every session
+app.use((req,res,next) => {
+  database.query("SELECT category FROM categories", (err,result) => {
+    if(err){
+        res.send(err);
+    } else{
+        res.locals.categories = [];
+        for(let i = 0; i < result.length; i++){
+          res.locals.categories.push({category:result[i].category, selected: req.query.category === result[i].category})
+        }
+        next();
+    }
+  });
+});
 
 app.engine(
   "hbs",
@@ -60,6 +66,15 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.urlencoded({ extended: false }));
 
+// Define Routers:
+const indexRouter = require("./routes/index");
+const aboutRouter = require("./routes/about");
+const searchRouter = require("./routes/search");
+const itemRouter = require("./routes/item");
+const userRouter = require("./routes/user");
+const authRouter = require("./routes/auth");
+const messagesRouter = require("./routes/messages");
+
 // Define routes
 app.use("/", indexRouter);
 app.use("/about", aboutRouter);
@@ -69,9 +84,9 @@ app.use("/user", userRouter);
 app.use("/auth", authRouter);
 app.use("/messages", messagesRouter);
 
-app.use((err, req, res, next) => {
-  console.log(err);
-  res.render("error", { err_message: err });
-});
+// app.use((err, req, res, next) => {
+//   console.log(err);
+//   res.render("error", { err_message: err });
+// });
 
 module.exports = app;

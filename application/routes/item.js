@@ -19,6 +19,20 @@ const sessions = require('../sessions');
 class Post {
     static uploadPath = path.join(__dirname+"/../public/images/");
 
+    // getCategories(req, res, next){
+    //     database.query("SELECT category FROM categories", (err,result) => {
+    //         if(err){
+    //             res.send(err);
+    //         } else{
+    //             res.locals.categories = [];
+    //             for(let i = 0; i < result.length; i++){
+    //                 res.locals.categories.push({category:result[i].category, selected: req.query.category === result[i].category})
+    //             }
+    //             next();
+    //         }
+    //     });
+    // }
+
     getItemInfo (req,res){
         const id = req.query.id;
         let query = "";

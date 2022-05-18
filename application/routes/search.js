@@ -51,9 +51,8 @@ class Search {
             } else{
                 res.locals.categories = [];
                 for(let i = 0; i < result.length; i++){
-                    res.locals.categories.push({category:result[i].category, selected: req.query === result[i].category})
+                    res.locals.categories.push({category:result[i].category, selected: req.query.category === result[i].category})
                 }
-                console.log(res.locals.categories)
                 next();
             }
         });
@@ -101,11 +100,9 @@ class Search {
 
 const search = new Search();
 
-router.get('/', search.getCategories, search.getResults, (req,res)=>{
+router.get('/', search.getResults, (req,res)=>{
     res.locals.session.last_visited = "/result" + req.url.substring(1);
     res.render('result');
 });
-// router.post('/', search.search);
-// router.get('/categories', search.getCategories);
 
 module.exports = router;
