@@ -55,6 +55,14 @@
   border-radius: 4px;
   margin-top: 10px;
 }
+
+.modal-footer button.certain {
+  background: #231161;
+}
+
+.modal-footer button:hover.certain {
+  background: #34207a;
+}
 /* .navbar-dark .nav-item .nav-link {
   color: #fff;
 }
