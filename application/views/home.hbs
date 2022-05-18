@@ -13,108 +13,76 @@
                 <div class="welcome-left">    
                     <h1>Welcome to GatorMart</h1>
                 </div>  
-            <div class="welcome-right">
-                <h3>
-                    Bulletin boards and paper waste are a thing of the past.<br> Find anything and everything you need
-                    from the SFSU community here.
-                </h3>
-            </div>
-            </div>
-            </div>
-            {{!-- <div class="bg-image position-relative">
-                <img src="../images/SFSU.jpeg" class="w-100" />
-                <div class="mask position-absolute top-0 end-0 bottom-0 start-0 "
-                    style="background-color: rgba(0, 0, 0, 0.6)">
-                    <div class="d-flex justify-content-center align-items-center h-100">
-                        <p class="h1 text-white mb-0 text-uppercase">Welcome to GatorMart!</p>
-                    </div> --}}
+                <div class="welcome-right">
+                    <h3>
+                        Bulletin boards and paper waste are a thing of the past.<br> Find anything and everything you need
+                        from the SFSU community here.
+                    </h3>
                 </div>
             </div>
-            <section class="section my-4">
-                <div class="container text-center">
-                    <div class="title py-5">
-                        <h2>Featured Items</h2>
-                    </div>
-                    <!-- Image cards  -->
-                    <section class="mt-5">
-                        <div class="row">
-                            <div class="col-md-3 mb-5">
-                                <div class="card shadow" style="width: 18rem;">
-                                    <a href="item">
-                                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
-                                            class="card-img-top" alt="..."  /></a>
-                                    <div class="card-body">
-                                        <h5 class="card-title font-poppins">Calculus: Early Transcendentals</h5>
-                                        <span>textbooks </span>
-                                        <h6 class="mb-3">$52</h6>
-                                        <a href="item" class="btn btn-primary font-size-09 text-light product-button">View
-                                            Details</a>
-                                        <a href="message"
-                                            class="btn btn-primary font-size-09 text-light product-button">Message
-                                            Seller</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-5">
-                                <div class="card shadow" style="width: 18rem;">
-                                    <a href="#">
-                                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYzNDcxNjEyNQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
-                                            class="card-img-top" alt="..." /></a>
-                                    <div class="card-body">
-                                        <h5 class="card-title font-poppins">weekly CSC220 tutoring</h5>
-                                        <span>services </span>
-                                        <h6 class="mb-3">$75</h6>
-                                        <a href="item" class="btn btn-primary font-size-09 text-light product-button">View
-                                            Details</a>
-                                        <a href="message"
-                                            class="btn btn-primary font-size-09 text-light product-button">Message
-                                            Seller</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-5">
-                                <div class="card shadow" style="width: 18rem;">
-                                    <a href="#">
-                                        <img src="https://i.imgur.com/C9w7Cdk.png"
-                                            class="card-img-top" alt="..." /></a>
-                                    <div class="card-body">
-                                        <h5 class="card-title font-poppins">iPad Pro 12.9" 5th Gen
-                                        </h5>
-                                        <span>electronics </span>
-                                        <h6 class="mb-3">$200</h6>
-                                        <a href="#" class="btn btn-primary font-size-09 text-light product-button">View
-                                            Details</a>
-                                        <a href="#"
-                                            class="btn btn-primary font-size-09 text-light product-button">Message
-                                            Seller</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-5">
-                                <div class="card shadow" style="width: 18rem;">
-                                    <a href="#">
-                                        <img src="https://i.imgur.com/aCuLKWP.png"
-                                            class="card-img-top" alt="..." /></a>
-                                    <div class="card-body">
-                                        <h5 class="card-title font-poppins">Herman Miller Desk chair</h5>
-                                        <span>furniture </span>
-                                        <h6 class="mb-3">$200</h6>
-                                        <a href="#" class="btn btn-primary font-size-09 text-light product-button">View
-                                            Details</a>
-                                        <a href="#"
-                                            class="btn btn-primary font-size-09 text-light product-button">Message
-                                            Seller</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </section>
-
         </div>
-        </section>
+        <div class="container text-center">
+            <div class="title py-5">
+                <h2>Featured Items</h2>
+            </div>
+            <!-- Image cards  -->
+            <div id = "userPosts" class="row text-center">
+                {{#each featured_posts}}
+                    <div class="col-md-3 mb-2">
+                    <div class="card shadow" style="width: 18rem;">
+                        <a href="/item?id={{id}}">
+                        <img
+                            src="{{image_link}}"
+                            class="card-img-top"
+                            alt="..."
+                        /></a>
+                        <div class="card-body">
+                        <h5 class="card-title font-poppins">{{title}}</h5>
+                        <span>{{category}}</span>
+                        <h6 class="mb-3">${{price}}</h6>
+                        <!-- Button Trigger Modal -->
+                    <button type="button" class="cart-btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${newCards[i].id}">
+                        Message Seller
+                    </button>
 
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter${newCards[i].id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <form class="modal-content" method="POST" action="/messages/send">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Message {{username}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            <div class="item">
+                                <label for="instructions">Message Body<span>*</span></label>
+                                <textarea id="instructions" name="body" rows="3" maxlength="10000" required></textarea>
+                            </div>
+                            <input type="hidden" name="post_id" value="${newCards[i].id}" id="send-message-user-id">
+                            <input type="hidden" name="receiver_id" value="${newCards[i].user_id}" id="send-message-user-id">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="phoneNumber" style="display: inline-block;" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Send Phone Number?
+                                </label>
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="cart-btn btn-primary">Send Message</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                    </div>
+                {{/each}}
+            </div>
     </div>
+</div>
 
     <!-- Footer Starts-->
 

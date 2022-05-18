@@ -113,8 +113,6 @@ CREATE TABLE IF NOT EXISTS gatormartdb.reviews (
 -- ---------------------------------------------------------------------------------------------------------- --
 -- 								DATA INSERTS                                                                  --
 -- ---------------------------------------------------------------------------------------------------------- --
-
--- ---------------------------------------------------------------------------------------------------------- --
 INSERT INTO users (full_name, email, username, passwd, bio, phone_number)
 VALUES
 ('Linor Shire', 'lshire1@mail.sfsu.edu', 'LShire1', 'UniquePassword1', 'Just a senior at SFSU!', '(111) 111 - 1111'),
@@ -127,6 +125,7 @@ VALUES
 ('Alex Gomez', 'agomez8@mail.sfsu.edu', 'AGpomez8', 'UniquePassword8', 'Just another junior at SFSU!', '(888) 888 - 8888'),
 ('Ricky Guillotte', 'rguillotte9@mail.sfsu.edu', 'RGuillotte9', 'UniquePassword9', 'Just another sophomore at SFSU!', '(999) 999 - 9999'),
 ('Leandro Brode', 'lbrode10@mail.sfsu.edu', 'LBrode10', 'UniquePassword10', 'Just another freshman at SFSU!', '(000) 000 - 0000');
+
 -- ---------------------------------------------------------------------------------------------------------- --
 INSERT INTO categories(category)
 VALUES
@@ -148,18 +147,18 @@ VALUES
 ;
 
 -- ---------------------------------------------------------------------------------------------------------- --
-INSERT INTO posts (user_id, title, category, available, quality, description, price)
+INSERT INTO posts (user_id, title, category, available, quality, description, price, featured)
 VALUES
-(1, 'Learning Life: The Path to Academic Success and Personal Happiness', 'Books', 1, 'Okay Quality', 'For self improvement class, okay quality.', 20),
-(2, 'Calculus: Early Transcendentals', 'Books', 1, 'Decent Quality', 'For Calculus, it is slightly used..', 12),
-(3, 'Physics for Scientists and Engineers: A Strategic Approach', 'Books', 1, 'Damaged', 'For physics, it is used/damaged.', 5),
-(4, 'Understanding and Using English Grammar', 'Books', 1, 'Like new', 'For English, it`s just like new!', 10), 
-(5, 'CSC 648 Notes', 'Services', 1, 'Good quality', 'For Software Engineering, incredibly indepth!', 100),
-(6, 'CSC 665 Notes', 'Services', 1, 'Great Quality', 'For Artifical Intelligence, not much written.', 5),
-(7, 'CSC 642 Notes', 'Services', 1, 'OK Quality', 'For Human Computer Interaction, simple', 3),
-(8, 'Coffee Table', 'Furniture', 1, 'Slightly Used', 'Slightly stained coffee table, no damage, need gone ASAP!', 7),
-(9, 'Computer Chair', 'Furniture', 1, 'Old', 'Old computer chair; crusty, but comfortable!', 15),
-(10, 'Couch', 'Furniture', 1, 'New', 'Freshly bought couch, doesnt fit in my dorm!', 30);
+(1, 'Learning Life: The Path to Academic Success and Personal Happiness', 'Books', 1, 'Okay Quality', 'For self improvement class, okay quality.', 20, 0),
+(2, 'Calculus: Early Transcendentals', 'Books', 1, 'Decent Quality', 'For Calculus, it is slightly used..', 12, 0),
+(3, 'Physics for Scientists and Engineers: A Strategic Approach', 'Books', 1, 'Damaged', 'For physics, it is used/damaged.', 5, 0),
+(4, 'Understanding and Using English Grammar', 'Books', 1, 'Like new', 'For English, it`s just like new!', 10, 0), 
+(5, 'CSC 648 Notes', 'Services', 1, 'Good quality', 'For Software Engineering, incredibly indepth!', 100, 0),
+(6, 'CSC 665 Notes', 'Services', 1, 'Great Quality', 'For Artifical Intelligence, not much written.', 5, 1),
+(7, 'CSC 642 Notes', 'Services', 1, 'OK Quality', 'For Human Computer Interaction, simple', 3, 0),
+(8, 'Coffee Table', 'Furniture', 1, 'Slightly Used', 'Slightly stained coffee table, no damage, need gone ASAP!', 7, 1),
+(9, 'Computer Chair', 'Furniture', 1, 'Old', 'Old computer chair; crusty, but comfortable!', 15, 1),
+(10, 'Couch', 'Furniture', 1, 'New', 'Freshly bought couch, doesnt fit in my dorm!', 30, 1);
 
 -- ---------------------------------------------------------------------------------------------------------- --
 INSERT INTO messages (body, post_id, sender_id, receiver_id)

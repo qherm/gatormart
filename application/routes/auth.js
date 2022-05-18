@@ -10,12 +10,14 @@ class Auth {
         return createHash('sha256').update(string).digest('hex');
     }
 
-    isValidEmail(email){
-        let userEmail = email.toLowerCase();
+    isValidEmail(req,res,next){
+        let userEmail = req.body.email.toLowerCase();
         if (/@mail.sfsu.edu\s*$/.test(userEmail)) {
-            return true;
+            next();
+            return;
         }
-        return false;
+        res.locals.err = "Please enter a valid SFSU email address";
+        res.render('registration');
     }
 
     emailExists(email,callback) {
@@ -53,7 +55,8 @@ class Register extends Auth {
         
         database.query(query, (err,result) => {
             if(err){
-                res.send(err);
+                res.locals.err = "You either entered incorrect information, or a user with that information already exists.";
+                res.render('registration');
             } else{
                 database.query("SELECT LAST_INSERT_ID()", (error, resul) => {
                     if(err){
@@ -113,7 +116,7 @@ router.post('/login', login.login);
 router.get('/registration', (req,res) => {
     res.render('registration');
 })
-router.post("/registration", register.register);
+router.post("/registration", register.isValidEmail, register.register);
 router.get("/logout", login.logout);
 
 module.exports = router;

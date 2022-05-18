@@ -57,6 +57,9 @@
                                 <label for="name">Category <span>*</span></label>
                                 <select id="post-category" type="text" name="category" class="form-control" required />
                                     <option value="" selected disabled>--Select Category--</option>
+                                    {{#each categories}}
+                                        <option value="{{category}}">{{category}}</option>
+                                    {{/each}}
                                     {{!-- <option value="Books">Books</option>
                                     <option value="School Supplies">School Supplies</option>
                                     <option value="Furniture">Furniture</option>
