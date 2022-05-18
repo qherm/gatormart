@@ -4,6 +4,13 @@ const app = require('../app');
 const database = require('../db/db.js');
 
 class Search {
+    static sortby_options = [
+        { label: "Sort By", value: " ", selected: false },
+        { label: "Price: Low to High", value: "price ASC", selected: false },
+        { label: "Price: High to Low", value: "price DESC", selected: false },
+        { label: "Date: Newet First", value: "creation_time DESC", selected: false },
+        { label: "Date: Oldest First", value: "creation_time ASC", selected: false }
+    ]
     // use this later
     isSQLInjection(input){
         let userInput = input.toLowerCase();
@@ -37,20 +44,28 @@ class Search {
         return false;
     }
     
-    getCategories(req, res){
+    getCategories(req, res, next){
         database.query("SELECT category FROM categories", (err,result) => {
             if(err){
                 res.send(err);
             } else{
-                res.json({result})
+                res.locals.categories = [];
+                for(let i = 0; i < result.length; i++){
+                    res.locals.categories.push({category:result[i].category, selected: req.query === result[i].category})
+                }
+                console.log(res.locals.categories)
+                next();
             }
         });
     }
 
-    search(req, res) {
+    getResults(req, res, next) {
         const search = req.query.search;
         const category = req.query.category;
         const sortby = req.query.sortby;
+        res.locals.search = search;
+        res.locals.category = category;
+
         let query = `SELECT posts.id, posts.user_id, posts.title, posts.category, posts.price,
                     users.username, images.image_link
          FROM posts JOIN images ON images.post_id = posts.id JOIN users ON users.id=posts.user_id `;
@@ -65,17 +80,20 @@ class Search {
             query += `WHERE category = '` + category + `' AND ( Title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR Category LIKE '%` + search + `%')`;
         }
 
-        if(sortby){
+        if(sortby!==" " && sortby){
             query += " ORDER BY " + sortby;
         }
         
-        database.query(query, (err, results, next) => {
+        database.query(query, (err, results) => {
             if (err){
-                res.json({})
+                next();
             } else{
-                res.json({
-                    result:results
-                });
+                res.locals.sortby = [];
+                for(let i = 0; i < Search.sortby_options.length; i++){
+                    res.locals.sortby.push({label: Search.sortby_options[i].label, value:Search.sortby_options[i].value, selected: Search.sortby_options[i].value===sortby })
+                }
+                res.locals.posts=results;
+                next();
             }
         });
     }
@@ -83,11 +101,11 @@ class Search {
 
 const search = new Search();
 
-router.get('/', (req,res)=>{
+router.get('/', search.getCategories, search.getResults, (req,res)=>{
     res.locals.session.last_visited = "/result" + req.url.substring(1);
     res.render('result');
 });
-router.post('/', search.search);
-router.get('/categories', search.getCategories);
+// router.post('/', search.search);
+// router.get('/categories', search.getCategories);
 
 module.exports = router;

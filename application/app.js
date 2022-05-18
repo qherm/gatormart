@@ -1,7 +1,12 @@
 const express = require("express");
 var app = express();
 let path = require("path");
+
 const handlebars = require("express-handlebars");
+let hbs = handlebars.create({});
+hbs.handlebars.registerHelper('isdefined', (val) => {
+  return val !== undefined;
+})
 
 // Define Routers:
 const indexRouter = require("./routes/index");

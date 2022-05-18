@@ -25,10 +25,13 @@
       <div class="select-dropdown">
         <select name="category" id="category">
           <option value="">All</option>
+          {{#each categories}}
+          <option value="{{category}}" {{#if selected}}selected{{/if}}>{{category}}</option>
+          {{/each}}
         </select>
       </div>
 
-      <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search" id="searchbar">
+      <input class="form-control mr-sm-2" type="text" name="search" value="{{search}}" placeholder="Search" aria-label="Search" id="searchbar">
       <button class="btn btn-warning my-2 my-sm-0 search-button" type="sumbit">
         <i class="fa fa-search fa-lg" aria-hidden="true"></i>
       </button>
