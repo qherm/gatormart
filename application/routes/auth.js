@@ -56,7 +56,7 @@ class Register extends Auth {
         database.query(query, (err,result) => {
             if(err){
                 res.locals.err = "You either entered incorrect information, or a user with that information already exists.";
-                res.render('/auth/registration');
+                res.render('registration');
             } else{
                 database.query("SELECT LAST_INSERT_ID()", (error, resul) => {
                     if(err){
