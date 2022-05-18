@@ -23,10 +23,10 @@ body{
     width: 50%
 }
 .registration-label {
-    padding-top: 280px;
+    padding-top: 5em;
     font-size: 40px;
     font-family: "Roboto", sans-serif; 
-    letter-spacing: -1px;
+    letter-spacing: -2px;
     text-align:center;
 }
 
@@ -49,12 +49,17 @@ body{
     padding-bottom: 0
 }
 
-.form {
-    font-size: 30px;
+fieldset.reigstration-form {
+    font-size: 16px;
     font-weight: 300;
     color: #86939e;
-    line-height: 38px;
+    line-height: 24px;
     letter-spacing: -1px;
+    padding-top: 6rem;
+}
+
+#register-form{
+    padding-top: 10rem;
 }
 
 
@@ -63,6 +68,12 @@ input {
 }
 
 .register-h1 span {
+    font-size: 20px;
+    color: red;
+}
+
+.register-h2 span {
+    font-size: 20px;
     color: red;
 }
 
@@ -73,22 +84,30 @@ input {
 
 
 #register-button {
+    display: inline-block;
     background-color: #240733;
     border-radius: 9px;
     font-size: 16px;
     color: #ffffff;
     text-decoration: none;
-    /* padding: 12px 30px; */
+    padding: 12px 30px;
     transition: all 0.5s;
 }
-
+.register-h2 {
+    width: 50%;
+    font-size: 20px;
+    color: Black;
+    letter-spacing: -1px;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
 .register-h1 {
     width: 50%;
     font-size: 20px;
-    color: #43484d;
-    letter-spacing: -2px;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    color: Black;
+    letter-spacing: -1px;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 }
 
 #text-box {
@@ -97,9 +116,11 @@ input {
     border-radius: 6px;
     border-width: 0.5px;
     font-size: 12px;
+    padding-left: 0.5rem;
 }
 
 .registration-bottom{
-    font-size: 18px;
+    color: black;
+    font-size: 16px;
     padding-top: 10px;
 }
