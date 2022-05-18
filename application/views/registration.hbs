@@ -16,7 +16,8 @@
           </div>
         </div>
         <form class="user-registration-right-column" method="POST" enctype="application/x-www-form-urlencoded" action="/auth/registration">
-          <fieldset class="form">
+          <fieldset class="register-form">
+            <div class="register-h2">Fields marked with <span>*</span> are required.</div>
             <div class="register-h1">Full Name<span>*</span></div>
             <input id="text-box" type="text" placeholder="First Last" name="name" required >
             <div class="register-h1">SFSU email<span>*</span></div>
@@ -38,7 +39,7 @@
             <div class="check">Passwords must <span id="confirm-pass-req" class="req">match.</span></div>
             <br />
             <button type="submit" id="register-button">Submit</button>
-            <div class="registration-bottom">Already have an account? <a href="/login">Log In Here</a></div>
+            <div class="registration-bottom">Already have an account? <a href="/auth/login">Log In Here</a></div>
           </fieldset>
         </form>
       </div>
