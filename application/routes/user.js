@@ -29,6 +29,9 @@ class UserDetails {
         database.query(query, (err, results) => {
             if (err){
                 throw err;
+            } else if (results.length==0){
+                res.redirect('/');
+                return;
             } else{
                 res.locals.full_name = results[0].full_name;
                 res.locals.email = results[0].email;

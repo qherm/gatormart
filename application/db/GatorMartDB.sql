@@ -57,8 +57,8 @@ CREATE TABLE IF NOT EXISTS gatormartdb.posts (
   creation_time DATETIME DEFAULT CURRENT_TIMESTAMP,
   price FLOAT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (category) REFERENCES categories(category)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (category) REFERENCES categories(category) ON DELETE CASCADE
 );
 
 -- -----------------------------------------------------
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS gatormartdb.images(
   post_id INT NOT NULL,
   image_link VARCHAR(255) NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (post_id) REFERENCES posts(id)
+  FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE
 );
 
 -- -----------------------------------------------------
@@ -87,9 +87,9 @@ CREATE TABLE IF NOT EXISTS gatormartdb.messages (
   receiver_id INT NOT NULL,
   creation_time DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
-  FOREIGN KEY (post_id) REFERENCES posts(id),
-  FOREIGN KEY (sender_id) REFERENCES users(id),
-  FOREIGN KEY (receiver_id) REFERENCES users(id)
+  FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE,
+  FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (receiver_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 -- -----------------------------------------------------
@@ -105,8 +105,8 @@ CREATE TABLE IF NOT EXISTS gatormartdb.reviews (
   review VARCHAR(225) NOT NULL,
   rating INT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (post_id) REFERENCES posts(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE
 );
 
 

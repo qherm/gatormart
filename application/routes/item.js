@@ -107,6 +107,31 @@ class Post {
             }
         })
     }
+
+    checkItemBelongsToUser(req,res,next){
+        database.query("SELECT user_id FROM posts WHERE id="+req.body.post_id, (err,[result]) => {
+            if(err){
+                res.redirect('/user?id=' + req.session.user_id);
+                return;
+            } else if(result.user_id !== req.session.user_id){
+                res.redirect('/user?id=' + req.session.user_id);
+            } else {
+                next();
+            }
+        })
+    }
+
+    deleteItem(req,res,next){
+        database.query("DELETE FROM posts WHERE id="+req.body.post_id, (err, result) => {
+            if(err){
+                console.log(err);
+                res.redirect('/user?id=' + req.session.user_id);
+                return;
+            } else{
+                next();
+            }
+        });
+    }
 }
 
 const post = new Post();
@@ -120,6 +145,11 @@ router.use(bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimi
 router.get("/", (req,res) => {
     res.render("item");
 });
+
+router.post("/delete", post.checkItemBelongsToUser, post.deleteItem, (req,res,next) => {
+    res.redirect('/user');
+});
+
 router.get("/json", post.getItemInfo);
 
 router.get('/post', (req, res) => {
