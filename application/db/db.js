@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const database = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '6l3TT3rs',
+    password: 'password',
     database: 'gatormartdb'
 });
 

@@ -1,9 +1,26 @@
+/**
+ * Short Description of file:
+ * Used in both the functionality of sending a message and retrieving messages, this file
+ * has a number of different functions in terms of the messaging functionality.
+ * 
+ * Created by the backend team and the team-lead for CSC648 Software Engineering.
+ * Shane Waxler - Team Lead - Email: SWaxler@mail.sfsu.edu
+ * Robert Garcia - Backend Lead - Email: RGarcia35@mail.sfsu.edu
+ * Minggu Ma - Backend Member - Email: 	MMa4@mail.sfsu.edu
+ * Joe Guan - Backend Member - Email: JGuan8@mail.sfsu.edu
+*/
+
 const express = require('express');
 const router = express.Router();
 const app = require('../app');
 const database = require('../db/db.js');
 
 class Message {
+    /**
+     * Short Description of function:
+     * When a message is sent, we need the logged in user's email to be added to the message.body in the table; This function
+     * grabs the email of the logged in user.
+    */
     getSessionUserEmail(req,res,next){
         if(!req.session.user_id){
             res.redirect('/auth/login');
@@ -20,6 +37,12 @@ class Message {
         }
     }
 
+    /**
+     * Short Description of function:
+     * When a message is sent, the logged in user has a choice of also sending their number alongside their message.
+     * If they would like their phone number attached, we need the logged in user's phone number to be added to the 
+     * message.body in the table.
+    */
     getSessionUserPhoneNumber(req,res,next){
         if(!req.session.user_id){
             res.redirect('/auth/login');
@@ -36,10 +59,21 @@ class Message {
         }
     }
 
+    /**
+     * Short Description of function:
+     * When a message is sent, the logged in user has a choice of also sending their number alongside their message.
+     * If they would like their phone number attached, we need the logged in user's phone number to be added to the 
+     * message.body in the table.
+    */
     getSenderUsername(req,res,next){
         database.query("SELECT username FROM users WHERE id="+req.b)
     }
 
+    /**
+     * Short Description of function:
+     * This function allows a user to get messages sent to them by other users. It is used when checking a logged in
+     * user's inbox, if a user is not logged in; we redirect them to the homepage.
+    */
     getMessages(req,res){
         if(!req.session.user_id){
             req.session.last_visited = '/messages';
@@ -47,27 +81,7 @@ class Message {
             return;
         }
 
-        /*
-                    `SELECT users.full_name, users.email, users.username, users.bio, posts.id, posts.title, posts.category, posts.description, posts.price, images.image_link
-            FROM users 
-            JOIN posts
-            ON posts.user_id = users.id 
-            JOIN images
-            ON images.post_id = posts.id
-            WHERE users.id = '` + userID + `'`;
 
-                id INT NOT NULL AUTO_INCREMENT,
-                body VARCHAR(255) NOT NULL,
-                post_id INT NOT NULL,
-                sender_id INT NOT NULL,
-                receiver_id INT NOT NULL,
-                creation_time DATETIME DEFAULT CURRENT_TIMESTAMP,
-        */
-
-        // We need:
-        // sender username
-        // Post name
-        // Image from post
         database.query(
         `SELECT messages.id, messages.body, messages.post_ID, messages.sender_ID, messages.receiver_id, messages.creation_time,
             posts.id, posts.title, images.image_link, users.username
@@ -89,6 +103,11 @@ class Message {
         });
     }
 
+    /**
+     * Short Description of function:
+     * This function allows a user to send messages to other users, if a user wants their phone number to be attached,
+     * this makes it so that their number is attached to the body. This inserts their message into the message table.
+    */
     sendMessage(req,res,next){     
         const senderEmail = res.locals.sender_email;
         let messageBody = req.body.body;

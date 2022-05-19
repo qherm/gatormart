@@ -1,9 +1,22 @@
+/**
+ * Short Description of file:
+ * Used in fetching the ID for a specific user; This performs a get request for that parameter
+ * and given the results of that get method; This function returns a rendering of the user page
+ * for a given user.
+ * 
+ * Created by the backend team and the team-lead for CSC648 Software Engineering.
+ * Shane Waxler - Team Lead - Email: SWaxler@mail.sfsu.edu
+ * Robert Garcia - Backend Lead - Email: RGarcia35@mail.sfsu.edu
+ * Minggu Ma - Backend Member - Email: 	MMa4@mail.sfsu.edu
+ * Joe Guan - Backend Member - Email: JGuan8@mail.sfsu.edu
+*/
 let getUser = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const userID = urlParams.get('id');
     fetch(`/user/json?id=${userID}`, { method: 'get' })
         .then((response) => response.json())
         .then((result) => {
+            /*
             allResults = result.userInfo;
             const [userInfo] = result.userInfo;
             const userSection = document.getElementById('userDetails');
@@ -69,5 +82,8 @@ let getUser = () => {
             }
             userPosts.innerHTML = allPosts;
         })
+        
+        */
+    })
 }
 

@@ -1,3 +1,16 @@
+/**
+ * Short Description of file:
+ * Used in getting information needed for rendering the search results for a given search.
+ * This file not only gets the results needed for a search, but also helps to render a
+ * dynamic category box found on both the navbar and on the post page.
+ * 
+ * Created by the backend team and the team-lead for CSC648 Software Engineering.
+ * Shane Waxler - Team Lead - Email: SWaxler@mail.sfsu.edu
+ * Robert Garcia - Backend Lead - Email: RGarcia35@mail.sfsu.edu
+ * Minggu Ma - Backend Member - Email: 	MMa4@mail.sfsu.edu
+ * Joe Guan - Backend Member - Email: JGuan8@mail.sfsu.edu
+*/
+
 const express = require('express');
 const router = express.Router();
 const app = require('../app');
@@ -11,7 +24,12 @@ class Search {
         { label: "Date: Newet First", value: "creation_time DESC", selected: false },
         { label: "Date: Oldest First", value: "creation_time ASC", selected: false }
     ]
-    // use this later
+
+    /**
+     * Short Description of function:
+     * This function is used to validate a user's input and ensure they are not inputting some form of SQL injection
+     * If they are, we ensure that we do not take their input
+    */
     isSQLInjection(input){
         let userInput = input.toLowerCase();
         //check input type
@@ -43,7 +61,13 @@ class Search {
         }
         return false;
     }
-    
+
+    /**
+     * Short Description of function:
+     * This function is used in rendering the pull down menu for the categories found in both the navbar
+     * and in the post page. It allows the categories pull down menu to pull from the category table, allowing
+     * it to be dynamic.
+    */
     getCategories(req, res, next){
         database.query("SELECT category FROM categories", (err,result) => {
             if(err){
@@ -57,7 +81,11 @@ class Search {
             }
         });
     }
-
+    /**
+     * Short Description of function:
+     * This function is used in rendering the search results for a given search term and category. It performs a query to get
+     * the results for a given term that is searched, and also has the ability to sort search results if needed.
+    */
     getResults(req, res, next) {
         const search = req.query.search;
         const category = req.query.category;

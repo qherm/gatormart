@@ -1,3 +1,15 @@
+/**
+ * Short Description of file:
+ * Used in getting information needed for rendering a userpage, this file is mainly used in
+ * gathering information about a relevant user's profile page. This file also ensures that
+ * unregistered users may not look at a user's profile page and redirects them to log-in.
+ * 
+ * Created by the backend team and the team-lead for CSC648 Software Engineering.
+ * Shane Waxler - Team Lead - Email: SWaxler@mail.sfsu.edu
+ * Robert Garcia - Backend Lead - Email: RGarcia35@mail.sfsu.edu
+ * Minggu Ma - Backend Member - Email: 	MMa4@mail.sfsu.edu
+ * Joe Guan - Backend Member - Email: JGuan8@mail.sfsu.edu
+*/
 const express = require('express');
 const router = express.Router();
 const app = require('../app')
@@ -5,6 +17,11 @@ const database = require('../db/db.js');
 const sessions = require('../sessions');
 
 class UserDetails {
+    /**
+     * Short Description of function:
+     * After a user's relevant information is found from the findUser function, this method continues to find posts
+     * and its images made by said user. This function is used in rendering the past posts made by a user.
+    */
     getPostsAndImagesFromUserId(req,res,next){
         let query =
         `SELECT posts.id, posts.user_id, posts.title, posts.category, posts.description, posts.price, images.image_link
@@ -22,6 +39,13 @@ class UserDetails {
         });
     }
 
+    /**
+     * Short Description of function:
+     * When clicking a userpage that routes to /user?=id={id_number}, this function checks
+     * if there is a relevant user who has that ID and returns the information needed to
+     * render that user's profile page. If that user is not found, we route the current
+     * user back to the homepage.
+    */
     findUser(req, res, next) {
         const query = 
             `SELECT full_name, email, username, bio FROM users WHERE id = '` + req.userId + `'`;
@@ -42,6 +66,12 @@ class UserDetails {
         });
     }
 
+    /**
+     * Short Description of function:
+     * When clicking a userpage that routes to /user, this function checks to see if the
+     * user is logged in, if they are, this should route them to their homepage, if not
+     * it will route them to a login page 
+    */
     userExists(req,res,next){
         if(req.query.id == 0){
             res.redirect("/");

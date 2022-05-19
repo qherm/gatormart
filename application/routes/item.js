@@ -1,3 +1,16 @@
+/**
+ * Short Description of file:
+ * Used in rendering the specific page for a given item, this file contains a number of functions
+ * that have to do with getting the relevant information for a given item as well as adding a new
+ * item and deleting an item.
+ * 
+ * Created by the backend team and the team-lead for CSC648 Software Engineering.
+ * Shane Waxler - Team Lead - Email: SWaxler@mail.sfsu.edu
+ * Robert Garcia - Backend Lead - Email: RGarcia35@mail.sfsu.edu
+ * Minggu Ma - Backend Member - Email: 	MMa4@mail.sfsu.edu
+ * Joe Guan - Backend Member - Email: JGuan8@mail.sfsu.edu
+*/
+
 const database = require('../db/db.js');
 const express = require('express');
 const path = require('path');
@@ -19,20 +32,12 @@ const sessions = require('../sessions');
 class Post {
     static uploadPath = path.join(__dirname+"/../public/images/");
 
-    // getCategories(req, res, next){
-    //     database.query("SELECT category FROM categories", (err,result) => {
-    //         if(err){
-    //             res.send(err);
-    //         } else{
-    //             res.locals.categories = [];
-    //             for(let i = 0; i < result.length; i++){
-    //                 res.locals.categories.push({category:result[i].category, selected: req.query.category === result[i].category})
-    //             }
-    //             next();
-    //         }
-    //     });
-    // }
 
+    /**
+     * Short Description of function:
+     * Used when rendering an items page with /item?id={id}, this function gets the post and its information
+     * relevant to that id.
+    */
     getItemInfo (req,res){
         const id = req.query.id;
         let query = "";
@@ -49,6 +54,11 @@ class Post {
         });
     }
 
+    /**
+     * Short Description of function:
+     * Used when posting a new item, this function adds the image to the server, and adds it to
+     * the image table pointing to the relevant ID.
+    */
     uploadImage(req, res){
         let query;
         // let user_id = 1; // GET THIS FROM SESSION
@@ -83,6 +93,12 @@ class Post {
         });
     }
 
+    /**
+     * Short Description of function:
+     * Used when posting a new item, this function is used immediately after a user posts
+     * a new listing; It redirects them to the new page that lists the information for the
+     * item they posted.
+    */
     getPostId(req,res,next){
         database.query("SELECT LAST_INSERT_ID();", (err, [result]) => {
             if(err){
@@ -94,6 +110,11 @@ class Post {
         })
     }
 
+    /**
+     * Short Description of function:
+     * Used when posting a new item, this function is used immediately after a user posts
+     * a new listing; It inserts the items information into the table.
+    */
     postItem(req, res, next){
         let price = parseInt(req.body.price);
         price = price ? price : 0;
@@ -108,6 +129,11 @@ class Post {
         })
     }
 
+    /**
+     * Short Description of function:
+     * Used when checking whether an item belongs to the logged in user. If it doesn't, this function should
+     * redirect the user to their own page.
+    */
     checkItemBelongsToUser(req,res,next){
         database.query("SELECT user_id FROM posts WHERE id="+req.body.post_id, (err,[result]) => {
             if(err){
@@ -121,6 +147,11 @@ class Post {
         })
     }
 
+    /**
+     * Short Description of function:
+     * Used when deleting an item on a user's homepage; this function allows users to delete any previous listing
+     * that they had.
+    */
     deleteItem(req,res,next){
         database.query("DELETE FROM posts WHERE id="+req.body.post_id, (err, result) => {
             if(err){

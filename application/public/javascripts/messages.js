@@ -1,3 +1,14 @@
+/**
+ * Short Description of file:
+ * Used in fetching the messages for a logged in User, this function uses a get method
+ * to get the results of the messages for a user and then renders it onto a page.
+ * 
+ * Created by the backend team and the team-lead for CSC648 Software Engineering.
+ * Shane Waxler - Team Lead - Email: SWaxler@mail.sfsu.edu
+ * Robert Garcia - Backend Lead - Email: RGarcia35@mail.sfsu.edu
+ * Minggu Ma - Backend Member - Email: 	MMa4@mail.sfsu.edu
+ * Joe Guan - Backend Member - Email: JGuan8@mail.sfsu.edu
+*/
 const getMessages = () => {
     fetch(`/messages/json`, {method: 'get'})
         .then(response=>response.json())

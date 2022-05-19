@@ -1,3 +1,15 @@
+/**
+ * Short Description of file:
+ * Used in fetching the ID for a specific item; This performs a get request for that parameter
+ * and given the results of that get method; This function returns a rendering of the search
+ * results.
+ * 
+ * Created by the backend team and the team-lead for CSC648 Software Engineering.
+ * Shane Waxler - Team Lead - Email: SWaxler@mail.sfsu.edu
+ * Robert Garcia - Backend Lead - Email: RGarcia35@mail.sfsu.edu
+ * Minggu Ma - Backend Member - Email: 	MMa4@mail.sfsu.edu
+ * Joe Guan - Backend Member - Email: JGuan8@mail.sfsu.edu
+*/
 let getItemInfo = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
