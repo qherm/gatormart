@@ -11,7 +11,7 @@
     <div class="page-wrap">
       <div style="min-height: 500px; column-gap:100px"class="d-flex flex-wrap align-items-center justify-content-center" > 
         <!-- Left Column / Product Image -->
-            <img src="{{item_info.image_link}}" class="img-thumbnail" style="max-height:450px">
+            <img src="{{item_info.image_link}}" class="img-thumbnail" width=500>
     
             <!-- Right Column -->
             <div class="d-inline-flex p-2 text-center" style="max-width: 500px;">
@@ -24,7 +24,7 @@
                 <div class = "product-quality">Quality: {{item_info.quality}}</div>
                 {{!-- <div class="location"> Location: Cesar Chavez Center</div> --}}
                 <div class="product-description">{{item_info.description}}</div>
-                <div class="product-price">
+                <div class="product-price justify-content-center">
                 <span>${{item_info.price}}</span>
 
                 <!-- Button Trigger Modal -->
