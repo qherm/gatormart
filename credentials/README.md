@@ -34,9 +34,12 @@
 <br>Once put in there, start your terminal and cd to .ssh
 <br>Once there, use this command to connect to the server
 <br>ssh -i csc648.pem ubuntu@54.237.46.1
-<br>At this point, you should be able to log into the server, from there cd into the
-<br>csc648-03-sp22-team02/application/ folder
-<br>There you can use npm start to start the server and allow the user to browse the webpages.
+<br>At this point, you should be able to log into the server, from there cd into
+<br> csc648-03-sp22-team02/application/
+<br>There you can use 
+<br> npm install
+<br> npm start 
+<br> to start the server and allow the user to browse the webpages.
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
