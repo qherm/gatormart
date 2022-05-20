@@ -67,6 +67,16 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.urlencoded({ extended: false }));
 
+// Store count of messages in user session
+app.use((req,res,next) => {
+  database.query("SELECT COUNT(id) AS message_count FROM messages WHERE receiver_id = " + req.session.user_id, (err,result) => {
+    if(!err){
+      req.session.message_count = result[0].message_count;
+    }
+    next();
+  })
+});
+
 // Define Routers:
 const indexRouter = require("./routes/index");
 const aboutRouter = require("./routes/about");

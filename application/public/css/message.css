@@ -24,6 +24,27 @@ label {
   margin-top: 5px;
 }
 
+
+/* 
+  Badge denoting number of messages for a given user.
+*/
+.notification {
+  position: relative;
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.notification .badge {
+  position: absolute;
+  top: 10px;
+  right: -18px;
+  /* padding: 5px 10px; */
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+
+/* Item cards */
 .card {
   margin-left: 10px;
   margin-right: 10px;
