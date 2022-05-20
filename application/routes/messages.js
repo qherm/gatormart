@@ -111,7 +111,6 @@ class Message {
 
 
     preventInjection = (input) => {
-        console.log("Original input", input);
         // input = input.replaceAll(/\//, '//');
         input = input.replaceAll("\\", "\\\\")
                       .replaceAll("\'", "\\'")
@@ -121,7 +120,6 @@ class Message {
                       .replaceAll("\\r", "\\\\r")
                       .replaceAll("\\Z", "\\\\Z")
                       
-        console.log("After replacement", input);
         return input;
     }
 
@@ -160,7 +158,6 @@ class Message {
      * this makes it so that their number is attached to the body. This inserts their message into the message table.
     */
     sendMessage = (req,res,next) => {
-        console.log(req.body.body)
         const senderEmail = res.locals.sender_email;
         let messageBody = this.preventInjection(req.body.body);
         const phoneNumber = req.body.phoneNumber === "on" ? res.locals.phone_number : "";

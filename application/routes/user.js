@@ -57,7 +57,8 @@ class UserDetails {
                 res.redirect('/');
                 return;
             } else{
-                if(!req.query.id || req.query.id === req.session.user_id){
+                console.log(req.query.id, req.session.user_id);
+                if(!req.query.id || parseInt(req.query.id) === req.session.user_id){
                     res.locals.show_settings = true;
                 }
                 res.locals.full_name = results[0].full_name;
