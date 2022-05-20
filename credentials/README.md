@@ -36,7 +36,7 @@
 <br>ssh -i csc648.pem ubuntu@54.237.46.1
 <br>At this point, you should be able to log into the server, from there cd into the
 <br>csc648-03-sp22-team02/application/ folder
-<br>There you can use node runServer.js to start the server and allow the user to browse the webpages.
+<br>There you can use npm start to start the server and allow the user to browse the webpages.
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
