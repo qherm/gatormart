@@ -59,7 +59,6 @@ class Post {
                 
                 res.send(err);
             } else{
-                console.log(results)
                 if(results.length==0){
                     res.redirect('/result');
                     return;
@@ -67,9 +66,7 @@ class Post {
                     res.redirect("/result");
                 } else{
                     res.locals.item_info = results[0];
-                    console.log("Original Creation Time", JSON.stringify(res.locals.item_info.creation_time))
                     let creationTime = JSON.stringify(res.locals.item_info.creation_time).split("T")[0].substring(1);
-                    console.log("creation time!",creationTime)
                     res.locals.item_info.creation_time = creationTime;
                     next();
                 }
@@ -158,7 +155,6 @@ class Post {
      * redirect the user to their own page.
     */
     checkItemBelongsToUser(req,res,next){
-        console.log("HERE", req.body)
         database.query("SELECT user_id FROM posts WHERE id="+req.body.post_id, (err,[result]) => {
             if(err){
                 res.redirect('/user?id=' + req.session.user_id);
@@ -177,10 +173,8 @@ class Post {
      * that they had.
     */
     deleteItem(req,res,next){
-        console.log(req.body);
         database.query("DELETE FROM posts WHERE id="+req.body.post_id, (err, result) => {
             if(err){
-                console.log(err);
                 res.redirect('/user?id=' + req.session.user_id);
                 return;
             } else{

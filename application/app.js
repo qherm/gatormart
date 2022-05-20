@@ -8,10 +8,7 @@ let hbs = handlebars.create({});
 hbs.handlebars.registerHelper('isdefined', (val) => {
   return val !== "";
 })
-hbs.handlebars.registerHelper('renderDate', (date) => {
-  console.log(date)
-  return date.split("T")[0];
-});
+
 
 // Define sessions:
 const sessions = require('./sessions');
@@ -88,9 +85,6 @@ app.use("/user", userRouter);
 app.use("/auth", authRouter);
 app.use("/messages", messagesRouter);
 
-// app.use((err, req, res, next) => {
-//   console.log(err);
-//   res.render("error", { err_message: err });
-// });
+
 
 module.exports = app;

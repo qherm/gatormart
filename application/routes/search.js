@@ -23,7 +23,7 @@ class Search {
         { label: "Price: High to Low", value: "price DESC", selected: false },
         { label: "Date: Newet First", value: "creation_time DESC", selected: false },
         { label: "Date: Oldest First", value: "creation_time ASC", selected: false }
-    ]
+    ];
 
     /**
      * Short Description of function:
