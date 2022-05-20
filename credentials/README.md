@@ -33,7 +33,7 @@
 <br>Download csc648.pem SSH key and put it in the .ssh folder in your user directory.
 <br>Once put in there, start your terminal and cd to .ssh
 <br>Once there, use this command to connect to the server
-<br>ssh -i "csc648.pem" ubuntu@ec2-35-153-50-217.compute-1.amazonaws.com
+<br>ssh -i csc648.pem ubuntu@54.237.46.1
 <br>At this point, you should be able to log into the server, from there cd into the
 <br>csc648-03-sp22-team02/application/ folder
 <br>There you can use node runServer.js to start the server and allow the user to browse the webpages.
