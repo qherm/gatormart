@@ -14,10 +14,11 @@
             <img src="{{item_info.image_link}}" class="img-thumbnail" style="max-height:450px">
     
             <!-- Right Column -->
-            <div class="d-inline-flex p-2">
+            <div class="d-inline-flex p-2 text-center" style="max-width: 500px;">
               <!-- Product Description -->
-              <div class="product-info" >
+              <div class="product-info" class="text-center">
                 <div class="product-title"> {{item_info.title}}</div>
+                {{#if item_info.admin_approved}}{{else}}<p style="color: red;">Note: this item must be approved by site administrators before it is displayed on the main page.</p>{{/if}}
                 <h5>{{item_info.category}}</h5>
                 <div class="posted-user"> Posted by: <a href="/user?id={{item_info.user_id}}" id="user">{{item_info.username}}</a> on {{item_info.creation_time}}</div>
                 <div class = "product-quality">Quality: {{item_info.quality}}</div>
