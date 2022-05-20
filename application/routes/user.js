@@ -107,6 +107,5 @@ router.get('/', user.userExists, user.findUser, user.getPostsAndImagesFromUserId
         res.redirect("/auth/login");
     }
 });
-// router.get('/json', User.findUser);
 
 module.exports = router;

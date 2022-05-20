@@ -104,14 +104,11 @@ class Message {
         });
     }
 
-    /* 
-    F"\0.   \Z 
-    \\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b \\ \
+    /**
+     * Short Description of function:
+     * This function changes any characters that may be malicious and allows it to be stored in the messages DB.
     */
-
-
     preventInjection = (input) => {
-        // input = input.replaceAll(/\//, '//');
         input = input.replaceAll("\\", "\\\\")
                       .replaceAll("\'", "\\'")
                       .replaceAll("\\0", "\\\\0")
@@ -122,35 +119,6 @@ class Message {
                       
         return input;
     }
-
-     isSQLInjection = (input) => {
-        
-        //check if there is backslash for escape characters
-        if(userInput.includes("\\")){
-            return true;
-        }
-        //check if there is batched SQL Statement
-        if(userInput.includes(";") || userInput.includes(" or ") || userInput.includes(" and ") || userInput.includes(" drop ") || userInput.includes(" union ") || userInput.includes(" select ") || userInput.includes(" from ") || userInput.includes(" delete ")){
-            return true;
-        }
-        //see if there is potential always true clause, only if there is more than 3 chars can make this a injection
-        if(userInput.includes("=") && userInput.length >= 3){
-            //only check "=" have characters on the left and right
-            for(let i = 1; i < userInput.length - 1; i++){
-                if(userInput[i] == "="){
-                    if(userInput[i-1] == userInput[i+1]){
-                        return true;
-                    }
-                }
-            }
-        }
-        //check if part of the query is muted
-        if(userInput.includes("--")){
-            return true;
-        }
-        return false;
-    }
-
 
     /**
      * Short Description of function:
@@ -183,6 +151,8 @@ class Message {
 
 const message = new Message();
 
+
+// Set POST/GET request URLs relative to /messages
 router.get('/', (req,res) => {
     if(!req.session.user_id){
         req.session.last_visited = "/messages";
@@ -191,9 +161,11 @@ router.get('/', (req,res) => {
         res.render('messages');
     }
 });
+
 router.get('/json', message.getMessages);
+
 router.post('/send', message.getSessionUserEmail, message.getSessionUserPhoneNumber, message.sendMessage, (req,res) => {
     res.send("sent!");
-})
+});
 
 module.exports = router;

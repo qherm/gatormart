@@ -133,6 +133,11 @@ class Search {
         });
     }
 
+    /*
+     *  Short description of function:
+     *  This function stores all approved items from our posts db table into 
+     *  response locals. Meant to be rendered by hbs view.
+     */
     getAllApprovedItems(req,res,next){
         const search = req.query.search;
         const category = req.query.category;

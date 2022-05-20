@@ -192,15 +192,15 @@ router.use(fileUpload({
 }));
 router.use(bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}));
 
+
+// Set POST/GET request URLs relative to /item
 router.get("/", post.getItemInfo, (req,res) => {
     res.render("item");
 });
-// router.get("/json", post.getItemInfo);
 
 router.post("/delete", post.checkItemBelongsToUser, post.deleteItem, (req,res,next) => {
     res.redirect('/user');
 });
-
 
 router.get('/post', (req, res) => {
     if(!req.session.user_id){
