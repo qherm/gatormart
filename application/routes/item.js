@@ -38,18 +38,36 @@ class Post {
      * Used when rendering an items page with /item?id={id}, this function gets the post and its information
      * relevant to that id.
     */
-    getItemInfo (req,res){
+    getItemInfo (req,res,next){
         const id = req.query.id;
         let query = "";
 
         if(id){
-            query = `SELECT * FROM posts JOIN images ON images.post_id = posts.id JOIN users ON users.id = posts.user_id WHERE posts.id = '` + id + `'`;
+            
+            query = `
+            SELECT
+            posts.user_id, posts.title, posts.admin_approved, posts.category, posts.available, posts.quality, posts.description, posts.creation_time, posts.price,
+            images.image_link, images.post_id,
+            users.id, users.username, users.email, users.phone_number
+            FROM posts 
+            JOIN images ON images.post_id = posts.id 
+            JOIN users ON users.id = posts.user_id
+            WHERE posts.id = '` + id + `'`;
         }
         database.query(query, (err, results) => {
             if (err){
-                res.json({});
+                
+                res.send(err);
             } else{
-                res.json({itemInfo:results});
+                console.log(results)
+                if(results.length==0){
+                    res.redirect('/result');
+                    return;
+                } else{
+                    res.locals.item_info = results[0];
+                    next();
+                }
+                // res.json({itemInfo:results});
             }
         });
     }
@@ -135,6 +153,7 @@ class Post {
      * redirect the user to their own page.
     */
     checkItemBelongsToUser(req,res,next){
+        console.log("HERE", req.body)
         database.query("SELECT user_id FROM posts WHERE id="+req.body.post_id, (err,[result]) => {
             if(err){
                 res.redirect('/user?id=' + req.session.user_id);
@@ -153,6 +172,7 @@ class Post {
      * that they had.
     */
     deleteItem(req,res,next){
+        console.log(req.body);
         database.query("DELETE FROM posts WHERE id="+req.body.post_id, (err, result) => {
             if(err){
                 console.log(err);
@@ -173,15 +193,15 @@ router.use(fileUpload({
 }));
 router.use(bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}));
 
-router.get("/", (req,res) => {
+router.get("/", post.getItemInfo, (req,res) => {
     res.render("item");
 });
+// router.get("/json", post.getItemInfo);
 
 router.post("/delete", post.checkItemBelongsToUser, post.deleteItem, (req,res,next) => {
     res.redirect('/user');
 });
 
-router.get("/json", post.getItemInfo);
 
 router.get('/post', (req, res) => {
     if(!req.session.user_id){
