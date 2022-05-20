@@ -28,7 +28,10 @@ class UserDetails {
         FROM posts
         JOIN images
         ON images.post_id = posts.id
-        WHERE posts.user_id = '` + req.userId + `'`;;
+        WHERE posts.user_id = '` + req.userId + `'`;
+        if(!req.show_unapproved){
+            query += ` AND posts.admin_approved = 1`;
+        }
         database.query(query, (err, results) => {
             if (err){
                 throw err;
@@ -57,7 +60,6 @@ class UserDetails {
                 res.redirect('/');
                 return;
             } else{
-                console.log(req.query.id, req.session.user_id);
                 if(!req.query.id || parseInt(req.query.id) === req.session.user_id){
                     res.locals.show_settings = true;
                 }
@@ -86,8 +88,10 @@ class UserDetails {
             return;
         } else if(!req.query.id && req.session.user_id){
             req.userId = req.session.user_id;
+            req.show_unapproved = true;
         } else{
             req.userId = req.query.id;
+            req.show_unapproved = (parseInt(req.userId)===req.session.user_id);
         }
         next();
     }

@@ -100,11 +100,11 @@ class Search {
         if(!category&&!search){
             query += "WHERE admin_approved=1";
         } else if(!category){
-            query += `WHERE title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR category LIKE '%` + search + `%' AND admin_approved=1`;
+            query += `WHERE (title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR category LIKE '%` + search + `%') AND posts.admin_approved=1`;
         } else if(!search){
-            query += `WHERE category = '` + category + `' AND admin_approved=1`;
+            query += `WHERE category = '` + category + `' AND posts.admin_approved=1`;
         } else{
-            query += `WHERE category = '` + category + `' AND ( Title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR Category LIKE '%` + search + `%') AND admin_approved=1`;
+            query += `WHERE category = '` + category + `' AND ( Title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR Category LIKE '%` + search + `%') AND posts.admin_approved=1`;
         }
 
         if(sortby!==" " && sortby){
