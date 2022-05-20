@@ -63,11 +63,16 @@ class Post {
                 if(results.length==0){
                     res.redirect('/result');
                     return;
+                } else if(results[0].user_id!=req.session.user_id && !results[0].admin_approved){
+                    res.redirect("/result");
                 } else{
                     res.locals.item_info = results[0];
+                    console.log("Original Creation Time", JSON.stringify(res.locals.item_info.creation_time))
+                    let creationTime = JSON.stringify(res.locals.item_info.creation_time).split("T")[0].substring(1);
+                    console.log("creation time!",creationTime)
+                    res.locals.item_info.creation_time = creationTime;
                     next();
                 }
-                // res.json({itemInfo:results});
             }
         });
     }
@@ -137,7 +142,7 @@ class Post {
         let price = parseInt(req.body.price);
         price = price ? price : 0;
         let query = `INSERT INTO posts (user_id, title, category, available, quality, description, price) VALUES
-        (${req.session.user_id}, "${req.body.title}", "${req.body.category}", 1, "${req.body.condition}", "${req.body.description}", ${price});`;
+        (${req.session.user_id}, "${req.body.title}", "${req.body.category}", 1, "${req.body.quality}", "${req.body.description}", ${price});`;
         database.query(query, (err, result) => {
             if(err){
                 res.send(err);

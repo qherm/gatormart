@@ -9,27 +9,21 @@
 <body>
   <div class="main-container">
     <div class="page-wrap">
-      <div class="pDetail-container" id="item-info"> 
+      <div style="min-height: 500px; column-gap:100px"class="d-flex flex-wrap align-items-center justify-content-center" > 
         <!-- Left Column / Product Image -->
-            <div class="left-column col-5 align-self-center">
-              <img src="{{item_info.image_link}}" class="thumbnail-img" width=900 id="product-img">
-            </div>
-    
+            <img src="{{item_info.image_link}}" class="img-thumbnail" style="max-height:450px">
     
             <!-- Right Column -->
-            <div class="right-column col-7">
+            <div class="d-inline-flex p-2">
               <!-- Product Description -->
-              <div class="product-info align-self-center">
+              <div class="product-info" >
                 <div class="product-title"> {{item_info.title}}</div>
                 <h5>{{item_info.category}}</h5>
-                <div class="posted-user"> Posted by: <a href="/user?id={{item_info.user_id}}" id="user">{{item_info.username}}</a> on {{item_info.date}}</div>
+                <div class="posted-user"> Posted by: <a href="/user?id={{item_info.user_id}}" id="user">{{item_info.username}}</a> on {{item_info.creation_time}}</div>
+                <div class = "product-quality">Quality: {{item_info.quality}}</div>
                 {{!-- <div class="location"> Location: Cesar Chavez Center</div> --}}
-                <div class="product-description">{{item_info.description}}
-                </div>
-              </div>
-    
-              <!-- Product Pricing -->
-              <div class="product-price">
+                <div class="product-description">{{item_info.description}}</div>
+                <div class="product-price">
                 <span>${{item_info.price}}</span>
 
                 <!-- Button Trigger Modal -->
@@ -52,7 +46,7 @@
                           <label for="instructions">Message Body<span>*</span></label>
                           <textarea id="instructions" name="body" rows="3" maxlength="10000" required></textarea>
                         </div>
-                        <input type="hidden" name="post_id" value="{{item_info.id}}" id="send-message-user-id">
+                        <input type="hidden" name="post_id" value="{{item_info.post_id}}" id="send-message-user-id">
                         <input type="hidden" name="receiver_id" value="{{item_info.user_id}}" id="send-message-user-id">
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" name="phoneNumber" style="display: inline-block;" id="flexCheckDefault">
@@ -68,6 +62,7 @@
                     </form>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
       </div>

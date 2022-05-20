@@ -37,23 +37,19 @@ body{
     font-family: "Roboto", sans-serif;
   }
 
-.left-column {
-    width: 60%;
-}
-
 
 #product-img {
     max-height: 80%
 }
 
-.right-column {
+/* .right-column {
     width: 40%;
-}
+} */
 
 /* Product Description */
 .product-info {
-    border-bottom: 1px solid #858585;
-    margin-bottom: 30px;
+    /* border-bottom: 1px solid #858585; */
+    /* margin-bottom: 30px; */
 }
 
 /* .product-info span {

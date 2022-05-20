@@ -14,7 +14,6 @@
           <div id="userDetails">
 
             <!-- Profile widget -->
-            <div class="row" id="cards-section-append"></div>
             <div class="bg-white shadow rounded overflow-hidden">
               <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
@@ -86,9 +85,9 @@
                 </div>
               </div>
 
-              <div class="row" id="cards-section-append">
+              <div class="d-flex justify-content-center flex-wrap" id="cards-section-append">
                 {{#each posts}}
-                <div class="col-md-3 mb-2">
+                <div class="d-inline-flex p-2">
                   <div class="card shadow" style="width: 18rem;">
                     <a href="/item?id={{id}}">
                       <img src="{{image_link}}" class="card-img-top" alt="..." /></a>

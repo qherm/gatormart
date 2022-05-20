@@ -8,6 +8,10 @@ let hbs = handlebars.create({});
 hbs.handlebars.registerHelper('isdefined', (val) => {
   return val !== "";
 })
+hbs.handlebars.registerHelper('renderDate', (date) => {
+  console.log(date)
+  return date.split("T")[0];
+});
 
 // Define sessions:
 const sessions = require('./sessions');
