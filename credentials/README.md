@@ -25,9 +25,9 @@
 5. Database username
     <br>root
 7. Database password
-    <br>''
+    <br>'password'
 9. Database name (basically the name that contains all your tables)
-    <br>Example (will change later)
+    <br> 'gatormartdb'
     
 8. Instructions on how to use the above information.
 <br>Download csc648.pem SSH key and put it in the .ssh folder in your user directory.
