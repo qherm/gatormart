@@ -147,18 +147,18 @@ VALUES
 ;
 
 -- ---------------------------------------------------------------------------------------------------------- --
-INSERT INTO posts (user_id, title, category, available, quality, description, price, featured)
+INSERT INTO posts (user_id, title, category, available, quality, description, price, featured, admin_approved)
 VALUES
-(1, 'Learning Life: The Path to Academic Success and Personal Happiness', 'Books', 1, 'Okay Quality', 'For self improvement class, okay quality.', 20, 0),
-(2, 'Calculus: Early Transcendentals', 'Books', 1, 'Decent Quality', 'For Calculus, it is slightly used..', 12, 0),
-(3, 'Physics for Scientists and Engineers: A Strategic Approach', 'Books', 1, 'Damaged', 'For physics, it is used/damaged.', 5, 0),
-(4, 'Understanding and Using English Grammar', 'Books', 1, 'Like new', 'For English, it`s just like new!', 10, 0), 
-(5, 'CSC 648 Notes', 'Services', 1, 'Good quality', 'For Software Engineering, incredibly indepth!', 100, 0),
-(6, 'CSC 665 Notes', 'Services', 1, 'Great Quality', 'For Artifical Intelligence, not much written.', 5, 1),
-(7, 'CSC 642 Notes', 'Services', 1, 'OK Quality', 'For Human Computer Interaction, simple', 3, 0),
-(8, 'Coffee Table', 'Furniture', 1, 'Slightly Used', 'Slightly stained coffee table, no damage, need gone ASAP!', 7, 1),
-(9, 'Computer Chair', 'Furniture', 1, 'Old', 'Old computer chair; crusty, but comfortable!', 15, 1),
-(10, 'Couch', 'Furniture', 1, 'New', 'Freshly bought couch, doesnt fit in my dorm!', 30, 1);
+(1, 'Learning Life: The Path to Academic Success and Personal Happiness', 'Books', 1, 'Okay Quality', 'For self improvement class, okay quality.', 20, 0, 1),
+(2, 'Calculus: Early Transcendentals', 'Books', 1, 'Decent Quality', 'For Calculus, it is slightly used..', 12, 0, 1),
+(3, 'Physics for Scientists and Engineers: A Strategic Approach', 'Books', 1, 'Damaged', 'For physics, it is used/damaged.', 5, 0, 1),
+(4, 'Understanding and Using English Grammar', 'Books', 1, 'Like new', 'For English, it`s just like new!', 10, 0, 1), 
+(5, 'CSC 648 Notes', 'Services', 1, 'Good quality', 'For Software Engineering, incredibly indepth!', 100, 0, 1),
+(6, 'CSC 665 Notes', 'Services', 1, 'Great Quality', 'For Artifical Intelligence, not much written.', 5, 1, 1),
+(7, 'CSC 642 Notes', 'Services', 1, 'OK Quality', 'For Human Computer Interaction, simple', 3, 0, 1),
+(8, 'Coffee Table', 'Furniture', 1, 'Slightly Used', 'Slightly stained coffee table, no damage, need gone ASAP!', 7, 1, 1),
+(9, 'Computer Chair', 'Furniture', 1, 'Old', 'Old computer chair; crusty, but comfortable!', 15, 1, 1),
+(10, 'Couch', 'Furniture', 1, 'New', 'Freshly bought couch, doesnt fit in my dorm!', 30, 1, 1);
 
 -- ---------------------------------------------------------------------------------------------------------- --
 INSERT INTO messages (body, post_id, sender_id, receiver_id)
