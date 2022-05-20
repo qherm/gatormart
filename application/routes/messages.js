@@ -23,6 +23,7 @@ class Message {
     */
     getSessionUserEmail(req,res,next){
         if(!req.session.user_id){
+            req.session.last_visited = parseInt(req.body.post_id) >=0 ? "/item?id="+req.body.post_id : "/result";
             res.redirect('/auth/login');
         } else{
             database.query(`SELECT email FROM users WHERE id=${req.session.user_id}`, (err,result)=>{
@@ -103,14 +104,65 @@ class Message {
         });
     }
 
+    /* 
+    F"\0.   \Z 
+    \\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b \\ \
+    */
+
+
+    preventInjection = (input) => {
+        console.log("Original input", input);
+        // input = input.replaceAll(/\//, '//');
+        input = input.replaceAll("\\", "\\\\")
+                      .replaceAll("\'", "\\'")
+                      .replaceAll("\\0", "\\\\0")
+                      .replaceAll("\"", "\\\"")
+                      .replaceAll("\\b", "\\\\b")
+                      .replaceAll("\\r", "\\\\r")
+                      .replaceAll("\\Z", "\\\\Z")
+                      
+        console.log("After replacement", input);
+        return input;
+    }
+
+     isSQLInjection = (input) => {
+        
+        //check if there is backslash for escape characters
+        if(userInput.includes("\\")){
+            return true;
+        }
+        //check if there is batched SQL Statement
+        if(userInput.includes(";") || userInput.includes(" or ") || userInput.includes(" and ") || userInput.includes(" drop ") || userInput.includes(" union ") || userInput.includes(" select ") || userInput.includes(" from ") || userInput.includes(" delete ")){
+            return true;
+        }
+        //see if there is potential always true clause, only if there is more than 3 chars can make this a injection
+        if(userInput.includes("=") && userInput.length >= 3){
+            //only check "=" have characters on the left and right
+            for(let i = 1; i < userInput.length - 1; i++){
+                if(userInput[i] == "="){
+                    if(userInput[i-1] == userInput[i+1]){
+                        return true;
+                    }
+                }
+            }
+        }
+        //check if part of the query is muted
+        if(userInput.includes("--")){
+            return true;
+        }
+        return false;
+    }
+
+
     /**
      * Short Description of function:
      * This function allows a user to send messages to other users, if a user wants their phone number to be attached,
      * this makes it so that their number is attached to the body. This inserts their message into the message table.
     */
-    sendMessage(req,res,next){     
+    sendMessage = (req,res,next) => {
+        console.log(req.body.body)
         const senderEmail = res.locals.sender_email;
-        let messageBody = req.body.body;
+        let messageBody = this.preventInjection(req.body.body);
         const phoneNumber = req.body.phoneNumber === "on" ? res.locals.phone_number : "";
         const receivingUser = parseInt(req.body.receiver_id) ? parseInt(req.body.receiver_id) : -1;
         const sendingUser = parseInt(req.session.user_id) ? parseInt(req.session.user_id) : -1;
@@ -121,9 +173,8 @@ class Message {
             messageBody+= "<br> Phone Number: " + phoneNumber;
         }
 
-
         let query = `INSERT INTO messages (body, post_id, sender_id, receiver_id) VALUES
-        ("${messageBody}", "${postId}", "${sendingUser}", "${receivingUser}" );`;
+        ('${messageBody}', '${postId}', '${sendingUser}', '${receivingUser}' );`;
         database.query(query, (err, result) => {
             if(err){
                 throw err;

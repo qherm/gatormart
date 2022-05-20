@@ -10,24 +10,28 @@
   <div class="main-container">
     <div class="page-wrap">
       <section class="section my-1">
-        <div class="container text-center">
+        <div class=" text-center">
           <div class="title py-5">
-            <p class="text-left" id="num-results">
-              
+            <p class="float-left" id="num-results" style="margin-left: 10%;">
+              {{#if num_results}}
+                Showing {{num_results}} results for "{{search}}" in {{category}}
+              {{else}}  
+                We couldn't find anything for "{{search}}" in {{category}}.
+                Here are some things you might like.
+              {{/if}}
             </p>
-            <div class="dropdown float-right">
-              <select onchange="this.form.submit()" class=" float-right" form="navBarSearchForm" name="sortby" id="sortby">
-                {{#each sortby}}
-                <option class="dropdown-item" value="{{value}}" {{#if selected}} selected {{/if}}>{{label}}</option>
-                {{/each}}
-              </select>
-            </div>
-
+            <select onchange="this.form.submit()" class="float-right" form="navBarSearchForm" name="sortby" id="sortby" style="margin-right:10%">
+              {{#each sortby}}
+              <option class="dropdown-item" value="{{value}}" {{#if selected}} selected {{/if}}>{{label}}</option>
+              {{/each}}
+            </select>
           </div>
+          <br>
           <!-- Image cards  -->
-            <div class="row" id="cards-section-append">
+            <div class="flex-row" style="width: 100%" id="cards-section-append">
               {{#each posts}}
-                <div class="col-md-3 mb-2">
+                {{!-- <div class="col-md-3 mb-2"> --}}
+                  <div class="d-inline-flex p-2">
                   <div class="card shadow" style="width: 18rem;">
                     <a href="/item?id={{id}}">
                       <img
@@ -40,12 +44,12 @@
                       <span>{{category}}</span>
                       <h6 class="mb-3">${{price}}</h6>
                       <!-- Button Trigger Modal -->
-                  <button type="button" class="cart-btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter${newCards[i].id}">
+                  <button type="button" class="cart-btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{id}}">
                     Message Seller
                   </button>
 
                   <!-- Modal -->
-                  <div class="modal fade" id="exampleModalCenter${newCards[i].id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal fade" id="exampleModalCenter{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <form class="modal-content" method="POST" action="/messages/send">
                         <div class="modal-header">
@@ -59,8 +63,8 @@
                             <label for="instructions">Message Body<span>*</span></label>
                             <textarea id="instructions" name="body" rows="3" maxlength="10000" required></textarea>
                           </div>
-                          <input type="hidden" name="post_id" value="${newCards[i].id}" id="send-message-user-id">
-                          <input type="hidden" name="receiver_id" value="${newCards[i].user_id}" id="send-message-user-id">
+                          <input type="hidden" name="post_id" value="{{id}}" id="send-message-user-id">
+                          <input type="hidden" name="receiver_id" value="{{user_id}}" id="send-message-user-id">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="phoneNumber" style="display: inline-block;" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">

@@ -6,7 +6,7 @@ const database = require('./db/db');
 const handlebars = require("express-handlebars");
 let hbs = handlebars.create({});
 hbs.handlebars.registerHelper('isdefined', (val) => {
-  return val !== undefined;
+  return val !== "";
 })
 
 // Define sessions:

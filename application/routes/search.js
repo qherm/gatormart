@@ -98,13 +98,13 @@ class Search {
          FROM posts JOIN images ON images.post_id = posts.id JOIN users ON users.id=posts.user_id `;
         
         if(!category&&!search){
-            query += "";
+            query += "WHERE admin_approved=1";
         } else if(!category){
-            query += `WHERE title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR category LIKE '%` + search + `%'`;
+            query += `WHERE title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR category LIKE '%` + search + `%' AND admin_approved=1`;
         } else if(!search){
-            query += `WHERE category = '` + category + `'`;
+            query += `WHERE category = '` + category + `' AND admin_approved=1`;
         } else{
-            query += `WHERE category = '` + category + `' AND ( Title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR Category LIKE '%` + search + `%')`;
+            query += `WHERE category = '` + category + `' AND ( Title LIKE '%` + search + `%' OR description LIKE '%` + search + `%' OR Category LIKE '%` + search + `%') AND admin_approved=1`;
         }
 
         if(sortby!==" " && sortby){
@@ -119,6 +119,39 @@ class Search {
                 for(let i = 0; i < Search.sortby_options.length; i++){
                     res.locals.sortby.push({label: Search.sortby_options[i].label, value:Search.sortby_options[i].value, selected: Search.sortby_options[i].value===sortby })
                 }
+                if(results.length == 0){
+                    next();
+                } else {
+                    res.locals.category = category ? category : "All";
+                    res.locals.posts=results;
+                    res.locals.num_results = results.length;
+                    res.locals.session.last_visited = "/result" + req.url.substring(1);
+                    res.render('result');
+                    return;
+                }
+            }
+        });
+    }
+
+    getAllApprovedItems(req,res,next){
+        const search = req.query.search;
+        const category = req.query.category;
+        const sortby = req.query.sortby;
+        res.locals.search = search;
+        res.locals.category = category ? category : "All";
+
+        let query = `SELECT posts.id, posts.user_id, posts.title, posts.category, posts.price,
+                    users.username, images.image_link
+         FROM posts JOIN images ON images.post_id = posts.id JOIN users ON users.id=posts.user_id WHERE admin_approved=1`;
+
+        if(sortby!==" " && sortby){
+            query += " ORDER BY " + sortby;
+        }
+        
+        database.query(query, (err, results) => {
+            if (err){
+                next();
+            } else{
                 res.locals.posts=results;
                 next();
             }
@@ -128,7 +161,7 @@ class Search {
 
 const search = new Search();
 
-router.get('/', search.getResults, (req,res)=>{
+router.get('/', search.getResults, search.getAllApprovedItems, (req,res)=>{
     res.locals.session.last_visited = "/result" + req.url.substring(1);
     res.render('result');
 });
