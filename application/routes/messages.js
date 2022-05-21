@@ -109,13 +109,13 @@ class Message {
      * This function changes any characters that may be malicious and allows it to be stored in the messages DB.
     */
     preventInjection = (input) => {
-        input = input.replaceAll("\\", "\\\\")
-                      .replaceAll("\'", "\\'")
-                      .replaceAll("\\0", "\\\\0")
-                      .replaceAll("\"", "\\\"")
-                      .replaceAll("\\b", "\\\\b")
-                      .replaceAll("\\r", "\\\\r")
-                      .replaceAll("\\Z", "\\\\Z")
+        input = input.replaceAll(/\\/g, "\\\\")
+                      .replaceAll(/\'/g, "\\'")
+                      .replaceAll(/\\0/g, "\\\\0")
+                      .replaceAll(/\"/g, "\\\"")
+                      .replaceAll(/\\b/g, "\\\\b")
+                      .replaceAll(/\\r/g, "\\\\r")
+                      .replaceAll(/\\Z/g, "\\\\Z")
                       
         return input;
     }
