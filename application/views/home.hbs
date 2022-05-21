@@ -22,13 +22,13 @@
             </div>
         </div>
         <div class="container text-center">
-            <div class="title py-5">
-                <h2>Featured Items</h2>
-            </div>
+            {{!-- <div class="title py-5"> --}}
+                <h2 style="padding-bottom:5px;border-bottom:double;margin:15px">Featured Items</h2>
+            {{!-- </div> --}}
             <!-- Image cards  -->
-            <div id = "userPosts" class="row text-center">
+            <div id = "userPosts" class="row text-center justify-content-center">
                 {{#each featured_posts}}
-                    <div class="col-md-3 mb-2">
+                {{!-- <div class="col-md-3 mb-2"> --}}
                     <div class="card shadow" style="width: 18rem;">
                         <a href="/item?id={{id}}">
                         <img
@@ -75,10 +75,10 @@
                             </div>
                         </form>
                         </div>
-                    </div>
                         </div>
                     </div>
-                    </div>
+                </div>
+                {{!-- </div> --}}
                 {{/each}}
             </div>
     </div>
