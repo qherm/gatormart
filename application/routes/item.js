@@ -195,6 +195,7 @@ router.use(bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimi
 
 // Set POST/GET request URLs relative to /item
 router.get("/", post.getItemInfo, (req,res) => {
+    req.session.last_visited = "/item?id="+req.query.id;
     res.render("item");
 });
 
