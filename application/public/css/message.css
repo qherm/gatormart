@@ -44,6 +44,12 @@ label {
   color: white;
 }
 
+@media (max-width: 992px) {
+  .notification .badge {
+    right: -25px;
+  }
+}
+
 /* Item cards */
 .card {
   margin-left: 10px;
