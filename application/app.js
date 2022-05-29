@@ -3,6 +3,11 @@ let app = express();
 const path = require("path");
 const database = require('./db/db');
 
+// likely remove
+require('dotenv').config()
+
+
+// init handlebars / create helper functions
 const handlebars = require("express-handlebars");
 let hbs = handlebars.create({});
 hbs.handlebars.registerHelper('isdefined', (val) => {

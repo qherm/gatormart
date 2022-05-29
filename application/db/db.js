@@ -11,13 +11,14 @@
 
 const express = require('express');
 const mysql = require('mysql');
+require('dotenv').config();
 
 // Set up to read .env file
 const database = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'gatormartdb'
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 database.connect((err) => {
