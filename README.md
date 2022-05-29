@@ -1,5 +1,10 @@
 # csc648 Repository
 
+## Instructions for Running Locally
+Clone the repo. 
+
+Run `npm install`
+
 ## Contributors
 
 | Student Name | Student Email | GitHub Username | Position |
