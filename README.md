@@ -3,9 +3,13 @@
 ## Instructions for Running Locally
 Clone the repo. 
 
-Run ```npm install```.
+Run `npm install`.
 
-Create a 
+Create a file titled `.env` containing the following fields:
+
+1. DB_NAME - The name of the SQL Database.
+2. DB_USER - Username for access to relevant MySQL database.
+3. DB_PASSWORD - SQL Password.
 
 ## Contributors
 
