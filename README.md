@@ -5,11 +5,15 @@ Clone the repo.
 
 Run `npm install`.
 
-Create a file titled `.env` containing the following fields:
+Install MySQL and run the `GatorMartDB.sql` script in the `application/db/` directory. Ensure that the posts/users table have at least 10 items.
+
+Create a file titled `.env` in the /application directory containing the following fields:
 
 1. DB_NAME - The name of the SQL Database.
 2. DB_USER - Username for access to relevant MySQL database.
 3. DB_PASSWORD - SQL Password.
+
+Run `npm start`. The application should be up and running on port 3000. If items are not showing on the homepage or after searching, run the sql script again and ensure the proper connection is established to the db.
 
 ## Contributors
 
