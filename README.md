@@ -10,7 +10,7 @@ Run `npm install`.
 
 Install MySQL and run the `GatorMartDB.sql` script in the `application/db/` directory. Ensure that the posts/users table have at least 10 items.
 
-Create a file titled `.env` in the /application directory containing the following fields:
+Create a file titled `.env` in the `/application` directory containing the following fields:
 
 1. DB_NAME - The name of the SQL Database.
 2. DB_USER - Username for access to relevant MySQL database.
