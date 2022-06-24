@@ -1,4 +1,4 @@
-# csc648 Repository
+# GatorMart Repository
 
 ## Visit the site!
 [gatormart](http://ec2-35-168-3-139.compute-1.amazonaws.com/)
